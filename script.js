@@ -1,4 +1,9 @@
 // ===================================
+// 0. Base Configuration for Link Generation
+// ===================================
+const baseUrl = "https://chathurnijayarathne451-maker.github.io/-WEDDING-WEBSITE/";
+
+// ===================================
 // 1. URL Parameters & Dynamic Logic
 // ===================================
 const params = new URLSearchParams(window.location.search);
@@ -74,10 +79,10 @@ const homecomingNumbers = `
 `;
 
 if (event === "homecoming") {
-    eventTitle.innerHTML = "🏡 Homecoming Ceremony";
-    eventDate.innerHTML = "30 August 2026";
-    eventTime.innerHTML = "Reception Celebration";
-    eventVenue.innerHTML = "Homecoming Venue";
+    if (eventTitle) eventTitle.innerHTML = "🏡 Homecoming Ceremony";
+    if (eventDate) eventDate.innerHTML = "30 August 2026";
+    if (eventTime) eventTime.innerHTML = "Reception Celebration";
+    if (eventVenue) eventVenue.innerHTML = "Homecoming Venue";
     targetDate = new Date("August 30, 2026 18:00:00");
 
     if (weddingVenueCard) weddingVenueCard.style.display = "none";
@@ -85,10 +90,10 @@ if (event === "homecoming") {
     rsvpNumbersHTML = homecomingNumbers; 
 
 } else if (event === "both") {
-    eventTitle.innerHTML = "💍 Wedding & Homecoming";
-    eventDate.innerHTML = "Wedding - 26 August 2026<br><br>Homecoming - 30 August 2026";
-    eventTime.innerHTML = "You are warmly invited to both celebrations";
-    eventVenue.innerHTML = "Wedding & Homecoming Venues";
+    if (eventTitle) eventTitle.innerHTML = "💍 Wedding & Homecoming";
+    if (eventDate) eventDate.innerHTML = "Wedding - 26 August 2026<br><br>Homecoming - 30 August 2026";
+    if (eventTime) eventTime.innerHTML = "You are warmly invited to both celebrations";
+    if (eventVenue) eventVenue.innerHTML = "Wedding & Homecoming Venues";
     targetDate = new Date("August 26, 2026 09:12:00");
 
     if (weddingVenueCard) weddingVenueCard.style.display = "block";
@@ -96,10 +101,10 @@ if (event === "homecoming") {
     rsvpNumbersHTML = weddingNumbers + homecomingNumbers; 
 
 } else {
-    eventTitle.innerHTML = "💍 Wedding Ceremony";
-    eventDate.innerHTML = "26 August 2026";
-    eventTime.innerHTML = "Poruwa Ceremony - 09:12 AM";
-    eventVenue.innerHTML = "Sevonlak Hotel, Maradagahamula";
+    if (eventTitle) eventTitle.innerHTML = "💍 Wedding Ceremony";
+    if (eventDate) eventDate.innerHTML = "26 August 2026";
+    if (eventTime) eventTime.innerHTML = "Poruwa Ceremony - 09:12 AM";
+    if (eventVenue) eventVenue.innerHTML = "Sevonlak Hotel, Maradagahamula";
     targetDate = new Date("August 26, 2026 09:12:00");
 
     if (weddingVenueCard) weddingVenueCard.style.display = "block";
@@ -113,6 +118,7 @@ if (optionalRSVP) optionalRSVP.innerHTML = rsvpNumbersHTML;
 // 3. Countdown Process
 // ===================================
 function updateCountdown() {
+    if (!targetDate) return;
     const now = new Date();
     const difference = targetDate - now;
     if (difference < 0) return;
