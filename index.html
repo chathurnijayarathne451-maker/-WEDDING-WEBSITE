@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+<div id="preloader">
+    <div class="loader-content">
+        <div class="loader-monogram" id="loaderMonogram">A ❤️ S</div>
+        <div class="loader-line"></div>
+        <p class="loader-text">Loading Sweet Memories...</p>
+    </div>
+</div>
+
+<div class="petals-container"></div>
+
+<audio id="bgMusic" loop>
+    <source src="assets/music/wedding-song.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" class="music-btn">🎵 Music</button>
+
+<div id="invitationContent">
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <div class="monogram" id="mainMonogram">A ❤️ S</div>
+            <h3 class="heading">We Are Getting Married</h3>
+            
+            <h1 id="topName">Chathurni Sanchala</h1>
+            <span class="and">&amp;</span>
+            <h1 id="bottomName">Ashen Anuradha</h1>
+
+            <div class="guest-box">
+                <h2 id="guestName">Dear Guest</h2>
+                <p>We warmly invite you to celebrate our special day.</p>
+            </div>
+
+            <a href="#eventSection" class="scroll-btn">View Invitation ↓</a>
+
+            <div class="custom-shape-divider-bottom">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#fdfcf9"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="wedding-date-badge-section">
+        <div class="date-badge-container">
+            <span class="date-line-text">AUGUST</span>
+            <span class="date-number-highlight">26</span>
+            <span class="date-line-text">2026</span>
+        </div>
+    </section>
+
+    <section class="countdown-section">
+        <h2>Countdown To Our Big Day</h2>
+        <div class="countdown">
+            <div class="time-box"><span id="days">00</span><small>Days</small></div>
+            <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
+            <div class="time-box"><span id="minutes">00</span><small>Minutes</small></div>
+            <div class="time-box"><span id="seconds">00</span><small>Seconds</small></div>
+        </div>
+    </section>
+
+    <section id="eventSection" class="event-section">
+        <div class="event-card">
+            <h2 id="eventTitle">Wedding Ceremony</h2>
+            <p id="eventDate">26 August 2026</p>
+            <p id="eventTime">Poruwa Ceremony – 09:12 AM</p>
+            <p id="eventVenue">Sevonlak Hotel, Maradagahamula</p>
+        </div>
+    </section>
+
+    <section class="calendar-section">
+        <h2>August 2026</h2>
+        
+        <div class="calendar-header">
+            <div class="day-name">Su</div>
+            <div class="day-name">Mo</div>
+            <div class="day-name">Tu</div>
+            <div class="day-name">We</div>
+            <div class="day-name">Th</div>
+            <div class="day-name">Fr</div>
+            <div class="day-name">Sa</div>
+        </div>
+
+        <div class="calendar-grid">
+            <div class="day empty"></div>
+            <div class="day empty"></div>
+            <div class="day empty"></div>
+            <div class="day empty"></div>
+            <div class="day empty"></div>
+            <div class="day empty"></div>
+            
+            <div class="day">1</div>
+            <div class="day">2</div>
+            <div class="day">3</div>
+            <div class="day">4</div>
+            <div class="day">5</div>
+            <div class="day">6</div>
+            <div class="day">7</div>
+            <div class="day">8</div>
+            <div class="day">9</div>
+            <div class="day">10</div>
+            <div class="day">11</div>
+            <div class="day">12</div>
+            <div class="day">13</div>
+            <div class="day">14</div>
+            <div class="day">15</div>
+            <div class="day">16</div>
+            <div class="day">17</div>
+            <div class="day">18</div>
+            <div class="day">19</div>
+            <div class="day">20</div>
+            <div class="day">21</div>
+            <div class="day">22</div>
+            <div class="day">23</div>
+            <div class="day">24</div>
+            <div class="day">25</div>
+            <div class="day wedding">26<br><span class="emoji">💍</span></div>
+            <div class="day">27</div>
+            <div class="day">28</div>
+            <div class="day">29</div>
+            <div class="day homecoming">30<br><span class="emoji">🏡</span></div>
+            <div class="day">31</div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2>Our Memories</h2>
+        <div class="gallery">
+            <div class="photo-box">Add Photo 01</div>
+            <div class="photo-box">Add Photo 02</div>
+            <div class="photo-box">Add Photo 03</div>
+            <div class="photo-box">Add Photo 04</div>
+        </div>
+    </section>
+
+    <section class="venue-section">
+        <h2>Venue</h2>
+        
+        <div id="weddingVenueCard" class="venue-card" style="margin-bottom: 30px;">
+            <h3 style="font-family:'Cinzel',serif; color:#d4af37; margin-bottom:10px;">Wedding Venue</h3>
+            <p style="margin-bottom: 15px;">Sevonlak Hotel, Maradagahamula</p>
+            <div class="map-container" style="border-radius: 15px; overflow: hidden;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.8227653733075!2d79.99268397587841!3d7.14643351631557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2e40ece722871%3A0x18bc043031e6f712!2sSevonlak%20Hotel!5e0!3m2!1sen!2slk!4v1714000000000!5m2!1sen!2slk" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <a href="https://maps.app.goo.gl/cSh3kg7k4joREvfmM" target="_blank" class="btn">Open Wedding Map</a>
+        </div>
+
+        <div id="homecomingVenueCard" class="venue-card">
+            <h3 style="font-family:'Cinzel',serif; color:#0b2c6b; margin-bottom:10px;">Homecoming Venue</h3>
+            <p style="margin-bottom: 15px;">Homecoming Venue Location</p>
+            <div class="map-container" style="border-radius: 15px; overflow: hidden;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15837.226308753625!2d80.00926364702428!3d7.0904163480910825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fc128d237b73%3A0x712fefd2e7559fef!2sSamara%20Banquet%20Hall!5e0!3m2!1sen!2slk!4v1780498221789!5m2!1sen!2slk" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15837.226308753625!2d80.00926364702428!3d7.0904163480910825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fc128d237b73%3A0x712fefd2e7559fef!2sSamara%20Banquet%20Hall!5e0!3m2!1sen!2slk!4v1780498221789!5m2!1sen!2slk" target="_blank" class="btn" style="background: #0b2c6b;">Open Homecoming Map</a>
+        </div>
+    </section>
+
+    <section class="rsvp-section">
+        <h2>RSVP Contact Details</h2>
+        <div class="rsvp-card">
+            <div class="rsvp-row">
+                <p>Bride: <a href="tel:0713372644">0713372644</a></p>
+                <p>Groom: <a href="tel:0752540988">0752540988</a></p>
+            </div>
+            
+            <div id="optionalRSVP" class="optional-rsvp"></div>
+
+            <div style="margin-top: 20px;">
+                <button class="btn" id="attendBtn">We Will Attend</button>
+                <button class="btn secondary" id="rejectBtn">Cannot Attend</button>
+            </div>
+        </div>
+    </section>
+
+</div> <section style="padding: 20px; background: #fbf9f4; text-align:center;">
+    <button id="downloadPdfBtn" class="btn" style="background: #2c3e50;">📥 Download Invitation PDF</button>
+    <button id="shareBtn" class="btn">Share via WhatsApp</button>
+</section>
+
+<footer>
+    <h2 id="footerMonogram">A ❤️ S</h2>
+    <p>26 August 2026</p>
+    <p style="margin-bottom: 15px;">Thank You For Celebrating With Us</p>
+    <div class="developer-credit" style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-top: 20px; border-top: 1px solid rgba(212, 175, 55, 0.2); padding-top: 15px; color: #a69a80;">
+        Designed with ❤️ by <span style="color: #d4af37; font-weight: 500;">Sanchala Jayarathne</span>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
