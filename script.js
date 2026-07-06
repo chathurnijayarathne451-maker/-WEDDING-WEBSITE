@@ -1,106 +1,207 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Wedding Website Loaded Successfully!");
+// ===================================
+// 0. Base Configuration for Link Generation
+// ===================================
+const baseUrl = "https://chathurnijayarathne451-maker.github.io/-WEDDING-WEBSITE/";
 
-    // --- 1. Remove Loading Screen (සයිට් එක ලෝඩ් වුණු ගමන් Loading Screen එක අයින් කිරීම) ---
-    const loadingScreen = document.getElementById("loading-screen") || document.querySelector(".loader-wrapper") || document.querySelector(".loading");
-    if (loadingScreen) {
-        // සයිට් එක ලෝඩ් වී අවසන් වූ පසු ලෝඩරය අයින් කරයි
-        loadingScreen.style.display = "none"; 
-    }
+// ===================================
+// 1. URL Parameters & Dynamic Logic
+// ===================================
+const params = new URLSearchParams(window.location.search);
+const guest = params.get("guest") || "Guest";
+const type = params.get("type") || "single";
+const event = params.get("event") || "wedding";
+const side = params.get("side") || "bride"; 
+const guestId = params.get("id");
 
-    // --- 2. Music Player Setup (Error නොඑන ලෙස සකසා ඇත) ---
-    const music = document.getElementById("wedding-music") || document.getElementById("bg-music");
-    const musicBtn = document.getElementById("music-btn") || document.getElementById("play-btn");
+// Tracking Link Open Status
+if (guestId) {
+    let trackingData = JSON.parse(localStorage.getItem("invitation_tracking")) || {};
+    trackingData[guestId] = "Opened";
+    localStorage.setItem("invitation_tracking", JSON.stringify(trackingData));
+}
 
-    if (music && musicBtn) {
-        music.play().then(() => {
-            musicBtn.innerHTML = "🎵 Pause Music";
-        }).catch(() => {
-            console.log("Autoplay blocked. Waiting for click.");
-        });
+// Personalization Control
+const guestName = document.getElementById("guestName");
+if (guestName) {
+    if (type === "family") guestName.innerText = `Dear ${guest} & Family`;
+    else if (type === "couple") guestName.innerText = `Dear ${guest} & Partner`;
+    else guestName.innerText = `Dear ${guest}`;
+}
 
-        musicBtn.addEventListener("click", function () {
-            if (music.paused) {
-                music.play();
-                musicBtn.innerHTML = "🎵 Pause Music";
-            } else {
-                music.pause();
-                musicBtn.innerHTML = "🎵 Play Music";
-            }
-        });
-    }
+// Side Switch Order Management (Bride / Groom Side)
+const topName = document.getElementById("topName");
+const bottomName = document.getElementById("bottomName");
+const mainMonogram = document.getElementById("mainMonogram");
+const loaderMonogram = document.getElementById("loaderMonogram");
+const footerMonogram = document.getElementById("footerMonogram");
 
-    // --- 3. Lite Rose Petals Falling Effect ---
-    const canvas = document.createElement('canvas');
-    document.body.appendChild(canvas);
-    const ctx = canvas.getContext('2d');
+if (side === "groom") {
+    if (topName) topName.innerText = "Ashen Anuradha";
+    if (bottomName) bottomName.innerText = "Chathurni Sanchala";
+} else {
+    if (topName) topName.innerText = "Chathurni Sanchala";
+    if (bottomName) bottomName.innerText = "Ashen Anuradha";
+}
 
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100vw';
-    canvas.style.height = '100vh';
-    canvas.style.zIndex = '9999';
-    canvas.style.pointerEvents = 'none';
+// Monogram ස්ථාවරව A ❤️ S ලෙස තැබීම
+if (mainMonogram) mainMonogram.innerText = "A ❤️ S";
+if (loaderMonogram) loaderMonogram.innerText = "A ❤️ S";
+if (footerMonogram) footerMonogram.innerText = "A ❤️ S";
 
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+// ===================================
+// 2. Event Switch & Dynamic RSVP (Updated Version)
+// ===================================
+const eventTitle = document.getElementById("eventTitle");
+const eventDate = document.getElementById("eventDate");
+const eventTime = document.getElementById("eventTime");
+const eventVenue = document.getElementById("eventVenue");
+const weddingVenueCard = document.getElementById("weddingVenueCard");
+const homecomingVenueCard = document.getElementById("homecomingVenueCard");
+const optionalRSVP = document.getElementById("optionalRSVP");
 
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+let targetDate;
+let rsvpNumbersHTML = "";
+
+// බ්‍රයිඩ්ගේ පැත්තේ වෙඩින් නම්බර්ස්
+const weddingNumbers = `
+    <hr style="border: 0; border-top: 1px dashed #d4af37; margin: 15px 0;">
+    <h4 style="font-family:'Cinzel',serif; color:#d4af37; margin-bottom: 8px;">Bride's Side Contact</h4>
+    <p>Mr. Wasantha: <a href="tel:0713380734">0713380734</a></p>
+    <p>Mrs. Dhammika: <a href="tel:0753380738">0753380738</a></p>
+`;
+
+// ගෲම්ගේ පැත්තේ හෝම්කමිං නම්බර්ස්
+const homecomingNumbers = `
+    <hr style="border: 0; border-top: 1px dashed #0b2c6b; margin: 15px 0;">
+    <h4 style="font-family:'Cinzel',serif; color:#0b2c6b; margin-bottom: 8px;">Groom's Side Contact</h4>
+    <p>Mr. Santha: <a href="tel:0717648030">0717648030</a></p>
+    <p>Mrs. Renuka: <a href="tel:0702567153">0702567153</a></p>
+`;
+
+if (event === "homecoming") {
+    if (eventTitle) eventTitle.innerHTML = "🏡 Homecoming Ceremony";
+    if (eventDate) eventDate.innerHTML = "30 August 2026";
+    if (eventTime) eventTime.innerHTML = "Reception Celebration";
+    if (eventVenue) eventVenue.innerHTML = "Homecoming Venue";
+    targetDate = new Date("August 30, 2026 18:00:00");
+
+    if (weddingVenueCard) weddingVenueCard.style.display = "none";
+    if (homecomingVenueCard) homecomingVenueCard.style.display = "block";
+    rsvpNumbersHTML = homecomingNumbers; 
+
+} else if (event === "both") {
+    if (eventTitle) eventTitle.innerHTML = "💍 Wedding & Homecoming";
+    if (eventDate) eventDate.innerHTML = "Wedding - 26 August 2026<br><br>Homecoming - 30 August 2026";
+    if (eventTime) eventTime.innerHTML = "You are warmly invited to both celebrations";
+    if (eventVenue) eventVenue.innerHTML = "Wedding & Homecoming Venues";
+    targetDate = new Date("August 26, 2026 09:12:00");
+
+    if (weddingVenueCard) weddingVenueCard.style.display = "block";
+    if (homecomingVenueCard) homecomingVenueCard.style.display = "block";
+    rsvpNumbersHTML = weddingNumbers + homecomingNumbers; 
+
+} else {
+    if (eventTitle) eventTitle.innerHTML = "💍 Wedding Ceremony";
+    if (eventDate) eventDate.innerHTML = "26 August 2026";
+    if (eventTime) eventTime.innerHTML = "Poruwa Ceremony - 09:12 AM";
+    if (eventVenue) eventVenue.innerHTML = "Sevonlak Hotel, Maradagahamula";
+    targetDate = new Date("August 26, 2026 09:12:00");
+
+    if (weddingVenueCard) weddingVenueCard.style.display = "block";
+    if (homecomingVenueCard) homecomingVenueCard.style.display = "none";
+    rsvpNumbersHTML = weddingNumbers; 
+}
+
+if (optionalRSVP) optionalRSVP.innerHTML = rsvpNumbersHTML;
+
+// ===================================
+// 3. Countdown Process
+// ===================================
+function updateCountdown() {
+    if (!targetDate) return;
+    const now = new Date();
+    const difference = targetDate - now;
+    if (difference < 0) return;
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    const d = document.getElementById("days");
+    const h = document.getElementById("hours");
+    const m = document.getElementById("minutes");
+    const s = document.getElementById("seconds");
+
+    if (d) d.innerText = days < 10 ? "0" + days : days;
+    if (h) h.innerText = hours < 10 ? "0" + hours : hours;
+    if (m) m.innerText = minutes < 10 ? "0" + minutes : minutes;
+    if (s) s.innerText = seconds < 10 ? "0" + seconds : seconds;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// ===================================
+// 4. Music Play/Pause System
+// ===================================
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+if (musicBtn && music) {
+    musicBtn.addEventListener("click", () => {
+        if (music.paused) { music.play(); musicBtn.innerText = "⏸ Pause Music"; }
+        else { music.pause(); musicBtn.innerText = "🎵 Play Music"; }
     });
+}
 
-    const petalCount = 20; 
-    const petals = [];
-
-    class Petal {
-        constructor() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height - height;
-            this.r = Math.random() * 6 + 4;
-            this.d = Math.random() * petalCount;
-            this.w = Math.random() * 2;
-            this.vs = Math.random() * 0.8 + 0.4;
-            this.ys = Math.random() * 1;
-        }
-
-        draw() {
-            ctx.beginPath();
-            ctx.fillStyle = 'rgba(255, 192, 203, 0.35)'; 
-            ctx.strokeStyle = 'rgba(255, 182, 193, 0.4)';
-            
-            ctx.moveTo(this.x, this.y);
-            ctx.quadraticCurveTo(this.x - this.r, this.y + this.r, this.x, this.y + this.r * 2);
-            ctx.quadraticCurveTo(this.x + this.r, this.y + this.r, this.x, this.y);
-            ctx.fill();
-            ctx.stroke();
-        }
-
-        update() {
-            this.y += this.vs;
-            this.x += Math.sin(this.ys) * 0.4;
-            this.ys += 0.01;
-
-            if (this.y > height) {
-                this.y = -20;
-                this.x = Math.random() * width;
-            }
-        }
+// ===================================
+// 5. RSVP Action Handling
+// ===================================
+function updateRSVPStatus(status) {
+    if (guestId) {
+        let rsvpStatusData = JSON.parse(localStorage.getItem("invitation_rsvp")) || {};
+        rsvpStatusData[guestId] = status;
+        localStorage.setItem("invitation_rsvp", JSON.stringify(rsvpStatusData));
     }
+    window.open(`https://wa.me/94713372644?text=Hello,%20I%20am%20${encodeURIComponent(guest)}.%20I%20will%20${status === 'Attending' ? 'attend' : 'not%20be%20able%20to%20attend'}%20your%20celebration.`, "_blank");
+}
 
-    for (let i = 0; i < petalCount; i++) {
-        petals.push(new Petal());
+document.getElementById("attendBtn")?.addEventListener("click", () => updateRSVPStatus("Attending"));
+document.getElementById("rejectBtn")?.addEventListener("click", () => updateRSVPStatus("Not Attending"));
+
+// WhatsApp Share Integration
+document.getElementById("shareBtn")?.addEventListener("click", () => {
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent("You're invited to our Wedding ❤️ " + window.location.href)}`, "_blank");
+});
+
+// ===================================
+// 6. Download PDF Logic
+// ===================================
+document.getElementById("downloadPdfBtn")?.addEventListener("click", () => {
+    const element = document.getElementById("invitationContent");
+    const opt = {
+        margin: 10,
+        filename: `${guest}_Wedding_Invitation.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+});
+
+// Petals Generator
+const petalsContainer = document.querySelector(".petals-container");
+if (petalsContainer) {
+    for (let i = 0; i < 25; i++) {
+        const petal = document.createElement("div");
+        petal.classList.add("petal"); petal.innerHTML = "🌸";
+        petal.style.left = Math.random() * 100 + "%";
+        petal.style.animationDuration = (5 + Math.random() * 10) + "s";
+        petal.style.fontSize = (15 + Math.random() * 20) + "px";
+        petalsContainer.appendChild(petal);
     }
+}
 
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-        petals.forEach(petal => {
-            petal.draw();
-            petal.update();
-        });
-        requestAnimationFrame(animate);
-    }
-
-    animate();
+// Loader Screen Timeout Closer
+window.addEventListener("load", () => {
+    setTimeout(() => { document.getElementById("preloader")?.classList.add("hide-preloader"); }, 1200);
 });
