@@ -198,6 +198,87 @@
 </footer>
 
 <script src="script.js"></script>
+    <h2 id="footerMonogram">A ❤️ S</h2>
+    <p>26 August 2026</p>
+    <p style="margin-bottom: 15px;">Thank You For Celebrating With Us</p>
+    <div class="developer-credit" style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-top: 20px; border-top: 1px solid rgba(212, 175, 55, 0.2); padding-top: 15px; color: #a69a80;">
+        Designed with ❤️ by <span style="color: #d4af37; font-weight: 500;">Sanchala Jayarathne</span>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+window.addEventListener('load', function () {
+    const canvas = document.createElement('canvas');
+    document.body.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100vw';
+    canvas.style.height = '100vh';
+    canvas.style.zIndex = '9999';
+    canvas.style.pointerEvents = 'none';
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    const petalCount = 20; 
+    const petals = [];
+
+    class Petal {
+        constructor() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height - height;
+            this.r = Math.random() * 6 + 4;
+            this.vs = Math.random() * 0.8 + 0.4;
+            this.ys = Math.random() * 1;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.fillStyle = 'rgba(255, 192, 203, 0.35)'; 
+            ctx.strokeStyle = 'rgba(255, 182, 193, 0.4)';
+            ctx.moveTo(this.x, this.y);
+            ctx.quadraticCurveTo(this.x - this.r, this.y + this.r, this.x, this.y + this.r * 2);
+            ctx.quadraticCurveTo(this.x + this.r, this.y + this.r, this.x, this.y);
+            ctx.fill();
+            ctx.stroke();
+        }
+        update() {
+            this.y += this.vs;
+            this.x += Math.sin(this.ys) * 0.4;
+            this.ys += 0.01;
+            if (this.y > height) {
+                this.y = -20;
+                this.x = Math.random() * width;
+            }
+        }
+    }
+
+    for (let i = 0; i < petalCount; i++) {
+        petals.push(new Petal());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        petals.forEach(petal => {
+            petal.draw();
+            petal.update();
+        });
+        requestAnimationFrame(animate);
+    }
+    animate();
+});
+</script>
+</body>
+</html>
 </body>
 </html>
 
