@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Wedding Website Loaded with Light Flower Effect!");
+    console.log("Wedding Website Loaded with Darker & More Flowers!");
 
     // --- 1. Remove Preloader ---
     const preloader = document.getElementById("preloader");
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // --- 3. Light & Elegant Flower Effect (No Rose Petals) ---
+    // --- 3. More & Darker Flowers Effect ---
     const canvas = document.createElement('canvas');
     document.body.appendChild(canvas);
     const ctx = canvas.getContext('2d');
@@ -49,15 +49,15 @@ document.addEventListener("DOMContentLoaded", function () {
         height = canvas.height = window.innerHeight;
     });
 
-    const flowerCount = 12; // සයිට් එක Slow නොවෙන්න මල් ගණන 12ට අඩු කළා
+    const flowerCount = 25; // මල් ගණන 25 දක්වා වැඩි කළා
     const flowers = [];
 
-    class LightFlower {
+    class DarkerFlower {
         constructor() {
             this.x = Math.random() * width;
             this.y = Math.random() * height - height;
-            this.r = Math.random() * 4 + 3; // කුඩා ලස්සන මලක ප්‍රමාණය
-            this.vs = Math.random() * 0.5 + 0.2; // හෙමින් වැටෙන සන්සුන් වේගය
+            this.r = Math.random() * 5 + 4; // මලක ප්‍රමාණය පොඩ්ඩක් ලොකු කළා
+            this.vs = Math.random() * 0.7 + 0.3; // වැටෙන වේගය
             this.ys = Math.random() * 1;
             this.angle = Math.random() * 360;
         }
@@ -67,21 +67,21 @@ document.addEventListener("DOMContentLoaded", function () {
             ctx.translate(this.x, this.y);
             ctx.rotate(this.angle * Math.PI / 180);
 
-            // ඉතාම ලා Soft Pink/Translucent Color එක (රෝස පෙති පාට නෙවෙයි, මලක පාට)
-            ctx.fillStyle = 'rgba(255, 230, 235, 0.3)';
+            // තවත් කැපී පෙනෙන Dark Romantic Pink Color එක
+            ctx.fillStyle = 'rgba(230, 100, 140, 0.65)';
             
             // පෙති 5 මල
             for (let i = 0; i < 5; i++) {
                 ctx.rotate(72 * Math.PI / 180);
                 ctx.beginPath();
-                ctx.ellipse(0, this.r, this.r / 1.5, this.r, 0, 0, 2 * Math.PI);
+                ctx.ellipse(0, this.r, this.r / 1.4, this.r, 0, 0, 2 * Math.PI);
                 ctx.fill();
             }
             
-            // මැද රන්වන් තිත
+            // මැද රන්වන්/තද තිත (Dark Gold Center)
             ctx.beginPath();
-            ctx.arc(0, 0, this.r / 3, 0, 2 * Math.PI);
-            ctx.fillStyle = 'rgba(212, 175, 55, 0.4)';
+            ctx.arc(0, 0, this.r / 2.8, 0, 2 * Math.PI);
+            ctx.fillStyle = 'rgba(212, 160, 23, 0.85)';
             ctx.fill();
 
             ctx.restore();
@@ -89,9 +89,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         update() {
             this.y += this.vs;
-            this.x += Math.sin(this.ys) * 0.3;
-            this.ys += 0.005;
-            this.angle += 0.3;
+            this.x += Math.sin(this.ys) * 0.4;
+            this.ys += 0.008;
+            this.angle += 0.4;
 
             if (this.y > height) {
                 this.y = -20;
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     for (let i = 0; i < flowerCount; i++) {
-        flowers.push(new LightFlower());
+        flowers.push(new DarkerFlower());
     }
 
     function animate() {
