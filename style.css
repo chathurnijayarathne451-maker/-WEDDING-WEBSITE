@@ -87,10 +87,11 @@ body{
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/hero-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('hero-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
 }
     ),
     url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1800");
