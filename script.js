@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         isPlaying = !isPlaying;
     });
 
-   // 3. Hero Background Image Auto Slider Logic - START
+   // 3. Hero Background Image Auto Slider Logic
     const heroSlides = document.querySelectorAll('.hero-slide');
     let currentHeroSlide = 0;
 
@@ -71,9 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
             heroSlides[currentHeroSlide].classList.remove('active');
             currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
             heroSlides[currentHeroSlide].classList.add('active');
-        }, 3500); // තත්පර 3.5න් පසු ඊළඟ Background Photo එකට Change වේ
+        }, 3500);
     }
-    // Hero Background Image Auto Slider Logic - END
 
     // 4. Countdown Timer
     const targetDate = new Date('August 26, 2026 10:13:00').getTime();
