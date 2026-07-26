@@ -1,203 +1,124 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Wedding Website Loaded!");
+document.addEventListener("DOMContentLoaded", () => {
 
-    // --- 1. Preloader ---
-    const preloader = document.getElementById("preloader");
-    if (preloader) {
-        setTimeout(() => {
-            preloader.style.opacity = "0";
-            setTimeout(() => {
-                preloader.style.display = "none";
-            }, 500);
-        }, 1000);
-    }
-
-    // --- 2. URL Parameters Handling (Personalization & Tracking) ---
+    // 1. URL Query Parameters Reading Logic
     const urlParams = new URLSearchParams(window.location.search);
-    const guestId = urlParams.get('id');
-    const guestName = urlParams.get('guest');
-    const targetEvent = urlParams.get('event');
+    const guestParam = urlParams.get('guest');
+    const eventType = urlParams.get('event'); // 'wedding' or 'homecoming'
 
-    if (guestName) {
-        document.getElementById("guestName").innerText = `Dear ${decodeURIComponent(guestName)}`;
+    // Guest Name Logic
+    const guestNameElement = document.getElementById('guestName');
+    if (guestParam) {
+        guestNameElement.innerText = "Dear " + decodeURIComponent(guestParam);
+    } else {
+        guestNameElement.innerText = "Dear Guest";
     }
 
-    if (guestId) {
-        let tracking = JSON.parse(localStorage.getItem("invitation_tracking")) || {};
-        tracking[guestId] = true;
-        localStorage.setItem("invitation_tracking", JSON.stringify(tracking));
+    // Event Type Display Logic
+    const weddingCard = document.getElementById('weddingCard');
+    const homecomingCard = document.getElementById('homecomingCard');
+    const weddingVenue = document.getElementById('weddingVenueSection');
+    const homecomingVenue = document.getElementById('homecomingVenueSection');
+    const brideRsvp = document.getElementById('brideRsvp');
+    const groomRsvp = document.getElementById('groomRsvp');
+
+    if (eventType === 'wedding') {
+        if (homecomingCard) homecomingCard.style.display = 'none';
+        if (homecomingVenue) homecomingVenue.style.display = 'none';
+        if (groomRsvp) groomRsvp.style.display = 'none';
+    } else if (eventType === 'homecoming') {
+        if (weddingCard) weddingCard.style.display = 'none';
+        if (weddingVenue) weddingVenue.style.display = 'none';
+        if (brideRsvp) brideRsvp.style.display = 'none';
     }
 
-    // Dynamic Venue visibility based on Event
-    const weddingCard = document.getElementById("weddingVenueCard");
-    const homecomingCard = document.getElementById("homecomingVenueCard");
+    // 2. Preloader & Auto Play Music
+    const preloader = document.getElementById('preloader');
+    const bgMusic = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
 
-    if (targetEvent === "wedding") {
-        if (homecomingCard) homecomingCard.style.display = "none";
-    } else if (targetEvent === "homecoming") {
-        if (weddingCard) weddingCard.style.display = "none";
-        document.getElementById("eventTitle").innerText = "Homecoming Ceremony";
-        document.getElementById("eventDate").innerText = "30 August 2026";
-        document.getElementById("eventTime").innerText = "Reception – 11:30 AM Onwards";
-        document.getElementById("eventVenue").innerText = "Samara Banquet Hall";
-    }
+    setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => { preloader.style.display = 'none'; }, 500);
 
-    // --- 3. Music Player ---
-    const music = document.getElementById("bgMusic");
-    const musicBtn = document.getElementById("musicBtn");
-
-    if (music && musicBtn) {
-        musicBtn.addEventListener("click", function () {
-            if (music.paused) {
-                music.play();
-                musicBtn.innerHTML = "🎵 Pause Music";
-            } else {
-                music.pause();
-                musicBtn.innerHTML = "🎵 Music";
-            }
+        // Auto music play attempt
+        bgMusic.play().then(() => {
+            isPlaying = true;
+            musicBtn.innerText = "🎵 Pause Music";
+        }).catch(() => {
+            isPlaying = false;
+            musicBtn.innerText = "🎵 Play Music";
         });
-    }
+    }, 1500);
 
-    // --- 4. Countdown Timer (Target: August 26, 2026) ---
-    const weddingDate = new Date("August 26, 2026 09:12:00").getTime();
+    musicBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            bgMusic.pause();
+            musicBtn.innerText = "🎵 Play Music";
+        } else {
+            bgMusic.play();
+            musicBtn.innerText = "🎵 Pause Music";
+        }
+        isPlaying = !isPlaying;
+    });
+
+    // 3. Image Slider Auto Shift
+    let currentSlide = 0;
+    const sliderWrapper = document.getElementById('sliderWrapper');
+    
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % 4;
+        sliderWrapper.style.transform = `translateX(-${currentSlide * 25}%)`;
+    }, 3000);
+
+    // 4. Countdown Timer
+    const targetDate = new Date('August 26, 2026 10:13:00').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
-        const difference = weddingDate - now;
+        const difference = targetDate - now;
 
         if (difference > 0) {
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-            if (document.getElementById("days")) document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-            if (document.getElementById("hours")) document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-            if (document.getElementById("minutes")) document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-            if (document.getElementById("seconds")) document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+            document.getElementById('days').innerText = String(Math.floor(difference / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById('hours').innerText = String(Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(Math.floor((difference % (1000 * 60)) / 1000)).padStart(2, '0');
         }
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // --- 5. RSVP Buttons Handler ---
-    const attendBtn = document.getElementById("attendBtn");
-    const rejectBtn = document.getElementById("rejectBtn");
-    const rsvpStatusMsg = document.getElementById("rsvpStatusMsg");
+    // 5. Language Switcher (English / Sinhala)
+    const langBtn = document.getElementById('langToggleBtn');
+    let currentLang = 'en';
 
-    function setRSVPStatus(status) {
-        if (guestId) {
-            let rsvp = JSON.parse(localStorage.getItem("invitation_rsvp")) || {};
-            rsvp[guestId] = status;
-            localStorage.setItem("invitation_rsvp", JSON.stringify(rsvp));
-        }
-        if (rsvpStatusMsg) {
-            rsvpStatusMsg.innerText = status === "Attending" 
-                ? "🎉 Thank you! Your response (Attending) has been recorded." 
-                : " We appreciate your response (Cannot Attend).";
-            rsvpStatusMsg.style.color = status === "Attending" ? "#27ae60" : "#c0392b";
-        }
-    }
+    langBtn.addEventListener('click', () => {
+        currentLang = currentLang === 'en' ? 'si' : 'en';
+        langBtn.innerText = currentLang === 'en' ? '🌐 සිංහල' : '🌐 English';
 
-    if (attendBtn) attendBtn.addEventListener("click", () => setRSVPStatus("Attending"));
-    if (rejectBtn) rejectBtn.addEventListener("click", () => setRSVPStatus("Declined"));
-
-    // --- 6. PDF Download & Share ---
-    const pdfBtn = document.getElementById("downloadPdfBtn");
-    if (pdfBtn) {
-        pdfBtn.addEventListener("click", function () {
-            const element = document.getElementById("invitationContent");
-            const opt = {
-                margin:       0.5,
-                filename:     'Wedding_Invitation_Chathurni_Ashen.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-            html2pdf().set(opt).from(element).save();
+        document.querySelectorAll('[data-en]').forEach(el => {
+            el.innerText = el.getAttribute(`data-${currentLang}`);
         });
-    }
-
-    const shareBtn = document.getElementById("shareBtn");
-    if (shareBtn) {
-        shareBtn.addEventListener("click", function () {
-            const text = encodeURIComponent("You are cordially invited to celebrate our wedding! Click the link to view the invitation: " + window.location.href);
-            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
-        });
-    }
-
-    // --- 7. Floating Petals Effect Canvas ---
-    const canvas = document.createElement('canvas');
-    document.querySelector('.petals-container').appendChild(canvas);
-    const ctx = canvas.getContext('2d');
-
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
     });
 
-    const flowerCount = 25;
-    const flowers = [];
+    // 6. RSVP Buttons Response
+    const attendBtn = document.getElementById('attendBtn');
+    const rejectBtn = document.getElementById('rejectBtn');
+    const rsvpMsg = document.getElementById('rsvpStatusMsg');
 
-    class DarkerFlower {
-        constructor() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height - height;
-            this.r = Math.random() * 5 + 4;
-            this.vs = Math.random() * 0.7 + 0.3;
-            this.ys = Math.random() * 1;
-            this.angle = Math.random() * 360;
-        }
+    attendBtn.addEventListener('click', () => {
+        rsvpMsg.style.color = "#27ae60";
+        rsvpMsg.innerText = currentLang === 'en' ? "Thank you! We look forward to seeing you." : "ස්තූතියි! ඔබගේ පැමිණීම අපි බලාපොරොත්තු වෙමු.";
+    });
 
-        draw() {
-            ctx.save();
-            ctx.translate(this.x, this.y);
-            ctx.rotate(this.angle * Math.PI / 180);
+    rejectBtn.addEventListener('click', () => {
+        rsvpMsg.style.color = "#c0392b";
+        rsvpMsg.innerText = currentLang === 'en' ? "Thank you for letting us know." : "දැනුවත් කිරීම පිළිබඳව ස්තූතියි.";
+    });
 
-            ctx.fillStyle = 'rgba(230, 100, 140, 0.65)';
-            for (let i = 0; i < 5; i++) {
-                ctx.rotate(72 * Math.PI / 180);
-                ctx.beginPath();
-                ctx.ellipse(0, this.r, this.r / 1.4, this.r, 0, 0, 2 * Math.PI);
-                ctx.fill();
-            }
-
-            ctx.beginPath();
-            ctx.arc(0, 0, this.r / 2.8, 0, 2 * Math.PI);
-            ctx.fillStyle = 'rgba(212, 160, 23, 0.85)';
-            ctx.fill();
-
-            ctx.restore();
-        }
-
-        update() {
-            this.y += this.vs;
-            this.x += Math.sin(this.ys) * 0.4;
-            this.ys += 0.008;
-            this.angle += 0.4;
-
-            if (this.y > height) {
-                this.y = -20;
-                this.x = Math.random() * width;
-            }
-        }
-    }
-
-    for (let i = 0; i < flowerCount; i++) {
-        flowers.push(new DarkerFlower());
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-        flowers.forEach(flower => {
-            flower.draw();
-            flower.update();
-        });
-        requestAnimationFrame(animate);
-    }
-
-    animate();
+    // 7. PDF Download Button
+    document.getElementById('downloadPdfBtn').addEventListener('click', () => {
+        const element = document.getElementById('invitationContent');
+        html2pdf().from(element).save('Wedding_Invitation_Chathurni_Ashen.pdf');
+    });
 });
