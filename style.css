@@ -286,3 +286,32 @@ footer h2 { color: #d4af37; font-family: 'Cinzel', serif; }
 .date-badge-container { display: flex; align-items: center; justify-content: center; gap: 10px; }
 .date-line-text { font-family: 'Cinzel', serif; font-size: 16px; color: #a69a80; border-top: 1px solid #d4af37; border-bottom: 1px solid #d4af37; }
 .date-number-highlight { font-family: 'Cinzel', serif; font-size: 40px; color: #d4af37; font-weight: bold; }
+
+/* All Middle Alignment Fix */
+.wedding-date-badge-section,
+.countdown-section,
+.event-section,
+.event-card,
+.calendar-section,
+.venue-section,
+.venue-card,
+.rsvp-section,
+.footer {
+    text-align: center !important;
+}
+
+/* Center elements inside cards and sections */
+.time-box,
+.calendar-header,
+.calendar-grid,
+.map-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Align buttons nicely in center */
+.btn, .scroll-btn, .ctrl-btn {
+    display: inline-block;
+    text-align: center;
+}
+
