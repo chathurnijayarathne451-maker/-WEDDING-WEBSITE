@@ -127,11 +127,11 @@ body {
 }
 
 .monogram {
-    font-size: 55px;
-    font-family: 'Great Vibes', cursive;
+    font-size: 58px;
+    font-family: 'Best Light', 'Great Vibes', 'MonteCarlo', cursive;
     color: #ffffff;
-    font-style: italic;
-    letter-spacing: 2px;
+    font-weight: 400;
+    letter-spacing: 1px;
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85);
 }
 
