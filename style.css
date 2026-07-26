@@ -115,11 +115,10 @@ body {
     opacity: 1;
 }
 
-/* Photo එක මැදින් Ashen & Sanchala (Angle Cursive Font එකෙන්) */
-/* Photo එක මැදින් Ashen & Sanchala (තවත් උඩට ගෙන ඇත - top: 25%) */
+/* Photo එක මැදින් Ashen & Sanchala (තවත් උඩට ගෙන ඇත) */
 .monogram-container {
     position: absolute;
-    top: 25%; /* මීට පෙර 35% තිබූ එක 25% ට වෙනස් කර උඩට ගන්නා ලදී */
+    top: 22%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
@@ -133,10 +132,10 @@ body {
     color: #ffffff;
     font-style: italic;
     letter-spacing: 2px;
-    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85);
 }
 
-/* Photo Space */
+/* Photo Space Height */
 .photo-spacer {
     height: 60vh;
     width: 100%;
@@ -144,15 +143,15 @@ body {
     z-index: 2;
 }
 
-/* Photo එකෙන් පහළ Wording - Box එක ඉවත් කර ඇත */
+/* Photo එකෙන් පහළ Wording - Box සහ Border ඉවත් කර ඇත */
 .hero-content-below {
     position: relative;
     z-index: 5;
     width: 100%;
     max-width: 800px;
-    background: transparent; /* Box එකේ Background එක ඉවත් කළා */
-    border: none; /* Box එකේ Border එක ඉවත් කළා */
-    box-shadow: none; /* Box Shadow ඉවත් කළා */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
     padding: 20px 20px;
     display: flex;
     flex-direction: column;
@@ -161,19 +160,16 @@ body {
     gap: 10px;
 }
 
-/* "Dear Mr Jayarathne" Text Style (Box නොමැත) */
+/* "Dear Guest" Text Style */
 .guest-name-text {
     font-size: 22px;
     color: #b8860b;
     font-family: 'Cinzel', 'Playfair Display', serif;
     font-weight: 600;
-    background: none;
-    border: none;
-    padding: 0;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
-/* "DAUGHTER OF" & "SON OF" Titles */
+/* "DAUGHTER OF" & "SON OF" */
 .parents-title {
     font-size: 11px;
     letter-spacing: 3px;
@@ -183,7 +179,7 @@ body {
     margin-top: 5px;
 }
 
-/* දෙමාපියන්ගේ නම් (Classic Elegant Serif Font) */
+/* දෙමාපියන්ගේ නම් (Classic Elegant Font) */
 .parents-names {
     font-size: 20px;
     color: #2c2c2c;
@@ -192,10 +188,10 @@ body {
     line-height: 1.4;
 }
 
-/* මනාලිය සහ මනාලයාගේ නම් (Elegant Cursive / Script Font එකකින්) */
+/* මනාලිය සහ මනාලයාගේ නම් (Classic Script / Serif Font) */
 .couple-name {
     font-family: 'Great Vibes', 'Playfair Display', serif;
-    font-size: 38px; /* Classic Fancy Font Size */
+    font-size: 38px;
     color: #1a1a1a;
     font-weight: 500;
     margin: 2px 0;
@@ -224,7 +220,7 @@ body {
     font-family: 'Cinzel', serif;
 }
 
-/* Scroll Button Style */
+/* Scroll Button */
 .scroll-btn-container {
     margin-top: 15px;
 }
@@ -240,84 +236,6 @@ body {
     font-weight: 600;
     font-family: 'Cinzel', serif;
     box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
-}
-/* Photo එකෙන් පහළ Wording */
-.hero-content-below {
-    position: relative;
-    z-index: 5;
-    width: 100%;
-    max-width: 800px;
-    background: #faf8f5;
-    padding: 30px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
-}
-
-.guest-name-text {
-    font-size: 20px;
-    color: #d4af37;
-    font-family: 'Cinzel', serif;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.parents-title {
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: #777;
-    font-weight: 600;
-}
-
-.parents-names {
-    font-size: 22px;
-    color: #333;
-    font-weight: 600;
-    line-height: 1.4;
-}
-
-.couple-name {
-    font-family: 'Cinzel', serif;
-    font-size: 24px;
-    color: #111;
-    font-weight: 700;
-    margin: 4px 0;
-}
-
-.and {
-    font-size: 22px;
-    color: #d4af37;
-    font-weight: bold;
-}
-
-.heading-getting-married {
-    font-family: 'Cinzel', serif;
-    letter-spacing: 2px;
-    font-size: 19px;
-    color: #8b6b23;
-    margin-top: 10px;
-}
-
-.invitation-text {
-    color: #555;
-    font-size: 14px;
-}
-
-.scroll-btn-container {
-    margin-top: 15px;
-}
-
-.scroll-btn {
-    display: inline-block;
-    padding: 10px 25px;
-    background: #d4af37;
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: 600;
 }
 /* --- Hero Section - END --- */
 
