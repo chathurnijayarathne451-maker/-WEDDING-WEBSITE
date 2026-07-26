@@ -31,15 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (brideRsvp) brideRsvp.style.display = 'none';
     }
 
-    // 2. Preloader & Auto Play Music
+    // 2. Preloader Hide Logic
     const preloader = document.getElementById('preloader');
-    const bgMusic = document.getElementById('bgMusic');
-
     if (preloader) {
         setTimeout(() => {
-            preloader.style.opacity = '0';
-            setTimeout(() => preloader.style.display = 'none', 500);
-        }, 800);
+            preloader.classList.add('hide');
+        }, 1000); // තත්පර 1කින් Loading Screen එක Auto Hide වේ
     }
 
     // 3. Hero Background Image Auto Slider Logic
