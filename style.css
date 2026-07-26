@@ -81,24 +81,22 @@ body {
 /* --- Hero Section - START --- */
 .hero {
     position: relative;
-    min-height: 100vh;
+    width: 100%;
     display: flex;
-    flex-direction: column; /* 'A ❤️ S' එක උඩ තබා අනිත්වා පල්ලෙහාට ගැනීමට */
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* උඩ සිට පටන් ගැනීමට */
-    text-align: center;
-    padding: 20px; /* Monogram එකට ඉඩ තැබීමට */
-    overflow: hidden;
+    background: #faf8f5; /* Photo එකෙන් පහළ පසුබිම් පැහැය */
 }
 
-/* Background Photo Slider - Frame එකක් නැතිව මුළු පසුබිම පුරාම */
+/* Background Photo Slider (ඡායාරූපය උඩ කොටසට පමණක් සීමා වේ) */
 .hero-bg-slider {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    z-index: 1; /* පසුබිමට යැවීම */
+    height: 70vh; /* Photo Height එක */
+    z-index: 1;
+    overflow: hidden;
 }
 
 .hero-slide {
@@ -110,132 +108,119 @@ body {
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: opacity 1.5s ease-in-out; /* Smooth fade effect */
+    transition: opacity 1.5s ease-in-out;
 }
 
 .hero-slide.active {
     opacity: 1;
 }
 
-/* --- Monogram Section ('A ❤️ S') --- */
+/* Monogram 'A ❤️ S' (Photo එක උඩ තැබීමට) */
 .monogram-container {
     position: relative;
-    z-index: 10; /* උඩින්ම තැබීමට */
-    padding-top: 40px;
-    margin-bottom: 20px;
+    z-index: 10;
+    padding-top: 30px;
 }
 
 .monogram {
-    font-size: 45px;
+    font-size: 38px;
     font-family: 'Cinzel', serif;
-    color: #d4af37;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* පින්තූරය උඩ පෙනීමට */
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
 }
 
-/* --- Content Section (අනිත් සියලුම තොරතුරු) --- */
-.hero-content {
+/* Photo එකට යටින් Space එක සෑදීමට */
+.photo-spacer {
+    height: 60vh;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Photo එකෙන් පහළට සියලුම Wording */
+.hero-content-below {
     position: relative;
     z-index: 5;
-    background: transparent; /* Blur Box එකක් නැත */
-    color: white;
-    max-width: 800px;
     width: 100%;
+    max-width: 800px;
+    background: #faf8f5; /* Blur Box නැත - Clean Background */
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* තොරතුරු අතර පරතරය */
-    margin-top: auto; /* මල් (හෝ හිස් අවකාශය) මැද තබා තොරතුරු පල්ලෙහාට තල්ලු කිරීමට */
-    margin-bottom: 50px; /* 'View Invitation' බොත්තමට උඩින් ඉඩක් තැබීමට */
-    text-shadow: 0 1px 4px rgba(0,0,0,0.6); /* Text එක පැහැදිලිව පෙනීමට */
+    text-align: center;
+    gap: 12px;
 }
 
 /* "Dear Mr Jayarathne" */
 .guest-name-text {
     font-size: 20px;
-    color: #f1c40f;
+    color: #d4af37;
     font-family: 'Cinzel', serif;
-    margin-bottom: 10px;
+    font-weight: 600;
+    margin-bottom: 5px;
 }
 
 /* "DAUGHTER OF" & "SON OF" */
 .parents-title {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 2px;
-    color: #d4af37;
+    color: #777;
     font-weight: 600;
 }
 
-/* මව්පියන්ගේ නම් (කලින්ට වඩා විශාල කර ඇත) */
+/* මව්පියන්ගේ නම් (Font Size එක වැඩි කර ඇත) */
 .parents-names {
-    font-size: 16px; /* Font size increased */
-    color: #ddd;
-    font-weight: 500;
+    font-size: 22px; /* Increased font size */
+    color: #333;
+    font-weight: 600;
+    line-height: 1.4;
 }
 
-/* මනාලිය සහ මනාලයාගේ නම් (කලින්ට වඩා 2pxක් කුඩා කර ඇත) */
-.hero h1 {
+/* මනාලිය සහ මනාලයාගේ නම් (මව්පියන්ගේ නමට වඩා 2px ක් වැඩි කර 24px කර ඇත) */
+.couple-name {
     font-family: 'Cinzel', serif;
-    font-size: 28px; /* decreased from 30px to be parents-namest 2px smaller */
-    color: #fff;
+    font-size: 24px; /* Parents names වලට වඩා 2px ක් වෙනස් වේ */
+    color: #111;
     font-weight: 700;
+    margin: 4px 0;
 }
 
 /* '&' සලකුණ */
 .and {
-    display: block;
-    font-size: 24px;
+    font-size: 22px;
     color: #d4af37;
-    margin: 5px 0;
+    font-weight: bold;
 }
 
-/* "We Are Getting Married" & Invitation Text */
+/* "We Are Getting Married" */
 .heading-getting-married {
     font-family: 'Cinzel', serif;
     letter-spacing: 2px;
-    font-size: 18px;
-    color: #f0e6d2;
-    margin-top: 15px;
+    font-size: 19px;
+    color: #8b6b23;
+    margin-top: 10px;
 }
 
 .invitation-text {
-    color: #eee;
+    color: #555;
     font-size: 14px;
-    font-weight: 400;
 }
 
-/* --- 'View Invitation ↓' Button --- */
+/* Scroll Button */
 .scroll-btn-container {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 30px; /* Footer එකට උඩින් ඉඩක් තැබීමට */
+    margin-top: 15px;
 }
 
 .scroll-btn {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 10px 25px;
     background: #d4af37;
     color: white;
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 25px;
     font-size: 14px;
     font-weight: 600;
-    transition: background 0.3s ease;
-}
-
-/* Flowers Section - Blur box එක අයින් කර මල් විතරක් මැද තැබීමට */
-.flowers-frame {
-    position: relative; /* Hero container එකේ මැද රැඳීමට */
-    z-index: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 150px; /* මල් සඳහා ඉඩක් */
-    background: transparent;
-    border: none; /* Frame එක ain krnn */
-    box-shadow: none;
 }
 /* --- Hero Section - END --- */
 
