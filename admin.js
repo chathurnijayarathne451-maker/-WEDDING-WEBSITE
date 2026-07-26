@@ -11,7 +11,11 @@ document.getElementById("linkForm").addEventListener("submit", function(e) {
     guests.push({ id, name, type, event, side });
     localStorage.setItem("wedding_guests", JSON.stringify(guests));
 
-    const baseUrl = window.location.href.replace("admin.html", "index.html");
+    let baseUrl = window.location.href.replace("admin.html", "index.html");
+    if (!baseUrl.includes("index.html")) {
+        baseUrl = baseUrl.endsWith("/") ? baseUrl + "index.html" : baseUrl + "/index.html";
+    }
+
     const finalUrl = `${baseUrl}?id=${id}&guest=${encodeURIComponent(name)}&type=${type}&event=${event}&side=${side}`;
 
     document.getElementById("generatedLink").value = finalUrl;
@@ -24,7 +28,7 @@ document.getElementById("linkForm").addEventListener("submit", function(e) {
 document.getElementById("copyBtn").addEventListener("click", function() {
     const linkInput = document.getElementById("generatedLink");
     linkInput.select();
-    document.execCommand("copy");
+    navigator.clipboard.writeText(linkInput.value);
     alert("Invitation Link Copied Successfully!");
 });
 
@@ -46,6 +50,10 @@ function renderDashboard() {
         if (isOpened === "Opened") openedCount++;
         if (rsvpStatus === "Attending") attendingCount++;
 
+        let badgeClass = 'pending';
+        if (rsvpStatus === 'Attending') badgeClass = 'attending';
+        if (rsvpStatus === 'Declined') badgeClass = 'declined';
+
         const row = `<tr>
             <td>${g.id}</td>
             <td>${g.name}</td>
@@ -53,7 +61,7 @@ function renderDashboard() {
             <td>${g.event}</td>
             <td>${g.side}</td>
             <td><span class="badge ${isOpened === 'Opened' ? 'opened' : 'pending'}">${isOpened}</span></td>
-            <td><span class="badge ${rsvpStatus === 'Attending' ? 'attending' : 'pending'}">${rsvpStatus}</span></td>
+            <td><span class="badge ${badgeClass}">${rsvpStatus}</span></td>
         </tr>`;
         tbody.innerHTML += row;
     });
