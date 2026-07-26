@@ -85,16 +85,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #faf8f5; /* Photo එකෙන් පහළ පසුබිම් පැහැය */
+    background: #faf8f5;
 }
 
-/* Background Photo Slider (ඡායාරූපය උඩ කොටසට පමණක් සීමා වේ) */
+/* Background Photo Slider */
 .hero-bg-slider {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 70vh; /* Photo Height එක */
+    height: 70vh;
     z-index: 1;
     overflow: hidden;
 }
@@ -115,21 +115,28 @@ body {
     opacity: 1;
 }
 
-/* Monogram 'A ❤️ S' (Photo එක උඩ තැබීමට) */
+/* Photo එක මැදින් Ashen & Sanchala (Angle Cursive Font එකෙන්) */
 .monogram-container {
-    position: relative;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 10;
-    padding-top: 30px;
+    width: 100%;
+    text-align: center;
 }
 
 .monogram {
-    font-size: 38px;
-    font-family: 'Cinzel', serif;
+    font-size: 52px;
+    font-family: 'Great Vibes', 'Playfair Display', 'Cinzel', cursive, serif;
     color: #ffffff;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 
-/* Photo එකට යටින් Space එක සෑදීමට */
+/* Photo Space Height */
 .photo-spacer {
     height: 60vh;
     width: 100%;
@@ -137,13 +144,13 @@ body {
     z-index: 2;
 }
 
-/* Photo එකෙන් පහළට සියලුම Wording */
+/* Photo එකෙන් පහළ Wording */
 .hero-content-below {
     position: relative;
     z-index: 5;
     width: 100%;
     max-width: 800px;
-    background: #faf8f5; /* Blur Box නැත - Clean Background */
+    background: #faf8f5;
     padding: 30px 20px;
     display: flex;
     flex-direction: column;
@@ -152,7 +159,6 @@ body {
     gap: 12px;
 }
 
-/* "Dear Mr Jayarathne" */
 .guest-name-text {
     font-size: 20px;
     color: #d4af37;
@@ -161,7 +167,6 @@ body {
     margin-bottom: 5px;
 }
 
-/* "DAUGHTER OF" & "SON OF" */
 .parents-title {
     font-size: 12px;
     letter-spacing: 2px;
@@ -169,31 +174,27 @@ body {
     font-weight: 600;
 }
 
-/* මව්පියන්ගේ නම් (Font Size එක වැඩි කර ඇත) */
 .parents-names {
-    font-size: 22px; /* Increased font size */
+    font-size: 22px;
     color: #333;
     font-weight: 600;
     line-height: 1.4;
 }
 
-/* මනාලිය සහ මනාලයාගේ නම් (මව්පියන්ගේ නමට වඩා 2px ක් වැඩි කර 24px කර ඇත) */
 .couple-name {
     font-family: 'Cinzel', serif;
-    font-size: 24px; /* Parents names වලට වඩා 2px ක් වෙනස් වේ */
+    font-size: 24px;
     color: #111;
     font-weight: 700;
     margin: 4px 0;
 }
 
-/* '&' සලකුණ */
 .and {
     font-size: 22px;
     color: #d4af37;
     font-weight: bold;
 }
 
-/* "We Are Getting Married" */
 .heading-getting-married {
     font-family: 'Cinzel', serif;
     letter-spacing: 2px;
@@ -207,7 +208,6 @@ body {
     font-size: 14px;
 }
 
-/* Scroll Button */
 .scroll-btn-container {
     margin-top: 15px;
 }
@@ -248,6 +248,7 @@ body {
 .time-box small { font-size: 10px; text-transform: uppercase; color: #666; }
 
 /* Cards & Sections */
+
 .event-card, .venue-card, .rsvp-card {
     max-width: 600px;
     margin: 0 auto 20px auto;
@@ -261,7 +262,9 @@ body {
 .event-date { font-size: 18px; color: #d4af37; font-weight: 600; margin-bottom: 10px; }
 
 /* Calendar */
+
 .calendar-header, .calendar-grid {
+    
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     max-width: 400px;
@@ -288,6 +291,7 @@ body {
 .calendar-grid .homecoming { background: #0b2c6b; color: white; border: none; }
 
 /* Buttons & Map */
+
 .btn {
     display: inline-block;
     padding: 10px 20px;
