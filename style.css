@@ -1,18 +1,18 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:#fbf9f4; /* Luxury Light Ivory Background */
-    color:#333;
-    overflow-x:hidden;
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fbf9f4; /* Luxury Light Ivory Background */
+    color: #333;
+    overflow-x: hidden;
 }
 
 /* Luxury Preloader Styles */
@@ -27,7 +27,7 @@ body{
     justify-content: center;
     align-items: center;
     z-index: 99999;
-    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: opacity 0.5s ease;
 }
 
 .loader-content {
@@ -81,65 +81,56 @@ body{
     100% { left: 150px; }
 }
 
-#preloader.hide-preloader {
-    transform: translateY(-100vh);
-}
-
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('hero-bg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/hero-bg.jpg'), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1800');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-}
-}
-    ),
-    url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1800");
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position: relative; /* Wave Shape එක නිවැරදිව පිහිටන්න මේක අනිවාර්යයි */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
 }
 
-.hero-overlay{
-    color:white;
-    padding:20px;
+.hero-overlay {
+    color: white;
+    padding: 20px;
     z-index: 2;
 }
 
-.monogram{
-    font-size:50px;
-    margin-bottom:20px;
+.monogram {
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-family: 'Cinzel', serif;
 }
 
-.heading{
-    font-family:'Cinzel',serif;
-    letter-spacing:3px;
-    margin-bottom:20px;
+.heading {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
 }
 
-.hero h1{
-    font-family:'Cinzel',serif;
-    font-size:48px;
+.hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
 }
 
-.and{
-    display:block;
-    font-size:32px;
-    margin:10px 0;
+.and {
+    display: block;
+    font-size: 32px;
+    margin: 10px 0;
 }
 
 /* Clear Gold & White Fixed Guest Box */
-.guest-box{
-    margin-top:30px;
-    background:rgba(255,255,255,0.15);
-    padding:20px;
-    border-radius:15px;
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
+.guest-box {
+    margin-top: 30px;
+    background: rgba(255,255,255,0.15);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
@@ -158,71 +149,71 @@ body{
     text-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
-.scroll-btn{
-    display:inline-block;
-    margin-top:30px;
-    padding:12px 25px;
-    background:#d4af37;
-    color:white;
-    text-decoration:none;
-    border-radius:50px;
+.scroll-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 25px;
+    background: #d4af37;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
     font-weight: 500;
 }
 
 /* Music Button */
-.music-btn{
-    position:fixed;
-    top:20px;
-    right:20px;
-    z-index:1000;
-    border:none;
-    padding:12px 20px;
-    background:#d4af37;
-    color:white;
-    border-radius:50px;
-    cursor:pointer;
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    border: none;
+    padding: 12px 20px;
+    background: #d4af37;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     font-weight: 500;
 }
 
 /* Sections & Cards */
-section{
-    padding:80px 20px;
+section {
+    padding: 80px 20px;
     text-align: center;
 }
 
-section h2{
-    text-align:center;
-    margin-bottom:30px;
-    font-family:'Cinzel',serif;
+section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Cinzel', serif;
     color: #4a4a4a;
 }
 
-.countdown{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:20px;
+.countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.time-box{
-    width:120px;
-    background:white;
-    border:2px solid #d4af37;
-    border-radius:15px;
-    padding:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+.time-box {
+    width: 120px;
+    background: white;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.time-box span{
-    font-size:35px;
-    font-weight:bold;
-    display:block;
+.time-box span {
+    font-size: 35px;
+    font-weight: bold;
+    display: block;
     color: #d4af37;
 }
 
-.time-box small{
-    color:#666;
+.time-box small {
+    color: #666;
     text-transform: uppercase;
     font-size: 11px;
     letter-spacing: 1px;
@@ -232,84 +223,47 @@ section h2{
 .calendar-section,
 .venue-card,
 .rsvp-card,
-.share-section{
-    max-width:700px;
-    margin:0 auto 30px auto;
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 10px 40px rgba(0,0,0,0.06);
-    border:1px solid #f0d98a;
-}
-
-/* Calendar */
-.calendar{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-top: 20px;
-}
-
-.day{
-    width:80px;
-    height:80px;
-    border-radius:15px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:white;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-    font-weight:bold;
-    font-size: 16px;
-    border: 1px solid #eee;
-    color: #333;
-}
-
-.wedding{
-    background:#d4af37;
-    color:white;
-    border: none;
-}
-
-.homecoming{
-    background:#0b2c6b;
-    color:white;
-    border: none;
+.share-section {
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    border: 1px solid #f0d98a;
 }
 
 /* Gallery */
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    max-width:1000px;
-    margin:auto;
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
 }
 
-.photo-box{
-    height:250px;
-    border:2px dashed #d4af37;
-    border-radius:15px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#fafafa;
+.photo-box {
+    height: 250px;
+    border: 2px dashed #d4af37;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fafafa;
     color: #888;
 }
 
 /* Buttons */
-.btn{
-    display:inline-block;
-    padding:12px 25px;
-    background:#d4af37;
-    color:white;
-    text-decoration:none;
-    border:none;
-    border-radius:50px;
-    cursor:pointer;
-    margin:10px;
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #d4af37;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 10px;
     font-weight: 500;
     transition: transform 0.2s;
 }
@@ -318,20 +272,20 @@ section h2{
     transform: scale(0.98);
 }
 
-.secondary{
-    background:#888;
+.secondary {
+    background: #888;
 }
 
 /* Footer */
-footer{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:40px 20px;
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
 }
 
-footer h2{
-    color:#d4af37;
+footer h2 {
+    color: #d4af37;
     font-family: 'Cinzel', serif;
     margin-bottom: 10px;
 }
@@ -342,36 +296,18 @@ footer p {
     font-size: 14px;
 }
 
-/* Floating Petals */
-.petals-container{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    pointer-events:none;
-    z-index:999;
+/* Floating Petals Container */
+.petals-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999;
 }
 
-.petal{
-    position:absolute;
-    top:-50px;
-    font-size:20px;
-    animation:fall linear infinite;
-    user-select: none;
-}
-
-@keyframes fall{
-    0%{ transform:translateY(0) rotate(0deg); opacity: 1; }
-    90%{ opacity: 1; }
-    100%{ transform:translateY(105vh) rotate(360deg); opacity: 0; }
-}
-
-/* ===================================================
-   NEW ADDITIONS (Custom Shapes & Minimalist Date)
-   =================================================== */
-
-/* Custom Organic Wave Divider */
+/* Custom Wave Divider */
 .custom-shape-divider-bottom {
     position: absolute;
     bottom: 0;
@@ -393,7 +329,7 @@ footer p {
 /* Luxury Wedding Date Badge Style */
 .wedding-date-badge-section {
     padding: 60px 20px 20px 20px;
-    background-color: #fbf9f4; /* මුල් පිටුවේ Light Ivory පසුබිමමයි */
+    background-color: #fbf9f4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -438,29 +374,6 @@ footer p {
     margin: 0 5px;
 }
 
-/* Mobile responsive fixes */
-@media(max-width:768px){
-    section { padding: 50px 15px; }
-    .hero h1{ font-size:34px; }
-    .monogram{ font-size:38px; }
-    .time-box{ width:90px; padding: 15px 10px; }
-    .time-box span{ font-size:25px; }
-    .day { width: 70px; height: 70px; font-size: 14px; }
-    
-    /* New Responsive Tweaks */
-    .custom-shape-divider-bottom svg {
-        width: calc(200% + 1.3px);
-        height: 50px;
-    }
-    .date-line-text {
-        font-size: 16px;
-        letter-spacing: 2px;
-    }
-    .date-number-highlight {
-        font-size: 42px;
-    }
-}
-
 /* Full Calendar Grid Styles */
 .calendar-header {
     display: grid;
@@ -487,16 +400,34 @@ footer p {
 
 .calendar-grid .day {
     width: 100%;
-    height: 55px; /* Grid එකක් නිසා උස පොඩ්ඩක් අඩු කළා ලස්සන වෙන්න */
+    height: 55px;
     font-size: 14px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border: 1px solid #eee;
 }
 
 .calendar-grid .empty {
     background: transparent;
     border: none;
     box-shadow: none;
+}
+
+.calendar-grid .day.wedding {
+    background: #d4af37;
+    color: white;
+    border: none;
+}
+
+.calendar-grid .day.homecoming {
+    background: #0b2c6b;
+    color: white;
+    border: none;
 }
 
 .calendar-grid .day.wedding,
@@ -510,8 +441,24 @@ footer p {
     margin-top: 2px;
 }
 
-/* Mobile responsive fixes for full calendar */
+/* Mobile responsive fixes */
 @media(max-width:768px){
+    section { padding: 50px 15px; }
+    .hero h1 { font-size: 34px; }
+    .monogram { font-size: 38px; }
+    .time-box { width: 90px; padding: 15px 10px; }
+    .time-box span { font-size: 25px; }
+    .custom-shape-divider-bottom svg {
+        width: calc(200% + 1.3px);
+        height: 50px;
+    }
+    .date-line-text {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+    .date-number-highlight {
+        font-size: 42px;
+    }
     .calendar-header, .calendar-grid {
         max-width: 100%;
         gap: 6px;
