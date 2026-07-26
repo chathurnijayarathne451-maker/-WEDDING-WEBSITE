@@ -1,101 +1,49 @@
-document.getElementById("linkForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
 
-    const name = document.getElementById("gName").value;
-    const type = document.getElementById("gType").value;
-    const event = document.getElementById("gEvent").value;
-    const side = document.getElementById("gSide").value;
-    const id = "G" + Date.now().toString().slice(-6); 
+    const baseUrl = "https://chathurnijayarathne451-maker.github.io/-WEDDING-WEBSITE/";
 
-    let guests = JSON.parse(localStorage.getItem("wedding_guests")) || [];
-    guests.push({ id, name, type, event, side });
-    localStorage.setItem("wedding_guests", JSON.stringify(guests));
+    const senderType = document.getElementById('senderType');
+    const guestInput = document.getElementById('guestInput');
+    const generateBtn = document.getElementById('generateBtn');
+    const outputSection = document.getElementById('outputSection');
+    const messageOutput = document.getElementById('messageOutput');
+    const copyBtn = document.getElementById('copyBtn');
+    const waSendBtn = document.getElementById('waSendBtn');
 
-    let baseUrl = window.location.href.replace("admin.html", "index.html");
-    if (!baseUrl.includes("index.html")) {
-        baseUrl = baseUrl.endsWith("/") ? baseUrl + "index.html" : baseUrl + "/index.html";
-    }
+    generateBtn.addEventListener('click', () => {
+        const guestName = guestInput.value.trim();
+        const sender = senderType.value;
 
-    const finalUrl = `${baseUrl}?id=${id}&guest=${encodeURIComponent(name)}&type=${type}&event=${event}&side=${side}`;
+        if (!guestName) {
+            alert("කරුණාකර Guest Name එක ඇතුළත් කරන්න.");
+            return;
+        }
 
-    document.getElementById("generatedLink").value = finalUrl;
-    document.getElementById("resultBox").style.display = "block";
+        // Generate Custom URL
+        const eventType = sender === 'bride' ? 'wedding' : 'homecoming';
+        const customUrl = `${baseUrl}?guest=${encodeURIComponent(guestName)}&event=${eventType}`;
 
-    document.getElementById("gName").value = ""; 
-    renderDashboard();
-});
+        // Sender Name
+        const senderName = sender === 'bride' ? 'Chathurni Sanchala' : 'Ashen Anuradha';
 
-document.getElementById("copyBtn").addEventListener("click", function() {
-    const linkInput = document.getElementById("generatedLink");
-    linkInput.select();
-    navigator.clipboard.writeText(linkInput.value);
-    alert("Invitation Link Copied Successfully!");
-});
+        // Draft Message Layout
+        const fullMessage = `Dear ${guestName} ✨💌\n\nWith hearts overflowing with love and gratitude,\n\nwe are delighted to invite you to witness the beginning of our forever 💍❤️\n\nPlease open our wedding invitation below 👇\n\n${customUrl}\n\nYour presence and blessings mean the world to us 🌹\n\nCome celebrate love, laughter, and a lifetime of happiness with us 🥂✨\n\nCan’t wait to see you there,\n\nWith all our love,\n\n${senderName}`;
 
-function renderDashboard() {
-    const guests = JSON.parse(localStorage.getItem("wedding_guests")) || [];
-    const tracking = JSON.parse(localStorage.getItem("invitation_tracking")) || {};
-    const rsvp = JSON.parse(localStorage.getItem("invitation_rsvp")) || {};
-
-    const tbody = document.getElementById("guestTableBody");
-    tbody.innerHTML = "";
-
-    let openedCount = 0;
-    let attendingCount = 0;
-
-    guests.forEach(g => {
-        const isOpened = tracking[g.id] ? "Opened" : "Pending";
-        const rsvpStatus = rsvp[g.id] || "No Response";
-
-        if (isOpened === "Opened") openedCount++;
-        if (rsvpStatus === "Attending") attendingCount++;
-
-        let badgeClass = 'pending';
-        if (rsvpStatus === 'Attending') badgeClass = 'attending';
-        if (rsvpStatus === 'Declined') badgeClass = 'declined';
-
-        const row = `<tr>
-            <td>${g.id}</td>
-            <td>${g.name}</td>
-            <td>${g.type}</td>
-            <td>${g.event}</td>
-            <td>${g.side}</td>
-            <td><span class="badge ${isOpened === 'Opened' ? 'opened' : 'pending'}">${isOpened}</span></td>
-            <td><span class="badge ${badgeClass}">${rsvpStatus}</span></td>
-        </tr>`;
-        tbody.innerHTML += row;
+        messageOutput.value = fullMessage;
+        outputSection.style.display = 'block';
     });
 
-    document.getElementById("statTotal").innerText = guests.length;
-    document.getElementById("statOpened").innerText = openedCount;
-    document.getElementById("statAttending").innerText = attendingCount;
-}
-
-document.getElementById("exportBtn").addEventListener("click", function() {
-    const guests = JSON.parse(localStorage.getItem("wedding_guests")) || [];
-    const tracking = JSON.parse(localStorage.getItem("invitation_tracking")) || {};
-    const rsvp = JSON.parse(localStorage.getItem("invitation_rsvp")) || {};
-
-    if (guests.length === 0) {
-        alert("No guest records found to export.");
-        return;
-    }
-
-    let csvContent = "data:text/csv;charset=utf-8,ID,Name,Type,Event,Side,Tracking,RSVP Status\n";
-
-    guests.forEach(g => {
-        const isOpened = tracking[g.id] ? "Opened" : "Pending";
-        const rsvpStatus = rsvp[g.id] || "No Response";
-        csvContent += `${g.id},"${g.name}",${g.type},${g.event},${g.side},${isOpened},${rsvpStatus}\n`;
+    // Copy to Clipboard
+    copyBtn.addEventListener('click', () => {
+        messageOutput.select();
+        document.execCommand('copy');
+        alert("Message copied to clipboard!");
     });
 
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "Wedding_Guest_List_Report.csv");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-});
+    // Direct WhatsApp Share
+    waSendBtn.addEventListener('click', () => {
+        const encodedMsg = encodeURIComponent(messageOutput.value);
+        window.open(`https://api.whatsapp.com/send?text=${encodedMsg}`, '_blank');
+    });
 
-window.onload = renderDashboard;
+});
