@@ -1,16 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     // 1. URL Query Parameters Reading Logic
     const urlParams = new URLSearchParams(window.location.search);
     const guestParam = urlParams.get('guest');
     const eventType = urlParams.get('event'); // 'wedding' or 'homecoming'
 
     // Guest Name Logic
-    const guestNameElement = document.getElementById('guestName');
-    if (guestParam) {
-        guestNameElement.innerText = "Dear " + decodeURIComponent(guestParam);
-    } else {
-        guestNameElement.innerText = "Dear Guest";
+    const guestGreetingElement = document.getElementById('guestGreeting');
+    if (guestGreetingElement) {
+        if (guestParam) {
+            guestGreetingElement.innerText = "Dear " + decodeURIComponent(guestParam);
+        } else {
+            guestGreetingElement.innerText = "Dear Guest";
+        }
     }
 
     // Event Type Display Logic
@@ -36,22 +37,21 @@ document.addEventListener("DOMContentLoaded", () => {
     if (preloader) {
         setTimeout(() => {
             preloader.classList.add('hide');
-        }, 1000); // තත්පර 1කින් Loading Screen එක Auto Hide වේ
+        }, 800);
     }
 
     // 3. Hero Background Image Auto Slider Logic
     const heroSlides = document.querySelectorAll('.hero-slide');
     let currentHeroSlide = 0;
-
     if (heroSlides.length > 0) {
         setInterval(() => {
             heroSlides[currentHeroSlide].classList.remove('active');
             currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
             heroSlides[currentHeroSlide].classList.add('active');
-        }, 3500); // තත්පර 3.5න් පසු ඊළඟ Background Photo එකට Change වේ
+        }, 3500);
     }
 
-    // 4. Countdown Timer
+    // 4. Countdown Timer Logic
     const targetDate = new Date('August 26, 2026 10:13:00').getTime();
 
     function updateCountdown() {
@@ -71,12 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (daysEl) daysEl.innerText = days < 10 ? '0' + days : days;
             if (hoursEl) hoursEl.innerText = hours < 10 ? '0' + hours : hours;
-            if (minutesEl) minutesEl.innerText = minutes < 10 ? '0 me' + minutes : minutes;
+            if (minutesEl) minutesEl.innerText = minutes < 10 ? '0' + minutes : minutes;
             if (secondsEl) secondsEl.innerText = seconds < 10 ? '0' + seconds : seconds;
         }
     }
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
-
 });
