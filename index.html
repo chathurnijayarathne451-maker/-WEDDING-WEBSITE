@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation</title>
-    <!-- Corrected CSS Link -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -29,8 +28,8 @@
 
 <div id="invitationContent">
 
-    <!-- Hero Section with Background Image & Dark Overlay for Text Visibility -->
-    <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('assets/hero-bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="hero-overlay">
             <div class="monogram" id="mainMonogram">A ❤️ S</div>
             <h3 class="heading">We Are Getting Married</h3>
@@ -41,7 +40,7 @@
 
             <div class="guest-box">
                 <h2 id="guestName">Dear Guest</h2>
-                <p>We warmly invite you to celebrate our special day.</p>
+                <p id="invitationMessage">We warmly invite you to celebrate our special day.</p>
             </div>
 
             <a href="#eventSection" class="scroll-btn">View Invitation ↓</a>
@@ -147,7 +146,7 @@
     </section>
 
     <section class="venue-section">
-        <h2>Venue</h2>
+        <h2>Venue Location</h2>
         
         <div id="weddingVenueCard" class="venue-card" style="margin-bottom: 30px;">
             <h3 style="font-family:'Cinzel',serif; color:#d4af37; margin-bottom:10px;">Wedding Venue</h3>
@@ -160,11 +159,11 @@
 
         <div id="homecomingVenueCard" class="venue-card">
             <h3 style="font-family:'Cinzel',serif; color:#0b2c6b; margin-bottom:10px;">Homecoming Venue</h3>
-            <p style="margin-bottom: 15px;">Homecoming Venue Location</p>
+            <p style="margin-bottom: 15px;">Samara Banquet Hall</p>
             <div class="map-container" style="border-radius: 15px; overflow: hidden;">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15837.226308753625!2d80.00926364702428!3d7.0904163480910825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fc128d237b73%3A0x712fefd2e7559fef!2sSamara%20Banquet%20Hall!5e0!3m2!1sen!2slk!4v1780498221789!5m2!1sen!2slk" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15837.226308753625!2d80.00926364702428!3d7.0904163480910825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fc128d237b73%3A0x712fefd2e7559fef!2sSamara%20Banquet%20Hall!5e0!3m2!1sen!2slk!4v1780498221789!5m2!1sen!2slk" target="_blank" class="btn" style="background: #0b2c6b;">Open Homecoming Map</a>
+            <a href="https://maps.app.goo.gl/cSh3kg7k4joREvfmM" target="_blank" class="btn" style="background: #0b2c6b;">Open Homecoming Map</a>
         </div>
     </section>
 
@@ -182,6 +181,7 @@
                 <button class="btn" id="attendBtn">We Will Attend</button>
                 <button class="btn secondary" id="rejectBtn">Cannot Attend</button>
             </div>
+            <p id="rsvpStatusMsg" style="margin-top: 15px; font-weight: 500; color: #27ae60;"></p>
         </div>
     </section>
 
