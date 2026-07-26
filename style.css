@@ -68,6 +68,7 @@ body {
 }
 
 /* Hero Section */
+/* Hero Section - Start */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -105,7 +106,7 @@ body {
     opacity: 1;
 }
 
-/* Text පැහැදිලිව පෙනීමට Dark Overlay එක */
+/* Hero Content Box & Details */
 .hero-overlay {
     position: relative;
     z-index: 2;
@@ -118,15 +119,76 @@ body {
     color: white;
 }
 
-/* Countdown */
-section { padding: 60px 20px; text-align: center; }
-
-section h2 {
+.monogram {
+    font-size: 40px;
     font-family: 'Cinzel', serif;
-    color: #4a4a4a;
-    margin-bottom: 25px;
+    color: #d4af37;
+    margin-bottom: 15px;
 }
 
+.guest-box {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    margin-bottom: 20px;
+}
+
+.guest-box h2 {
+    color: #f1c40f;
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+}
+
+.heading {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: #f0e6d2;
+}
+
+.couple-details {
+    margin: 10px 0;
+}
+
+.parents-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #d4af37;
+    font-weight: 600;
+}
+
+.parents-names {
+    font-size: 12px;
+    color: #ddd;
+    margin-bottom: 5px;
+}
+
+.hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    color: #fff;
+}
+
+.and {
+    display: block;
+    font-size: 22px;
+    color: #d4af37;
+    margin: 8px 0;
+}
+
+.scroll-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: #d4af37;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 14px;
+}
+/* Hero Section - End */
 .countdown {
     display: flex;
     justify-content: center;
