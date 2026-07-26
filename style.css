@@ -127,14 +127,13 @@ body {
 }
 
 .monogram {
-    font-size: 58px;
-    font-family: 'Best Light', 'Great Vibes', 'MonteCarlo', cursive;
+    font-size: 62px;
+    font-family: 'Alex Brush', 'Parisienne', cursive;
     color: #ffffff;
     font-weight: 400;
     letter-spacing: 1px;
     text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85);
 }
-
 /* Photo Space Height */
 .photo-spacer {
     height: 60vh;
