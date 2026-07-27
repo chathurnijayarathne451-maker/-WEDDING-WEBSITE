@@ -562,28 +562,28 @@ footer p {
 }
 
 /* ==========================================
-   FINAL COUNTDOWN FIX (GAP & FONT)
+   FINAL COUNTDOWN FIX (SLIGHTLY LARGER BOXES)
    ========================================== */
 
-/* Countdown Container Gap Fix */
+/* Countdown Container Gap */
 .countdown-section .countdown,
 .countdown {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 6px !important; /* Box අතර දුර එකිනෙකට ලං කර ඇත */
+    gap: 10px !important; /* Box අතර පරතරය ලස්සනට තබා ඇත */
     margin: 15px auto !important;
     padding: 0 !important;
 }
 
-/* Individual Time Box Fix */
+/* Time Box Design & Size */
 .countdown .time-box {
     background: #ffffff !important;
     border: 1px solid #d4af37 !important;
     border-radius: 12px !important;
-    padding: 8px 2px !important;
-    width: 62px !important; /* Box එක කුඩා කර ඇත */
-    min-width: 62px !important;
+    padding: 10px 6px !important; /* Height/Padding ටිකක් වැඩි කර ඇත */
+    width: 72px !important;       /* Width එක 62px සිට 72px දක්වා ලොකු කර ඇත */
+    min-width: 72px !important;
     box-shadow: 0 4px 10px rgba(212, 175, 55, 0.15) !important;
     text-align: center !important;
     margin: 0 !important;
@@ -592,7 +592,7 @@ footer p {
 /* Numbers (29, 11, etc.) Font Style */
 .countdown .time-box span {
     font-family: 'Cinzel', serif !important;
-    font-size: 22px !important;
+    font-size: 25px !important;   /* අංකවල Size එකත් ටිකක් ලොකු කර ඇත */
     font-weight: 700 !important;
     color: #8b6b23 !important;
     line-height: 1.1 !important;
@@ -602,10 +602,10 @@ footer p {
 /* Labels (DAYS, HOURS, etc.) Font Style */
 .countdown .time-box small {
     font-family: 'Poppins', sans-serif !important;
-    font-size: 9px !important;
+    font-size: 10px !important;
     letter-spacing: 0.5px !important;
     text-transform: uppercase !important;
     color: #777777 !important;
-    margin-top: 3px !important;
+    margin-top: 4px !important;
     display: block !important;
 }
