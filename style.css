@@ -502,16 +502,38 @@ h2::after {
     color: #8b6b47;
 }
 
-/* Footer Section */
+/* Footer Center Alignment & Elegant Typography */
 footer {
+    text-align: center !important;
     background: #111111;
     color: #e5e5e5;
     padding: 40px 20px;
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-footer h3 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 36px;
-    color: #d4af37;
+footer h2 {
+    font-family: 'Parisienne', 'Alex Brush', cursive !important;
+    font-size: 38px !important;
+    color: #d4af37 !important;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+footer p {
+    font-family: 'Cinzel', 'Playfair Display', serif;
+    font-size: 15px;
+    color: #cccccc;
+    margin: 6px 0;
+    text-align: center !important;
+}
+
+.developer-credit {
+    font-size: 13px;
+    color: #888888;
+    margin-top: 15px;
+    text-align: center !important;
 }
