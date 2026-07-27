@@ -703,3 +703,50 @@ h2::after,
     letter-spacing: 1px !important;
     text-align: center !important;
 }
+/* ==========================================
+   BERKSHIRE SWASH ELEGANT FONT INTEGRATION
+   ========================================== */
+
+/* Google Fonts Import - Berkshire Swash */
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+
+/* Apply Berkshire Swash to Main Headings (Countdown, Wedding Ceremony, Homecoming, Venue, RSVP, Contact) */
+h2, 
+.section-title, 
+#countdown-title {
+    font-family: 'Berkshire Swash', cursive !important;
+    font-size: 28px !important;
+    font-weight: 400 !important;
+    color: #8b6b23 !important;
+    letter-spacing: 1px !important;
+    text-transform: none !important; /* Berkshire Swash font එක කැපී පෙනීමට Normal Case/Title Case තබා ඇත */
+    text-align: center !important;
+    margin-top: 35px !important;
+    margin-bottom: 20px !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Gold Underline Divider for Headings */
+h2::after, 
+.section-title::after {
+    content: '' !important;
+    display: block !important;
+    width: 65px !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent) !important;
+    margin: 8px auto 0 auto !important;
+    border-radius: 2px !important;
+}
+
+/* Sub-titles & Card Headings (Wedding Venue, Contact Person Names) */
+.venue-card h3, 
+.event-card h3, 
+.rsvp-card h3,
+.contact-section h3 {
+    font-family: 'Berkshire Swash', cursive !important;
+    font-size: 22px !important;
+    font-weight: 400 !important;
+    color: #4a3b32 !important;
+    letter-spacing: 0.5px !important;
+    text-align: center !important;
+}
