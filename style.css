@@ -368,3 +368,150 @@ footer h2 { color: #d4af37; font-family: 'Cinzel', serif; }
     text-align: center;
 }
 
+/* ==========================================
+   ELEGANT SECTION STYLING (BOTTOM SECTION)
+   ========================================== */
+
+/* Clean Section Headings */
+h2 {
+    font-family: 'Cinzel', 'Playfair Display', serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: #4a3b32;
+    text-transform: uppercase;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 8px auto 0 auto;
+}
+
+/* Elegant Cards / Container Styling */
+.countdown-container, 
+.event-card, 
+.calendar-card, 
+.venue-card, 
+.rsvp-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle Gold Border */
+    border-radius: 16px;
+    padding: 25px 20px;
+    margin: 20px auto;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover, .venue-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+}
+
+/* Countdown Timer Grid */
+.countdown-grid {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.countdown-box {
+    background: #faf7f2;
+    border: 1px solid #e8e0d5;
+    padding: 12px 15px;
+    border-radius: 12px;
+    min-width: 70px;
+}
+
+.countdown-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #8b6b47;
+    font-family: 'Cinzel', serif;
+}
+
+.countdown-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #777;
+    margin-top: 4px;
+}
+
+/* Calendar Table Polish */
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.calendar-table th, .calendar-table td {
+    padding: 10px 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.calendar-table td.highlight {
+    background: #d4af37;
+    color: #ffffff;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* Elegant Buttons (Maps, RSVP, PDF) */
+.btn-elegant, .rsvp-btn, .pdf-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #aa820a 100%);
+    color: #ffffff !important;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 14px;
+    display: inline-block;
+    border: none;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-elegant:hover, .rsvp-btn:hover, .pdf-btn:hover {
+    background: linear-gradient(135deg, #aa820a 0%, #8b6b47 100%);
+    box-shadow: 0 8px 20px rgba(170, 130, 10, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Contact Numbers Styling */
+.contact-item {
+    font-size: 15px;
+    color: #4a3b32;
+    margin: 8px 0;
+}
+
+.contact-item strong {
+    color: #8b6b47;
+}
+
+/* Footer Section */
+footer {
+    background: #111111;
+    color: #e5e5e5;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+footer h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    color: #d4af37;
+}
