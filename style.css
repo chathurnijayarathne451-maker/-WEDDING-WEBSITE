@@ -562,57 +562,48 @@ footer p {
 }
 
 /* ==========================================
-   COUNTDOWN TIMER CUSTOMIZATION (UPDATED)
+   FINAL COUNTDOWN FIX (GAP & FONT)
    ========================================== */
 
-/* Heading Font Change */
-.countdown-section h2, 
-#countdown-title {
-    font-family: 'Cinzel', 'Playfair Display', serif !important;
-    letter-spacing: 2px !important;
-}
-
-/* Container & Gap Fix */
-.countdown-container,
-.countdown-grid, 
+/* Countdown Container Gap Fix */
+.countdown-section .countdown,
 .countdown {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 6px !important; /* Box අතර දුර ගොඩක් ලං කර ඇත */
-    margin-top: 15px !important;
+    gap: 6px !important; /* Box අතර දුර එකිනෙකට ලං කර ඇත */
+    margin: 15px auto !important;
+    padding: 0 !important;
 }
 
-/* Time Box Design & Size Fix */
-.countdown-box, 
-.time-box {
+/* Individual Time Box Fix */
+.countdown .time-box {
     background: #ffffff !important;
     border: 1px solid #d4af37 !important;
     border-radius: 12px !important;
-    padding: 8px 4px !important;
-    min-width: 58px !important; /* Box එක තවත් සංකීර්ණ ලෙස ලං වේ */
-    width: 60px !important;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15) !important;
+    padding: 8px 2px !important;
+    width: 62px !important; /* Box එක කුඩා කර ඇත */
+    min-width: 62px !important;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.15) !important;
     text-align: center !important;
+    margin: 0 !important;
 }
 
-/* Number Font Styling */
-.countdown-value, 
-.time-box span {
-    font-family: 'Cinzel', serif !important; /* Numbers සඳහා Elegant Serif Font */
-    font-size: 24px !important;
+/* Numbers (29, 11, etc.) Font Style */
+.countdown .time-box span {
+    font-family: 'Cinzel', serif !important;
+    font-size: 22px !important;
     font-weight: 700 !important;
     color: #8b6b23 !important;
     line-height: 1.1 !important;
     display: block !important;
 }
 
-/* Label Font Styling (DAYS, HOURS, etc.) */
-.countdown-label, 
-.time-box small {
+/* Labels (DAYS, HOURS, etc.) Font Style */
+.countdown .time-box small {
     font-family: 'Poppins', sans-serif !important;
     font-size: 9px !important;
-    letter-spacing: 0.8px !important;
+    letter-spacing: 0.5px !important;
     text-transform: uppercase !important;
     color: #777777 !important;
     margin-top: 3px !important;
