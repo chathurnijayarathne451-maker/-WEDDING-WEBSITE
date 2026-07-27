@@ -41,8 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 3. Hero Background Image Auto Slider Logic
-    const heroSlides = document.querySelectorAll('.hero-slide');
+    // .hero-slide සහ .bg-slide යන දෙකටම support කරන පරිදි සකසා ඇත
+    const heroSlides = document.querySelectorAll('.hero-slide, .bg-slide');
     let currentHeroSlide = 0;
+
     if (heroSlides.length > 0) {
         setInterval(() => {
             heroSlides[currentHeroSlide].classList.remove('active');
