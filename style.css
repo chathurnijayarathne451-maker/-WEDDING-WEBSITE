@@ -614,3 +614,45 @@ div.time-box small {
     color: #666666 !important;
     line-height: 1 !important;
 }
+/* ==========================================
+   SECTION HEADINGS FONT & STYLE CUSTOMIZATION
+   ========================================== */
+
+/* Main Headings (Wedding Ceremony, Homecoming, Venue, RSVP, Contact, etc.) */
+h2, 
+.section-title, 
+#countdown-title {
+    font-family: 'Cinzel', 'Playfair Display', serif !important;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    color: #8b6b23 !important; /* Gold / Bronze Color */
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    margin-top: 30px !important;
+    margin-bottom: 20px !important;
+}
+
+/* Gold Underline Divider for Headings */
+h2::after, 
+.section-title::after {
+    content: '' !important;
+    display: block !important;
+    width: 60px !important;
+    height: 2px !important;
+    background: #d4af37 !important;
+    margin: 8px auto 0 auto !important;
+    border-radius: 2px !important;
+}
+
+/* Contact Details & Card Headings */
+.venue-card h3, 
+.event-card h3, 
+.rsvp-card h3,
+.contact-section h3 {
+    font-family: 'Cinzel', serif !important;
+    font-size: 20px !important;
+    color: #4a3b32 !important;
+    letter-spacing: 1px !important;
+    text-align: center !important;
+}
