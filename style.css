@@ -792,31 +792,65 @@ h2::after,
     margin-bottom: 15px !important;
 }
 /* ==========================================
-   COUPLE NAMES FONT CHANGE (CLEAR & ELEGANT)
+   COUPLE NAMES FONT CHANGE (HIGH CLARITY)
    ========================================== */
 
-/* Import Great Vibes & Alex Brush Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&display=swap');
+/* Import Pinyon Script & Playfair Display (Alternative Serif) Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@1,500&display=swap');
 
 /* Chathurni Sanchala & Ashen Anuradha Font Styling */
 .couple-name {
-    font-family: 'Great Vibes', 'Alex Brush', cursive !important;
-    font-size: 42px !important; /* අකුරු පැහැදිලිව පෙනීමට Size එක ලොකු කර ඇත */
-    font-weight: 500 !important;
+    font-family: 'Pinyon Script', cursive !important;
+    font-size: 48px !important; /* අකුරු ඉතා පැහැදිලිව පෙනීමට Size එක වැඩි කර ඇත */
+    font-weight: 400 !important;
     color: #8b6b23 !important; /* Premium Gold Tone */
-    letter-spacing: 1px !important;
-    line-height: 1.2 !important;
+    letter-spacing: 0px !important; /* Script fonts වලට letter-spacing 0 තැබීම සුදුසුයි */
+    line-height: 1.1 !important;
     margin-top: 5px !important;
-    margin-bottom: 15px !important;
+    margin-bottom: 10px !important;
     text-transform: none !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.05); /* Soft shadow for better clarity */
 }
 
 /* '&' Symbol Styling */
 .and {
-    font-family: 'Alex Brush', cursive !important;
-    font-size: 32px !important;
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic !important;
+    font-size: 28px !important;
+    font-weight: 500 !important;
     color: #d4af37 !important;
-    margin: 10px 0 !important;
+    margin: 8px 0 !important;
+    display: block !important;
+}/* ==========================================
+   COUPLE NAMES FONT CHANGE (HIGH CLARITY)
+   ========================================== */
+
+/* Import Pinyon Script & Playfair Display (Alternative Serif) Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@1,500&display=swap');
+
+/* Chathurni Sanchala & Ashen Anuradha Font Styling */
+.couple-name {
+    font-family: 'Pinyon Script', cursive !important;
+    font-size: 48px !important; /* අකුරු ඉතා පැහැදිලිව පෙනීමට Size එක වැඩි කර ඇත */
+    font-weight: 400 !important;
+    color: #8b6b23 !important; /* Premium Gold Tone */
+    letter-spacing: 0px !important; /* Script fonts වලට letter-spacing 0 තැබීම සුදුසුයි */
+    line-height: 1.1 !important;
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+    text-transform: none !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.05); /* Soft shadow for better clarity */
+}
+
+/* '&' Symbol Styling */
+.and {
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic !important;
+    font-size: 28px !important;
+    font-weight: 500 !important;
+    color: #d4af37 !important;
+    margin: 8px 0 !important;
+    display: block !important;
 }
 /* ==========================================
    PARENTS NAMES BOLD FONT STYLING
