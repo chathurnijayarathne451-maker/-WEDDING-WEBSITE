@@ -562,42 +562,49 @@ footer p {
 }
 
 /* ==========================================
-   COUNTDOWN TIMER CUSTOMIZATION
+   COUNTDOWN TIMER CUSTOMIZATION (UPDATED)
    ========================================== */
 
 /* Heading Font Change */
 .countdown-section h2, 
 #countdown-title {
     font-family: 'Cinzel', 'Playfair Display', serif !important;
-    letter-spacing: 2px;
+    letter-spacing: 2px !important;
 }
 
-/* Time Boxes Distance Adjustment (Lankan Box Gap) */
+/* Container & Gap Fix */
+.countdown-container,
 .countdown-grid, 
 .countdown {
     display: flex !important;
     justify-content: center !important;
-    gap: 8px !important; /* Box අතර පරතරය 15px සිට 8px දක්වා අඩු කර ඇත */
+    align-items: center !important;
+    gap: 6px !important; /* Box අතර දුර ගොඩක් ලං කර ඇත */
+    margin-top: 15px !important;
 }
 
-/* Time Box Design & Font Style */
+/* Time Box Design & Size Fix */
 .countdown-box, 
 .time-box {
     background: #ffffff !important;
     border: 1px solid #d4af37 !important;
     border-radius: 12px !important;
-    padding: 10px 8px !important;
-    min-width: 65px !important; /* Box එක තවත් සංකීර්ණ ලෙස ලං වේ */
+    padding: 8px 4px !important;
+    min-width: 58px !important; /* Box එක තවත් සංකීර්ණ ලෙස ලං වේ */
+    width: 60px !important;
     box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15) !important;
+    text-align: center !important;
 }
 
 /* Number Font Styling */
 .countdown-value, 
 .time-box span {
     font-family: 'Cinzel', serif !important; /* Numbers සඳහා Elegant Serif Font */
-    font-size: 26px !important;
+    font-size: 24px !important;
     font-weight: 700 !important;
     color: #8b6b23 !important;
+    line-height: 1.1 !important;
+    display: block !important;
 }
 
 /* Label Font Styling (DAYS, HOURS, etc.) */
@@ -605,8 +612,9 @@ footer p {
 .time-box small {
     font-family: 'Poppins', sans-serif !important;
     font-size: 9px !important;
-    letter-spacing: 1px !important;
+    letter-spacing: 0.8px !important;
     text-transform: uppercase !important;
     color: #777777 !important;
-    margin-top: 2px !important;
+    margin-top: 3px !important;
+    display: block !important;
 }
