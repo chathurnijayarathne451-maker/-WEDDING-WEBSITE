@@ -791,3 +791,30 @@ h2::after,
     line-height: 1.5 !important;
     margin-bottom: 15px !important;
 }
+/* ==========================================
+   COUPLE NAMES FONT CHANGE (CLEAR & ELEGANT)
+   ========================================== */
+
+/* Import Great Vibes & Alex Brush Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&display=swap');
+
+/* Chathurni Sanchala & Ashen Anuradha Font Styling */
+.couple-name {
+    font-family: 'Great Vibes', 'Alex Brush', cursive !important;
+    font-size: 42px !important; /* අකුරු පැහැදිලිව පෙනීමට Size එක ලොකු කර ඇත */
+    font-weight: 500 !important;
+    color: #8b6b23 !important; /* Premium Gold Tone */
+    letter-spacing: 1px !important;
+    line-height: 1.2 !important;
+    margin-top: 5px !important;
+    margin-bottom: 15px !important;
+    text-transform: none !important;
+}
+
+/* '&' Symbol Styling */
+.and {
+    font-family: 'Alex Brush', cursive !important;
+    font-size: 32px !important;
+    color: #d4af37 !important;
+    margin: 10px 0 !important;
+}
