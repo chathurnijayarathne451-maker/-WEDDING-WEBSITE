@@ -656,3 +656,50 @@ h2::after,
     letter-spacing: 1px !important;
     text-align: center !important;
 }
+/* ==========================================
+   PREMIUM ROYAL & ELEGANT FONTS CUSTOMIZATION
+   ========================================== */
+
+/* Google Fonts Import (Cinzel Decorative & Great Vibes) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+
+/* Main Section Headings (Countdown, Wedding Ceremony, Homecoming, Venue, RSVP, Contact) */
+h2, 
+.section-title, 
+#countdown-title {
+    font-family: 'Cinzel Decorative', 'Playfair Display', serif !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #8b6b23 !important;
+    letter-spacing: 2.5px !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    margin-top: 35px !important;
+    margin-bottom: 22px !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Gold Underline Divider for Headings */
+h2::after, 
+.section-title::after {
+    content: '' !important;
+    display: block !important;
+    width: 70px !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent) !important;
+    margin: 10px auto 0 auto !important;
+    border-radius: 2px !important;
+}
+
+/* Sub-titles & Card Headings (Wedding Venue, Contact Person Names) */
+.venue-card h3, 
+.event-card h3, 
+.rsvp-card h3,
+.contact-section h3 {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 21px !important;
+    font-weight: 600 !important;
+    color: #4a3b32 !important;
+    letter-spacing: 1px !important;
+    text-align: center !important;
+}
