@@ -537,3 +537,26 @@ footer p {
     margin-top: 15px;
     text-align: center !important;
 }
+
+/* Wedding Date Badge Size Increase */
+.wedding-date-badge-section {
+    margin: 25px 0;
+}
+
+.date-line-text {
+    font-family: 'Cinzel', serif;
+    font-size: 22px !important; /* AUGUST සහ 2026 font size එක වැඩි කර ඇත */
+    letter-spacing: 3px;
+    color: #8b6b47 !important;
+    border-top: 1px solid #d4af37;
+    border-bottom: 1px solid #d4af37;
+    padding: 4px 10px;
+}
+
+.date-number-highlight {
+    font-family: 'Cinzel', serif;
+    font-size: 58px !important; /* '26' අංකයේ font size එක ලොකු කර ඇත */
+    color: #d4af37 !important;
+    font-weight: bold;
+    line-height: 1;
+}
