@@ -750,3 +750,31 @@ h2::after,
     letter-spacing: 0.5px !important;
     text-align: center !important;
 }
+/* ==========================================
+   HERO TEXT SPACING & PARENTS TITLE SIZE
+   ========================================== */
+
+/* Photo එකෙන් පස්සේ එන Text කොටස පහළට කිරීම (Margin/Spacing Increase) */
+.hero-content-below {
+    margin-top: 50px !important; /* Photo එකෙන් 1' ප්‍රමාණයකට පහළට කරයි */
+    padding-top: 10px !important;
+}
+
+/* DAUGHTER OF & SON OF Font Size Increase */
+.parents-title {
+    font-family: 'Cinzel', serif !important;
+    font-size: 18px !important; /* Font Size එක 18px දක්වා වැඩි කර ඇත */
+    font-weight: 700 !important;
+    color: #8b6b23 !important; /* Gold tone finish */
+    letter-spacing: 2px !important;
+    margin-top: 20px !important;
+    margin-bottom: 6px !important;
+}
+
+/* Parents Names Font Styling */
+.parents-names {
+    font-size: 13px !important;
+    letter-spacing: 1px !important;
+    color: #555555 !important;
+    margin-bottom: 12px !important;
+}
