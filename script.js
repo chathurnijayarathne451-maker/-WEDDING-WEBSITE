@@ -269,19 +269,62 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
-// Dynamic Name Order Fix
-    const brideWrapper = document.getElementById("bride-wrapper");
-    const groomWrapper = document.getElementById("groom-wrapper");
-    const andSign = document.getElementById("and-sign");
+<!-- Photo එක සහ Wording එක තිබෙන Hero Section කොටස -->
+<div class="hero-bg-slider" style="height: 580px !important;">
+    <div class="hero-slide bg-slide active" style="background-image: url('assets/photo1.jpg');"></div>
+    <div class="hero-slide bg-slide" style="background-image: url('assets/photo2.jpg');"></div>
+    <div class="hero-slide bg-slide" style="background-image: url('assets/photo3.jpg');"></div>
+    <div class="hero-slide bg-slide" style="background-image: url('assets/photo4.jpg');"></div>
+</div>
 
-    if (brideWrapper && groomWrapper && andSign) {
-        if (side === 'groom') {
-            // Groom පැත්ත නම්: Groom මුලට, ඊටපසු &, ඊටපසු Bride
-            andSign.parentNode.insertBefore(groomWrapper, andSign);
-            andSign.parentNode.insertBefore(brideWrapper, andSign.nextSibling);
-        } else {
-            // Bride පැත්ත නම්: Bride මුලට, ඊටපසු &, ඊටපසු Groom
-            andSign.parentNode.insertBefore(brideWrapper, andSign);
-            andSign.parentNode.insertBefore(groomWrapper, andSign.nextSibling);
-        }
-    }
+<!-- Photo එක මැදින් Ashen & Sanchala -->
+<div class="monogram-container">
+    <div class="monogram" style="font-family: 'Gwendolyn', cursive !important;">Ashen & Sanchala</div>
+</div>
+
+<!-- Space Holder for Bigger Photo -->
+<div class="photo-spacer" style="height: 140px !important;"></div>
+
+<!-- Photo එකෙන් පහළ සියලු විස්තර -->
+<div class="hero-content-below" style="display: flex !important; flex-direction: column !important; align-items: center !important; width: 100% !important; margin-top: 15px !important;">
+    
+    <!-- A. ජෝඩුවගේ නම් සහ දෙමාපියන්ගේ විස්තර -->
+    <div id="couple-details-container" style="display: flex !important; flex-direction: column !important; align-items: center !important; width: 100% !important;">
+        <!-- Bride Section -->
+        <div id="bride-wrapper" class="couple-section" style="width: 100% !important; text-align: center !important;">
+            <p class="parents-title">DAUGHTER OF</p>
+            <p class="parents-names">MR. H.D.W. JAYARATHNE & MRS. G.D.D. PRIYADARSHANI</p>
+            <h1 class="couple-name" style="font-family: 'Gwendolyn', cursive !important; font-size: 52px !important; font-weight: 700 !important;">Chathurni Sanchala</h1>
+        </div>
+
+        <!-- Center '&' Sign -->
+        <p class="and" id="and-sign" style="font-family: 'Gwendolyn', cursive !important; font-size: 38px !important; font-weight: 700 !important; margin: 10px 0;">&</p>
+
+        <!-- Groom Section -->
+        <div id="groom-wrapper" class="couple-section" style="width: 100% !important; text-align: center !important;">
+            <p class="parents-title">SON OF</p>
+            <p class="parents-names">MR. S.D.S.S. WIJETHILAKA & MRS. S.D.R. RANDENIYA</p>
+            <h1 class="couple-name" style="font-family: 'Gwendolyn', cursive !important; font-size: 52px !important; font-weight: 700 !important;">Ashen Anuradha</h1>
+        </div>
+    </div>
+
+    <!-- B. නම් දෙකට පහළින් පිළිවෙළට එන කොටස -->
+    <div class="bottom-wording-container" style="display: flex !important; flex-direction: column !important; align-items: center !important; width: 100% !important;">
+        <!-- 1. WE ARE GETTING MARRIED -->
+        <p class="getting-married-title" style="font-family: 'Gabriela', serif !important; font-size: 20px !important; font-weight: 600 !important; margin-top: 30px; margin-bottom: 20px; letter-spacing: 2px;">WE ARE GETTING MARRIED</p>
+
+        <!-- 2. GUEST NAME BOX -->
+        <div style="background: rgba(255, 255, 255, 0.65) !important; border: 2px solid #d4af37 !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; border-radius: 15px !important; padding: 18px 30px !important; margin: 20px auto !important; max-width: 90% !important; width: fit-content !important; box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25) !important; text-align: center !important;">
+            <h3 class="guest-name-text" id="guest-greeting" style="margin: 0 !important; font-size: 24px !important; font-weight: bold !important; color: #b76e79 !important; font-family: 'Playfair Display', serif !important; letter-spacing: 1px !important;">Dear Guest</h3>
+        </div>
+
+        <!-- 3. WE WARMLY INVITE YOU... -->
+        <p class="invite-subtext" style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #555555; font-style: italic; margin-top: 20px; line-height: 1.6;">We warmly invite you to celebrate our special day.</p>
+        
+        <!-- 4. VIEW INVITATION BUTTON -->
+        <div class="scroll-btn-container" style="margin-top: 25px;">
+            <a href="#eventSection" class="scroll-btn" style="color: #ffffff !important;" data-en="View Invitation ↓" data-si="ආරාධනාව බලන්න ↓">View Invitation ↓</a>
+        </div>
+    </div>
+
+</div>
