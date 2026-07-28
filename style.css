@@ -13,7 +13,49 @@ body {
     color: #333;
     overflow-x: hidden;
 }
+/* Petals Container */
+.petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Site එක click කිරීමට බාධාවක් නොවීමට */
+    z-index: 999;
+    overflow: hidden;
+}
 
+/* Red / Soft Pink Rose Petal Design */
+.petal {
+    position: absolute;
+    top: -30px;
+    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 50%, #e84393 100%);
+    border-radius: 15px 0 15px 0;
+    opacity: 0.85;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    animation: fallAndSway linear infinite;
+}
+
+/* Falling & Swinging Animation */
+@keyframes fallAndSway {
+    0% {
+        opacity: 0;
+        transform: translateY(0) rotate(0deg) translateX(0);
+    }
+    10% {
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) translateX(80px);
+    }
+    75% {
+        transform: translateY(75vh) rotate(270deg) translateX(-40px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(105vh) rotate(360deg) translateX(100px);
+    }
+}
 /* Preloader - START */
 #preloader {
     position: fixed;
