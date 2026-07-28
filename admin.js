@@ -1,49 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const generateBtn = document.getElementById("generateBtn");
+    const outputSection = document.getElementById("outputSection");
+    const messageOutput = document.getElementById("messageOutput");
+    const copyBtn = document.getElementById("copyBtn");
+    const waSendBtn = document.getElementById("waSendBtn");
 
-    const baseUrl = "https://chathurnijayarathne451-maker.github.io/-WEDDING-WEBSITE/";
+    let finalWhatsAppUrl = "";
 
-    const senderType = document.getElementById('senderType');
-    const guestInput = document.getElementById('guestInput');
-    const generateBtn = document.getElementById('generateBtn');
-    const outputSection = document.getElementById('outputSection');
-    const messageOutput = document.getElementById('messageOutput');
-    const copyBtn = document.getElementById('copyBtn');
-    const waSendBtn = document.getElementById('waSendBtn');
-
-    generateBtn.addEventListener('click', () => {
-        const guestName = guestInput.value.trim();
-        const sender = senderType.value;
+    generateBtn.addEventListener("click", () => {
+        const sender = document.getElementById("senderType").value;
+        const salutation = document.getElementById("salutationInput").value;
+        const guestName = document.getElementById("guestInput").value.trim();
+        const eventType = document.getElementById("eventType").value;
+        let phone = document.getElementById("phoneInput").value.trim();
 
         if (!guestName) {
-            alert("කරුණාකර Guest Name එක ඇතුළත් කරන්න.");
+            alert("කරුණාකර Guest Name එක ඇතුළත් කරන්න!");
             return;
         }
 
-        // Generate Custom URL
-        const eventType = sender === 'bride' ? 'wedding' : 'homecoming';
-        const customUrl = `${baseUrl}?guest=${encodeURIComponent(guestName)}&event=${eventType}`;
+        // Clean up phone number (Removes spaces, +, etc.)
+        phone = phone.replace(/[^0-9]/g, '');
 
-        // Sender Name
-        const senderName = sender === 'bride' ? 'Chathurni Sanchala' : 'Ashen Anuradha';
+        // Construct base URL dynamically for index.html
+        const baseUrl = window.location.href.replace('admin.html', 'index.html').split('?')[0];
 
-        // Draft Message Layout
-        const fullMessage = `Dear ${guestName} ✨💌\n\nWith hearts overflowing with love and gratitude,\n\nwe are delighted to invite you to witness the beginning of our forever 💍❤️\n\nPlease open our wedding invitation below 👇\n\n${customUrl}\n\nYour presence and blessings mean the world to us 🌹\n\nCome celebrate love, laughter, and a lifetime of happiness with us 🥂✨\n\nCan’t wait to see you there,\n\nWith all our love,\n\n${senderName}`;
+        // Create Dynamic Invitation URL with Parameters
+        const generatedLink = `${baseUrl}?side=${sender}&event=${eventType}&sal=${encodeURIComponent(salutation)}&guest=${encodeURIComponent(guestName)}`;
 
-        messageOutput.value = fullMessage;
-        outputSection.style.display = 'block';
+        // Determine Sender Display Name
+        const senderDisplayName = (sender === 'groom') ? 'Ashen Anuradha' : 'Sanchala Jayarathne';
+
+        // Custom Invitation Text Message Template
+        const customMessage = `Dear ${salutation} ${guestName} ✨💌\n\nWith hearts overflowing with love and gratitude, \nwe are delighted to invite you to witness the beginning of our forever 💍❤️\n\nPlease open our wedding invitation below 👇\n${generatedLink}\n\nYour presence and blessings mean the world to us 🌹\nCome celebrate love, laughter, and a lifetime of happiness with us 🥂✨\n\nCan’t wait to see you there,\nWith all our love,\n${senderDisplayName}`;
+
+        // Set message to textarea
+        messageOutput.value = customMessage;
+        outputSection.style.display = "block";
+
+        // Store WhatsApp URL
+        if (phone) {
+            finalWhatsAppUrl = `https://wa.me/${phone}?text=${encodeURIComponent(customMessage)}`;
+            waSendBtn.style.display = "block";
+        } else {
+            finalWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(customMessage)}`;
+        }
     });
 
-    // Copy to Clipboard
-    copyBtn.addEventListener('click', () => {
+    // Copy to Clipboard Functionality
+    copyBtn.addEventListener("click", () => {
         messageOutput.select();
-        document.execCommand('copy');
+        document.execCommand("copy");
         alert("Message copied to clipboard!");
     });
 
-    // Direct WhatsApp Share
-    waSendBtn.addEventListener('click', () => {
-        const encodedMsg = encodeURIComponent(messageOutput.value);
-        window.open(`https://api.whatsapp.com/send?text=${encodedMsg}`, '_blank');
+    // WhatsApp Direct Send Button Functionality
+    waSendBtn.addEventListener("click", () => {
+        if (finalWhatsAppUrl) {
+            window.open(finalWhatsAppUrl, "_blank");
+        } else {
+            alert("කරුණාකර පළමුව Message එක Generate කරගන්න.");
+        }
     });
-
 });
