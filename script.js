@@ -77,3 +77,22 @@ function toggleGuestCount(willAttend) {
         guestCountBox.style.display = willAttend ? 'block' : 'none';
     }
 }
+// Page එක Load වී අවසන් වූ පසු Preloader එක අයින් කිරීම
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader"); // ඔබේ Preloader ID එක මෙතැනට දෙන්න
+    if (preloader) {
+        preloader.style.transition = "opacity 0.5s ease";
+        preloader.style.opacity = "0";
+        setTimeout(() => {
+            preloader.style.display = "none";
+        }, 500);
+    }
+});
+
+// ආරක්ෂාවට: තත්පර 3කට වඩා ගියොත් Forcefully Loader එක Hide කිරීමට (Fallback)
+setTimeout(() => {
+    const preloader = document.getElementById("preloader");
+    if (preloader && preloader.style.display !== "none") {
+        preloader.style.display = "none";
+    }
+}, 3000);
