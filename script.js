@@ -301,3 +301,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+
+    // 1. URL එකෙන් event parameter එක ලබා ගැනීම ('wedding', 'homecoming', හෝ 'both')
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventType = urlParams.get('event'); 
+
+    // 2. HTML elements target කිරීම
+    const weddingBlock = document.getElementById("weddingDetailsBlock");
+    const homecomingBlock = document.getElementById("homecomingDetailsBlock");
+
+    // 3. Event Display Filter Logic
+    if (eventType === 'wedding') {
+        
+        // 💍 Wedding Day Only නම්:
+        if (weddingBlock) weddingBlock.style.display = "block";       // Wedding පෙන්වයි
+        if (homecomingBlock) homecomingBlock.style.display = "none";  // Homecoming Hide කරයි
+        
+    } else if (eventType === 'homecoming') {
+        
+        // 🥂 Homecoming Day Only නම්:
+        if (weddingBlock) weddingBlock.style.display = "none";        // Wedding Hide කරයි
+        if (homecomingBlock) homecomingBlock.style.display = "block"; // Homecoming පෙන්වයි
+        
+    } else {
+        
+        // 🎉 Both Events (හෝ event=both / parameter එකක් නැතිව ආවොත්):
+        // උත්සව දෙකේම සියලුම විස්තර (Wedding & Homecoming) එකටම පෙන්නුම් කරයි!
+        if (weddingBlock) weddingBlock.style.display = "block";       
+        if (homecomingBlock) homecomingBlock.style.display = "block";
+        
+    }
+
+});
