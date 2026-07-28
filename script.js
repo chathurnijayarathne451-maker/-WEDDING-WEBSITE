@@ -249,3 +249,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // කරුණාකර ඔබේ නිවැරදි Wedding & Homecoming දිනය සහ වේලාව යොදන්න (YYYY-MM-DDTHH:MM:SS)
     setupCountdown("2026-08-26T00:00:00", "2026-08-30T00:00:00");
 });
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // URL එකෙන් parameters ලබා ගැනීම
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestNameParam = urlParams.get('guest'); // Admin Panel එකෙන් එන Salutation + Guest Name
+
+    // HTML එකේ id="guest-greeting" ඇති element එක target කිරීම
+    const guestGreeting = document.getElementById("guest-greeting");
+
+    if (guestGreeting) {
+        if (guestNameParam) {
+            // URL එකෙහි guest parameter එක තිබේ නම් 'Dear [Name]' ලෙස පෙන්වයි
+            guestGreeting.textContent = `Dear ${decodeURIComponent(guestNameParam)}`;
+        } else {
+            // URL එකෙහි නමක් නැත්නම් Default ලෙස පෙන්වයි
+            guestGreeting.textContent = "Dear Guest";
+        }
+    }
+
+});
