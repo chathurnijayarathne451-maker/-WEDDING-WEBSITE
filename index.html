@@ -114,24 +114,50 @@
 </section>
 
     <!-- Date Badge Section -->
-    <section class="wedding-date-badge-section">
-        <div class="date-badge-container">
-            <span class="date-line-text" data-en="AUGUST" data-si="අගෝස්තු">AUGUST</span>
-            <span class="date-number-highlight">26</span>
-            <span class="date-line-text">2026</span>
-        </div>
-    </section>
+<section class="wedding-date-badge-section" style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+    
+    <!-- Wedding Date Badge -->
+    <div class="date-badge-container">
+        <span class="date-line-text" data-en="AUGUST" data-si="අගෝස්තු">AUGUST</span>
+        <span class="date-number-highlight">26</span>
+        <span class="date-line-text">2026</span>
+    </div>
+
+    <!-- Homecoming Date Badge -->
+    <div class="date-badge-container" style="border-top: 1px dashed #d4af37; padding-top: 15px;">
+        <span class="date-line-text" data-en="HOMECOMING - AUGUST" data-si="දෙවෙනි ගමන - අගෝස්තු" style="color: #e74c3c;">HOMECOMING - AUGUST</span>
+        <span class="date-number-highlight" style="color: #e74c3c;">30</span>
+        <span class="date-line-text">2026</span>
+    </div>
+
+</section>
 
     <!-- Countdown Section -->
-    <section class="countdown-section">
-       <h2 data-en="Countdown To Our Big Day" data-si="අපගේ මංගල දිනයට තව" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important;">Countdown To Our Big Day</h2>
-        <div class="countdown">
-            <div class="time-box"><span id="days">00</span><small data-en="Days" data-si="දින">Days</small></div>
-            <div class="time-box"><span id="hours">00</span><small data-en="Hours" data-si="පැය">Hours</small></div>
-            <div class="time-box"><span id="minutes">00</span><small data-en="Minutes" data-si="මිනිත්තු">Minutes</small></div>
-            <div class="time-box"><span id="seconds">00</span><small data-en="Seconds" data-si="තත්පර">Seconds</small></div>
+<section class="countdown-section" style="display: flex; flex-direction: column; gap: 30px; align-items: center; margin: 30px 0;">
+    
+    <!-- Wedding Countdown Card -->
+    <div class="countdown-card" style="border: 2px solid #d4af37; border-radius: 15px; padding: 20px; width: 90%; max-width: 440px; background: #ffffff; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15); text-align: center;">
+        <h2 data-en="Countdown To Our Wedding" data-si="මංගල දිනයට තව" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 20px !important; color: #d4af37; margin-bottom: 15px;">Countdown To Our Wedding</h2>
+        <div class="countdown" style="display: flex; justify-content: space-around;">
+            <div class="time-box"><span id="days-wedding">00</span><br><small data-en="Days" data-si="දින">Days</small></div>
+            <div class="time-box"><span id="hours-wedding">00</span><br><small data-en="Hours" data-si="පැය">Hours</small></div>
+            <div class="time-box"><span id="minutes-wedding">00</span><br><small data-en="Minutes" data-si="මිනිත්තු">Minutes</small></div>
+            <div class="time-box"><span id="seconds-wedding">00</span><br><small data-en="Seconds" data-si="තත්පර">Seconds</small></div>
         </div>
-    </section>
+    </div>
+
+    <!-- Homecoming Countdown Card (Red Color Theme) -->
+    <div class="countdown-card" style="border: 2px solid #e74c3c; border-radius: 15px; padding: 20px; width: 90%; max-width: 440px; background: #ffffff; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.15); text-align: center;">
+        <h2 data-en="Countdown To Our Homecoming" data-si="දෙවෙනි ගමනට තව" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 20px !important; color: #e74c3c !important; margin-bottom: 15px;">Countdown To Our Homecoming</h2>
+        <div class="countdown" style="display: flex; justify-content: space-around; color: #e74c3c;">
+            <div class="time-box"><span id="days-homecoming" style="color: #e74c3c !important; font-weight: bold;">00</span><br><small data-en="Days" data-si="දින" style="color: #e74c3c;">Days</small></div>
+            <div class="time-box"><span id="hours-homecoming" style="color: #e74c3c !important; font-weight: bold;">00</span><br><small data-en="Hours" data-si="පැය" style="color: #e74c3c;">Hours</small></div>
+            <div class="time-box"><span id="minutes-homecoming" style="color: #e74c3c !important; font-weight: bold;">00</span><br><small data-en="Minutes" data-si="මිනිත්තු" style="color: #e74c3c;">Minutes</small></div>
+            <div class="time-box"><span id="seconds-homecoming" style="color: #e74c3c !important; font-weight: bold;">00</span><br><small data-en="Seconds" data-si="තත්පර" style="color: #e74c3c;">Seconds</small></div>
+        </div>
+    </div>
+
+</section>
 
     <!-- Dynamic Event Section -->
     <section id="eventSection" class="event-section">
