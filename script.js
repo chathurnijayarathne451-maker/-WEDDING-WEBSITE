@@ -247,5 +247,5 @@ function setupCountdown(weddingDateStr, homecomingDateStr) {
 // Start Countdown when page loads
 document.addEventListener("DOMContentLoaded", () => {
     // කරුණාකර ඔබේ නිවැරදි Wedding & Homecoming දිනය සහ වේලාව යොදන්න (YYYY-MM-DDTHH:MM:SS)
-    setupCountdown("2026-10-12T08:30:00", "2026-10-16T10:00:00");
+    setupCountdown("2026-08-26T00:00:00", "2026-08-30T00:00:00");
 });
