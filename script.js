@@ -89,27 +89,24 @@ document.addEventListener("DOMContentLoaded", () => {
             const petal = document.createElement('div');
             petal.classList.add('petal');
 
-            // පෙති වල ප්‍රමාණය නොසමාන ලෙස (10px - 22px)
             const size = Math.random() * 12 + 10; 
             petal.style.width = `${size}px`;
-            petal.style.height = `${size * 1.3}px`; // මල් පෙත්තක ස්වාභාවික හැඩය
+            petal.style.height = `${size * 1.3}px`;
 
-            // තිරයේ ඕනෑම තැනකින් ආරම්භ වීමට (0% - 100% width)
             petal.style.left = `${Math.random() * 100}vw`;
 
-            // වැටෙන වේගය (තත්පර 4 - 8 අතර dynamic ලෙස වෙනස් වේ)
-            const duration = Math.random() * 4 + 4;
+            // වැටෙන වේගය අඩු කිරීමට duration එක තත්පර 8 - 14 අතරට වැඩි කර ඇත
+            const duration = Math.random() * 6 + 8;
             petal.style.animationDuration = `${duration}s`;
 
             petalsContainer.appendChild(petal);
 
-            // Animation එක අවසන් වූ පසු පෙත්ත ඉවත් කිරීම
             setTimeout(() => {
                 petal.remove();
             }, duration * 1000);
         }
 
-        // මල් පෙති ගොඩක් වැටීමට කාල පරතරය තත්පර 0.15 (150ms) දක්වා අඩු කර ඇත
-        setInterval(createPetal, 150);
+        // පෙති වැටෙන පරතරය තත්පර 0.25 (250ms) ලෙස තබා ඇත
+        setInterval(createPetal, 250);
     }
 });
