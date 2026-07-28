@@ -113,39 +113,50 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bgMusic");
     const musicBtn = document.getElementById("musicBtn");
+    
+    let isMusicPlaying = false;
 
     if (bgMusic) {
-        bgMusic.volume = 0.5; // Sound volume එක 50% ලෙස සැකසීම
+        bgMusic.volume = 0.5; // අවශ්‍ය නම් Sound අඩුවෙන් පටන් ගැනීමට
 
-        // 1. User Screen එක Click හෝ Touch කළ සැනින් Music Auto-play කිරීම
-        const startAudioOnInteraction = () => {
-            bgMusic.play().then(() => {
-                if (musicBtn) musicBtn.textContent = "🎵 Pause Music";
-            }).catch(error => {
-                console.log("Autoplay blocked, waiting for click:", error);
-            });
-
-            // එක පාරක් play වූ පසු event listeners අයින් කිරීම
-            document.removeEventListener("click", startAudioOnInteraction);
-            document.removeEventListener("touchstart", startAudioOnInteraction);
-            document.removeEventListener("scroll", startAudioOnInteraction);
+        // Function: Force Play Music
+        const forcePlayMusic = () => {
+            if (!isMusicPlaying) {
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    if (musicBtn) {
+                        // සිංහල/English භාෂාවට ගැලපෙන ලෙස
+                        const isSinhala = document.body.classList.contains('si-active');
+                        musicBtn.textContent = isSinhala ? "🎵 මියුසික් නවත්වන්න" : "🎵 Pause Music";
+                    }
+                }).catch(err => console.log("Autoplay Prevented by Browser:", err));
+            }
         };
 
-        // Window interaction events
-        document.addEventListener("click", startAudioOnInteraction);
-        document.addEventListener("touchstart", startAudioOnInteraction);
-        document.addEventListener("scroll", startAudioOnInteraction);
+        // 1. User ඕනෑම තැනක Touch, Click, Scroll හෝ Move කල වහාම Play වේ.
+        const interactionEvents = ["click", "touchstart", "scroll", "mousemove"];
+        
+        interactionEvents.forEach(event => {
+            document.addEventListener(event, () => {
+                forcePlayMusic();
+            }, { once: true }); // එක පාරක් පමණක් ක්‍රියාත්මක වීමට
+        });
 
-        // 2. Music Button (Play/Pause Toggle) Control එක
+        // 2. Play/Pause Button Control
         if (musicBtn) {
             musicBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // Screen interaction event එකත් එක්ක clash වීම වැළැක්වීමට
+                e.stopPropagation(); // Screen Click එක අවහිර නොකිරීමට
+                
+                const isSinhala = document.body.classList.contains('si-active');
+
                 if (bgMusic.paused) {
                     bgMusic.play();
-                    musicBtn.textContent = "🎵 Pause Music";
+                    isMusicPlaying = true;
+                    musicBtn.textContent = isSinhala ? "🎵 මියුසික් නවත්වන්න" : "🎵 Pause Music";
                 } else {
                     bgMusic.pause();
-                    musicBtn.textContent = "🎵 Play Music";
+                    isMusicPlaying = false;
+                    musicBtn.textContent = isSinhala ? "🎵 මියුසික් දාන්න" : "🎵 Play Music";
                 }
             });
         }
