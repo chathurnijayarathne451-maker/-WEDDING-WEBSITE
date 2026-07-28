@@ -954,3 +954,23 @@ h2::after,
     font-weight: 700 !important;
     color: #d4af37 !important;
 }
+/* Falling & Swinging Animation (Slower Wind Effect) */
+@keyframes fallAndSway {
+    0% {
+        opacity: 0;
+        transform: translateY(0) rotate(0deg) translateX(0);
+    }
+    10% {
+        opacity: 0.85;
+    }
+    50% {
+        transform: translateY(50vh) rotate(120deg) translateX(35px);
+    }
+    75% {
+        transform: translateY(75vh) rotate(220deg) translateX(-20px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(105vh) rotate(320deg) translateX(45px);
+    }
+}
