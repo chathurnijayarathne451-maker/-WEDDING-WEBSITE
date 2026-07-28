@@ -303,34 +303,54 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 1. URL එකෙන් event parameter එක ලබා ගැනීම ('wedding', 'homecoming', හෝ 'both')
+    // 1. URL එකෙන් event parameter එක ලබා ගැනීම
     const urlParams = new URLSearchParams(window.location.search);
-    const eventType = urlParams.get('event'); 
+    const eventType = urlParams.get('event'); // 'wedding', 'homecoming', or 'both'
 
-    // 2. HTML elements target කිරීම
-    const weddingBlock = document.getElementById("weddingDetailsBlock");
-    const homecomingBlock = document.getElementById("homecomingDetailsBlock");
+    // 2. ඔබගේ HTML එකේ ඇති Countdown Cards & Event Sections සොයා ගැනීම
+    // (මේවායේ .countdown-card, .wedding-card, #wedding-section වැනි ඕනෑම Class/ID එකක් තිබුණත් target වේ)
+    const weddingElements = document.querySelectorAll('.wedding-card, #weddingDetailsBlock, .wedding-section, #wedding-section');
+    const homecomingElements = document.querySelectorAll('.homecoming-card, #homecomingDetailsBlock, .homecoming-section, #homecoming-section');
 
-    // 3. Event Display Filter Logic
+    // 3. Event Selection Filter Rules
     if (eventType === 'wedding') {
         
-        // 💍 Wedding Day Only නම්:
-        if (weddingBlock) weddingBlock.style.display = "block";       // Wedding පෙන්වයි
-        if (homecomingBlock) homecomingBlock.style.display = "none";  // Homecoming Hide කරයි
+        // 💍 Wedding Day Only -> Wedding පෙන්වයි, Homecoming Hide කරයි
+        weddingElements.forEach(el => el.style.display = 'block');
+        homecomingElements.forEach(el => el.style.display = 'none');
+
+        // Card එක ඇතුළේ ඇති Homecoming Card එක විතරක් Hide කිරීම:
+        document.querySelectorAll('.countdown-card').forEach(card => {
+            if (card.innerText.includes('Homecoming') || card.innerText.includes('දෙවෙනි ගමන')) {
+                card.style.display = 'none';
+            }
+            if (card.innerText.includes('Wedding') || card.innerText.includes('මංගල')) {
+                card.style.display = 'block';
+            }
+        });
         
     } else if (eventType === 'homecoming') {
         
-        // 🥂 Homecoming Day Only නම්:
-        if (weddingBlock) weddingBlock.style.display = "none";        // Wedding Hide කරයි
-        if (homecomingBlock) homecomingBlock.style.display = "block"; // Homecoming පෙන්වයි
+        // 🥂 Homecoming Day Only -> Homecoming පෙන්වයි, Wedding Hide කරයි
+        weddingElements.forEach(el => el.style.display = 'none');
+        homecomingElements.forEach(el => el.style.display = 'block');
+
+        // Card එක ඇතුළේ ඇති Wedding Card එක විතරක් Hide කිරීම:
+        document.querySelectorAll('.countdown-card').forEach(card => {
+            if (card.innerText.includes('Wedding') || card.innerText.includes('මංගල')) {
+                card.style.display = 'none';
+            }
+            if (card.innerText.includes('Homecoming') || card.innerText.includes('දෙවෙනි ගමන')) {
+                card.style.display = 'block';
+            }
+        });
         
     } else {
         
-        // 🎉 Both Events (හෝ event=both / parameter එකක් නැතිව ආවොත්):
-        // උත්සව දෙකේම සියලුම විස්තර (Wedding & Homecoming) එකටම පෙන්නුම් කරයි!
-        if (weddingBlock) weddingBlock.style.display = "block";       
-        if (homecomingBlock) homecomingBlock.style.display = "block";
+        // 🎉 Both Events -> සියලුම Details & Cards පෙන්වයි
+        weddingElements.forEach(el => el.style.display = 'block');
+        homecomingElements.forEach(el => el.style.display = 'block');
+        document.querySelectorAll('.countdown-card').forEach(card => card.style.display = 'block');
         
     }
-
 });
