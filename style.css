@@ -127,13 +127,13 @@ body {
     overflow: hidden;
 }
 
-/* Background Photo Slider (උස 45vh ලෙස සකසා ඇත) */
+/* Background Photo Slider */
 .hero-bg-slider {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 45vh;
+    height: 40vh; /* Photo එකේ උස */
     z-index: 1;
     overflow: hidden;
 }
@@ -155,22 +155,22 @@ body {
     opacity: 1;
 }
 
-/* Photo එකෙන් පහළට Wording තල්ලු කිරීම සඳහා (Photo එකට වඩා උසින් වැඩියි) */
+/* Photo එකෙන් පහළට Spacer එක */
 .photo-spacer {
-    height: 47vh; /* Photo එකේ උසට වඩා වැඩියෙන් තබා ඇති නිසා Wording පහළට යයි */
+    height: 40vh;
     width: 100%;
     position: relative;
     z-index: 2;
     pointer-events: none;
 }
 
-/* Photo එකෙන් පහළ Wording */
+/* Wording ටික Photo එකෙන් පහළට තල්ලු කරන කොටස */
 .hero-content-below {
     position: relative;
     z-index: 5;
     width: 100%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 20px auto 0 auto; /* Photo එකෙන් පහළට Space එකක් තබයි */
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
@@ -180,8 +180,6 @@ body {
     align-items: center;
     text-align: center;
     gap: 10px;
-}
-}
 }
 }
 
