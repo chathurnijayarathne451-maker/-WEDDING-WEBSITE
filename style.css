@@ -1028,3 +1028,21 @@ h2::after,
     0% { width: 30px; }
     100% { width: 100px; }
 }
+/* Scroll Button Container එක මැදට Alignment කිරීම */
+.scroll-btn-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+    text-align: center !important;
+}
+
+.scroll-btn {
+    display: inline-block !important;
+    text-decoration: none !important;
+    color: #d4af37 !important;
+    font-weight: bold !important;
+    font-size: 18px !important;
+}
