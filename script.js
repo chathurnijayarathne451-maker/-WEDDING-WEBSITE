@@ -1,199 +1,76 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. URL Query Parameters Reading Logic
+    // 1. URL Parameters Parsing
     const urlParams = new URLSearchParams(window.location.search);
-    const guestParam = urlParams.get('guest');
-    const eventType = urlParams.get('event'); // 'wedding' or 'homecoming'
+    const side = urlParams.get('side');      // 'groom' or 'bride'
+    const eventType = urlParams.get('event'); // 'wedding', 'homecoming', or 'both'
+    const guestNameParam = urlParams.get('guest'); // Salutation + Guest Name (e.g., "Mr. Perera & Family")
 
-    // Guest Name Logic
-    const guestGreetingElement = document.getElementById('guestGreeting');
-    if (guestGreetingElement) {
-        if (guestParam) {
-            guestGreetingElement.innerText = "Dear " + decodeURIComponent(guestParam);
-        } else {
-            guestGreetingElement.innerText = "Dear Guest";
-        }
+    // Element References
+    const guestGreeting = document.getElementById("personalizedGuestName");
+    const weddingBlock = document.getElementById("weddingDetailsBlock");
+    const homecomingBlock = document.getElementById("homecomingDetailsBlock");
+    const groomContacts = document.getElementById("groomContacts");
+    const brideContacts = document.getElementById("brideContacts");
+
+    // 2. Set Personalized Guest Name
+    if (guestNameParam) {
+        guestGreeting.textContent = `Dear ${decodeURIComponent(guestNameParam)}`;
+    } else {
+        guestGreeting.textContent = "Dear Valued Guest";
     }
 
-    // Event Type Display Logic
-    const weddingCard = document.getElementById('weddingCard');
-    const homecomingCard = document.getElementById('homecomingCard');
-    const weddingVenue = document.getElementById('weddingVenueSection');
-    const homecomingVenue = document.getElementById('homecomingVenueSection');
-    const brideRsvp = document.getElementById('brideRsvp');
-    const groomRsvp = document.getElementById('groomRsvp');
-
+    // 3. Dynamic Event Display (Hide/Show Wedding vs Homecoming vs Countdown)
     if (eventType === 'wedding') {
-        if (homecomingCard) homecomingCard.style.display = 'none';
-        if (homecomingVenue) homecomingVenue.style.display = 'none';
-        if (groomRsvp) groomRsvp.style.display = 'none';
+        // Show Wedding, Hide Homecoming entirely
+        if (weddingBlock) weddingBlock.style.display = "block";
+        if (homecomingBlock) homecomingBlock.style.display = "none";
     } else if (eventType === 'homecoming') {
-        if (weddingCard) weddingCard.style.display = 'none';
-        if (weddingVenue) weddingVenue.style.display = 'none';
-        if (brideRsvp) brideRsvp.style.display = 'none';
+        // Show Homecoming, Hide Wedding entirely
+        if (weddingBlock) weddingBlock.style.display = "none";
+        if (homecomingBlock) homecomingBlock.style.display = "block";
+    } else {
+        // Show Both Events
+        if (weddingBlock) weddingBlock.style.display = "block";
+        if (homecomingBlock) homecomingBlock.style.display = "block";
     }
 
-    // 2. Preloader Hide Logic
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        setTimeout(() => {
-            preloader.classList.add('hide');
-        }, 800);
+    // 4. Dynamic RSVP Contact Info (Groom vs Bride Side)
+    if (side === 'bride') {
+        if (brideContacts) brideContacts.style.display = "block";
+        if (groomContacts) groomContacts.style.display = "none";
+    } else {
+        // Default to Groom side
+        if (groomContacts) groomContacts.style.display = "block";
+        if (brideContacts) brideContacts.style.display = "none";
     }
 
-    // 3. Hero Background Image Auto Slider Logic
-    // .hero-slide සහ .bg-slide යන දෙකටම support කරන පරිදි සකසා ඇත
-    const heroSlides = document.querySelectorAll('.hero-slide, .bg-slide');
-    let currentHeroSlide = 0;
+    // 5. Form Submit Handler for RSVP
+    const rsvpForm = document.getElementById("rsvpForm");
+    if (rsvpForm) {
+        rsvpForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            
+            const attendance = document.querySelector('input[name="attendance"]:checked').value;
+            const guestCount = document.getElementById("guestCount").value;
+            const currentGuestName = guestNameParam ? decodeURIComponent(guestNameParam) : "Guest";
 
-    if (heroSlides.length > 0) {
-        setInterval(() => {
-            heroSlides[currentHeroSlide].classList.remove('active');
-            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-            heroSlides[currentHeroSlide].classList.add('active');
-        }, 3500);
-    }
+            // Target Phone Number based on Side
+            const targetPhone = (side === 'bride') ? "94713372644" : "94752540988";
 
-    // 4. Countdown Timer Logic (Wedding & Homecoming)
-    const weddingDate = new Date("August 26, 2026 10:13:00").getTime();
-    const homecomingDate = new Date("August 30, 2026 09:00:00").getTime();
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-
-        // 1. Wedding Countdown
-        const weddingDist = weddingDate - now;
-        if (weddingDist > 0) {
-            const days = Math.floor(weddingDist / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((weddingDist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((weddingDist % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((weddingDist % (1000 * 60)) / 1000);
-
-            const daysW = document.getElementById('days-wedding');
-            const hoursW = document.getElementById('hours-wedding');
-            const minutesW = document.getElementById('minutes-wedding');
-            const secondsW = document.getElementById('seconds-wedding');
-
-            if (daysW) daysW.innerText = days < 10 ? '0' + days : days;
-            if (hoursW) hoursW.innerText = hours < 10 ? '0' + hours : hours;
-            if (minutesW) minutesW.innerText = minutes < 10 ? '0' + minutes : minutes;
-            if (secondsW) secondsW.innerText = seconds < 10 ? '0' + seconds : seconds;
-        }
-
-        // 2. Homecoming Countdown
-        const homecomingDist = homecomingDate - now;
-        if (homecomingDist > 0) {
-            const days = Math.floor(homecomingDist / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((homecomingDist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((homecomingDist % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((homecomingDist % (1000 * 60)) / 1000);
-
-            const daysH = document.getElementById('days-homecoming');
-            const hoursH = document.getElementById('hours-homecoming');
-            const minutesH = document.getElementById('minutes-homecoming');
-            const secondsH = document.getElementById('seconds-homecoming');
-
-            if (daysH) daysH.innerText = days < 10 ? '0' + days : days;
-            if (hoursH) hoursH.innerText = hours < 10 ? '0' + hours : hours;
-            if (minutesH) minutesH.innerText = minutes < 10 ? '0' + minutes : minutes;
-            if (secondsH) secondsH.innerText = seconds < 10 ? '0' + seconds : seconds;
-        }
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-});
-document.addEventListener("DOMContentLoaded", () => {
-    const petalsContainer = document.querySelector('.petals-container');
-
-    if (petalsContainer) {
-        function createPetal() {
-            const petal = document.createElement('div');
-            petal.classList.add('petal');
-
-            const size = Math.random() * 12 + 10; 
-            petal.style.width = `${size}px`;
-            petal.style.height = `${size * 1.3}px`;
-
-            petal.style.left = `${Math.random() * 100}vw`;
-
-            // වැටෙන වේගය අඩු කිරීමට duration එක තත්පර 8 - 14 අතරට වැඩි කර ඇත
-            const duration = Math.random() * 6 + 8;
-            petal.style.animationDuration = `${duration}s`;
-
-            petalsContainer.appendChild(petal);
-
-            setTimeout(() => {
-                petal.remove();
-            }, duration * 1000);
-        }
-
-        // පෙති වැටෙන පරතරය තත්පර 0.25 (250ms) ලෙස තබා ඇත
-        setInterval(createPetal, 250);
-    }
-});
-document.addEventListener("DOMContentLoaded", () => {
-    const bgMusic = document.getElementById("bgMusic");
-    const musicBtn = document.getElementById("musicBtn");
-
-    if (bgMusic) {
-        bgMusic.volume = 0.6; // Volume 60%
-
-        // Audio Context initialization to bypass strict autoplay policy
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        let audioCtx;
-
-        const unlockAndPlay = () => {
-            if (!audioCtx) {
-                audioCtx = new AudioContext();
+            let message = `Hello! RSVP Confirmation from *${currentGuestName}*:\n\n`;
+            if (attendance === 'Attending') {
+                message += `Status: ✅ We Will Attend\nNumber of Guests: ${guestCount}`;
+            } else {
+                message += `Status: ❌ Cannot Attend`;
             }
 
-            // Resume audio context if suspended
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-
-            // Play the music
-            bgMusic.play().then(() => {
-                if (musicBtn) {
-                    musicBtn.textContent = "🎵 Pause Music";
-                }
-                // Once played successfully, remove all Global listeners
-                removeAllListeners();
-            }).catch(e => {
-                console.log("Play failed, waiting for valid gesture:", e);
-            });
-        };
-
-        const removeAllListeners = () => {
-            window.removeEventListener("touchstart", unlockAndPlay);
-            window.removeEventListener("touchend", unlockAndPlay);
-            window.removeEventListener("click", unlockAndPlay);
-            window.removeEventListener("scroll", unlockAndPlay);
-        };
-
-        // Screen එකේ කොහේ touch/click/scroll කළත් play වීමට:
-        window.addEventListener("touchstart", unlockAndPlay, { passive: true });
-        window.addEventListener("touchend", unlockAndPlay, { passive: true });
-        window.addEventListener("click", unlockAndPlay);
-        window.addEventListener("scroll", unlockAndPlay, { passive: true });
-
-        // Button Click Event (Play / Pause toggle)
-        if (musicBtn) {
-            musicBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // Global tap handler එකත් එක්ක ගැටීම වැළැක්වීමට
-                
-                if (bgMusic.paused) {
-                    bgMusic.play();
-                    musicBtn.textContent = "🎵 Pause Music";
-                } else {
-                    bgMusic.pause();
-                    musicBtn.textContent = "🎵 Play Music";
-                }
-            });
-        }
+            const waUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, "_blank");
+        });
     }
 });
-// Function to toggle guest count field visibility
+
+// Toggle Guest Count Display
 function toggleGuestCount(willAttend) {
     const guestCountBox = document.getElementById('guestCountBox');
     if (guestCountBox) {
