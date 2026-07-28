@@ -6,32 +6,38 @@
     <title>Wedding Invitation | Chathurni & Ashen</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Parisienne&family=Great+Vibes&display=swap" rel="stylesheet">
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <!-- Gwendolyn Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&display=swap" rel="stylesheet">
-
 <!-- Gabriela Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabriela&display=swap" rel="stylesheet">
-
 <!-- Cinzel Decorative Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
-
-<!-- Italianno Google Font (Designed by Robert Leuschke) -->
+<!-- Italianno Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+
+<style>
+    @font-face {
+        font-family: 'BJCree';
+        src: url('assets/fonts/BJCree.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+</style>
 </head>
 <body>
 
 <!-- Preloader -->
 <div id="preloader">
-    <div class="loader-monogram" style="font-family: 'Gwendolyn', cursive !important;">A ❤️ S</div>
+    <div class="loader-monogram">A ❤️ S</div>
     <div class="loader-line"></div>
     <p class="loader-text" data-en="Loading Invitation..." data-si="ආරාධනා පත්‍රය ලෝඩ් වෙමින් පවතී...">Loading Invitation...</p>
 </div>
@@ -62,7 +68,7 @@
 
     <!-- Photo එක මැදින් Ashen & Sanchala -->
     <div class="monogram-container">
-        <div class="monogram" style="font-family: 'Gwendolyn', cursive !important;">Ashen & Sanchala</div>
+        <div class="monogram">Ashen & Sanchala</div>
     </div>
 
     <!-- Space Holder -->
@@ -82,7 +88,7 @@
             <p class="parents-names">MR. S.D.S.S. WIJETHILAKA & MRS. S.D.R. RANDENIYA</p>
             <h1 class="couple-name" style="font-family: 'Gwendolyn', cursive !important; font-size: 52px !important; font-weight: 700 !important;">Ashen Anuradha</h1>
 
-          <!-- 3. Invitation Message Section Below -->
+          <!-- 3. Invitation Message Section Below (With Good Spacing & Gabriela Font) -->
             <div style="margin-top: 45px; margin-bottom: 30px; text-align: center;">
                 
                 <!-- WE ARE GETTING MARRIED -->
@@ -127,15 +133,15 @@
     <section id="eventSection" class="event-section">
         <!-- Wedding Card -->
         <div id="weddingCard" class="event-card">
-            <h2 class="card-title" data-en="Wedding Ceremony" data-si="මංගල උත්සවය" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 28px !important;">Wedding Ceremony</h2>
+            <h2 class="card-title" data-en="Wedding Ceremony" data-si="මංගල උත්සවය" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important;">Wedding Ceremony</h2>
             <p class="event-date">26 August 2026</p>
-            <p style="margin-bottom: 12px;"><strong>Poruwa Ceremony:</strong> 10:13 AM</p>
-            <p style="margin-top: 12px;"><strong>Venue:</strong> Sevonlak Hotel, Maradagahamula</p>
+            <p><strong>Poruwa Ceremony:</strong> 10:13 AM</p>
+            <p><strong>Venue:</strong> Sevonlak Hotel, Maradagahamula</p>
         </div>
 
         <!-- Homecoming Card -->
         <div id="homecomingCard" class="event-card">
-            <h2 class="card-title" data-en="Homecoming Ceremony" data-si="දෙවෙනි ගමන" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 28px !important;">Homecoming Ceremony</h2>
+            <h2 class="card-title" data-en="Homecoming Ceremony" data-si="දෙවෙනි ගමන" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important;">Homecoming Ceremony</h2>
             <p class="event-date">30 August 2026</p>
             <p><strong>Venue:</strong> Samara Banquet Hall, Yakkala</p>
         </div>
@@ -143,7 +149,7 @@
 
     <!-- Calendar Section -->
     <section class="calendar-section">
-      <h3 style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 28px !important;">August 2026</h3>
+      <h3 style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important;">August 2026</h3>
         <div class="calendar-header">
             <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
         </div>
@@ -162,11 +168,11 @@
 
     <!-- Venue Location Section -->
     <section class="venue-section">
-        <h2 class="section-title" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 28px !important;">Venue Location</h2>
+        <h2 class="section-title" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important;">Venue Location</h2>
         
         <div id="weddingVenueSection" class="venue-card">
-            <h3 data-en="Wedding Venue" data-si="මංගල ශාලාව" style="margin-bottom: 15px;">Wedding Venue</h3>
-            <p style="margin-top: 15px; margin-bottom: 15px;">Sevonlak Hotel, Maradagahamula</p>
+            <h3 data-en="Wedding Venue" data-si="මංගල ශාලාව">Wedding Venue</h3>
+            <p>Sevonlak Hotel, Maradagahamula</p>
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.8227653733075!2d79.99268397587841!3d7.14643351631557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2e40ece722871%3A0x18bc043031e6f712!2sSevonlak%20Hotel!5e0!3m2!1sen!2slk!4v1714000000000!5m2!1sen!2slk" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
@@ -174,8 +180,8 @@
         </div>
 
         <div id="homecomingVenueSection" class="venue-card">
-            <h3 data-en="Homecoming Venue" data-si="දෙවෙනි ගමන ශාලාව" style="margin-bottom: 15px;">Homecoming Venue</h3>
-            <p style="margin-top: 15px; margin-bottom: 15px;">Samara Banquet Hall, Yakkala</p>
+            <h3 data-en="Homecoming Venue" data-si="දෙවෙනි ගමන ශාලාව">Homecoming Venue</h3>
+            <p>Samara Banquet Hall, Yakkala</p>
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15837.226308753625!2d80.00926364702428!3d7.0904163480910825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fc128d237b73%3A0x712fefd2e7559fef!2sSamara%20Banquet%20Hall!5e0!3m2!1sen!2slk!4v1780498221789!5m2!1sen!2slk" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
@@ -185,18 +191,18 @@
 
   <!-- RSVP Section -->
     <section class="rsvp-section">
-        <h2 class="section-title" data-en="RSVP Contact Details" data-si="සම්බන්ධ කර ගැනීමට" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 28px !important;">RSVP Contact Details</h2>
+        <h2 class="section-title" data-en="RSVP Contact Details" data-si="සම්බන්ධ කර ගැනීමට" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important;">RSVP Contact Details</h2>
         <div class="rsvp-card">
             <div id="brideRsvp" class="rsvp-group">
-                <p style="font-family: 'Italianno', cursive !important; font-size: 28px !important; margin: 10px 0;"><strong>Bride (Sanchala):</strong> <a href="tel:0713372644" style="font-family: 'Italianno', cursive !important; font-size: 28px !important;">0713372644</a></p>
-                <p style="font-family: 'Italianno', cursive !important; font-size: 28px !important; margin: 10px 0;"><strong>Bride's Mother (Mrs.Dhammika):</strong> <a href="tel:0753380738" style="font-family: 'Italianno', cursive !important; font-size: 28px !important;">0753380738</a></p>
+                <p style="font-family: 'BJCree', sans-serif !important; font-size: 28px !important; margin: 8px 0;"><strong>Bride (Sanchala):</strong> <a href="tel:0713372644" style="font-family: 'BJCree', sans-serif !important; font-size: 28px !important;">0713372644</a></p>
+                <p style="font-family: 'BJCree', sans-serif !important; font-size: 28px !important; margin: 8px 0;"><strong>Bride's Mother (Mrs.Dhammika):</strong> <a href="tel:0753380738" style="font-family: 'BJCree', sans-serif !important; font-size: 28px !important;">0753380738</a></p>
             </div>
             <div id="groomRsvp" class="rsvp-group">
-                <p style="font-family: 'Italianno', cursive !important; font-size: 28px !important; margin: 10px 0;"><strong>Groom (Ashen):</strong> <a href="tel:0752540988" style="font-family: 'Italianno', cursive !important; font-size: 28px !important;">0752540988</a></p>
-                <p style="font-family: 'Italianno', cursive !important; font-size: 28px !important; margin: 10px 0;"><strong>Groom's Father (Mr.Santha):</strong> <a href="tel:0717648030" style="font-family: 'Italianno', cursive !important; font-size: 28px !important;">0717648030</a></p>
+                <p style="font-family: 'BJCree', sans-serif !important; font-size: 28px !important; margin: 8px 0;"><strong>Groom (Ashen):</strong> <a href="tel:0752540988" style="font-family: 'BJCree', sans-serif !important; font-size: 28px !important;">0752540988</a></p>
+                <p style="font-family: 'BJCree', sans-serif !important; font-size: 28px !important; margin: 8px 0;"><strong>Groom's Father (Mr.Santha):</strong> <a href="tel:0717648030" style="font-family: 'BJCree', sans-serif !important; font-size: 28px !important;">0717648030</a></p>
             </div>
 
-            <div style="margin-top: 25px;">
+            <div style="margin-top: 20px;">
                 <button class="btn" id="attendBtn" data-en="We Will Attend" data-si="පැමිණෙමු">We Will Attend</button>
                 <button class="btn secondary" id="rejectBtn" data-en="Cannot Attend" data-si="පැමිණීමට නොහැක">Cannot Attend</button>
             </div>
@@ -206,12 +212,16 @@
 
 </div> 
 
+<section style="padding: 20px; background: #fbf9f4; text-align:center;">
+    <button id="downloadPdfBtn" class="btn" style="background: #2c3e50;" data-en="📥 Download Invitation PDF" data-si="📥 PDF එක ඩවුන්ලෝඩ් කරන්න">📥 Download Invitation PDF</button>
+</section>
+
 <footer>
-    <h2 style="font-family: 'Gwendolyn', cursive !important; font-size: 48px !important; font-weight: 700 !important; margin-bottom: 5px;">A ❤️ S</h2>
+    <h2>A ❤️ S</h2>
     <p>26 August 2026</p>
     <p style="margin-bottom: 15px;" data-en="Thank You For Celebrating With Us" data-si="අප හා එක්වීම ගැන ස්තූතියි">Thank You For Celebrating With Us</p>
     <div class="developer-credit">
-        Designed by ❤️Sanchala Jayarathne
+        Designed with ❤️ by <span style="color: #d4af37; font-weight: 500;">Sanchala Jayarathne</span>
     </div>
 </footer>
 
