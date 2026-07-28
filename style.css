@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -894,4 +895,20 @@ h2::after,
     color: #d4af37 !important;
     margin: 6px 0 !important;
     display: block !important;
+}
+/* Gwendolyn Font for Couple Names */
+.couple-name {
+    font-family: 'Gwendolyn', cursive !important;
+    font-size: 52px !important;
+    font-weight: 700 !important;
+    color: #8b6b23 !important;
+    line-height: 1.2 !important;
+    text-transform: none !important;
+}
+
+.and {
+    font-family: 'Gwendolyn', cursive !important;
+    font-size: 38px !important;
+    font-weight: 700 !important;
+    color: #d4af37 !important;
 }
