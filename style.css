@@ -120,11 +120,15 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Hero Base Section */
+/* Hero Section */
+/* --- Hero Section - START --- */
 .hero {
     position: relative;
     width: 100%;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #faf8f5;
 }
 
 /* Background Photo Slider */
@@ -133,7 +137,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 40vh; /* Photo එකේ උස */
+    height: 70vh;
     z-index: 1;
     overflow: hidden;
 }
@@ -146,7 +150,6 @@ body {
     height: 100%;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
 }
@@ -155,32 +158,48 @@ body {
     opacity: 1;
 }
 
-/* Photo එකෙන් පහළට Spacer එක */
+/* Photo එක මැදින් Ashen & Sanchala (තවත් උඩට ගෙන ඇත) */
+.monogram-container {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+}
+
+.monogram {
+    font-size: 62px;
+    font-family: 'Alex Brush', 'Parisienne', cursive;
+    color: #ffffff;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85);
+}
+/* Photo Space Height */
 .photo-spacer {
-    height: 40vh;
+    height: calc(60vh + 100px) !important; /* මුල් උසට තවත් අඟල් 2ක (~100px) පරතරයක් එකතු කර ඇත */
     width: 100%;
     position: relative;
     z-index: 2;
-    pointer-events: none;
 }
 
-/* Wording ටික Photo එකෙන් පහළට තල්ලු කරන කොටස */
+/* Photo එකෙන් පහළ Wording - Box සහ Border ඉවත් කර ඇත */
 .hero-content-below {
     position: relative;
     z-index: 5;
     width: 100%;
     max-width: 800px;
-    margin: 20px auto 0 auto; /* Photo එකෙන් පහළට Space එකක් තබයි */
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 10px 20px 20px 20px;
+    padding: 20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 10px;
-}
 }
 
 /* "Dear Guest" Text Style */
