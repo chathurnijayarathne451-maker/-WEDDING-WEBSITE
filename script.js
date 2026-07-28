@@ -269,3 +269,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+
+    // 1. URL එකෙන් Parameters ලබා ගැනීම
+    const urlParams = new URLSearchParams(window.location.search);
+    const side = urlParams.get('side'); // 'groom' හෝ 'bride' කියන අගය ලැබේ
+
+    // 2. Elements Target කිරීම
+    const container = document.getElementById("couple-details-container");
+    const brideWrapper = document.getElementById("bride-wrapper");
+    const groomWrapper = document.getElementById("groom-wrapper");
+    const andSign = document.getElementById("and-sign");
+
+    // 3. Side එක Groom නම්: Groom උඩට සහ Bride යටට මාරු කිරීම
+    if (side === 'groom' && container && brideWrapper && groomWrapper && andSign) {
+        
+        // පැහැදිලි පිළිවෙල: Groom -> & -> Bride
+        container.insertBefore(groomWrapper, andSign); // Groom එක & එකට උඩින් තබයි
+        container.appendChild(andSign);                // & එක මැදට
+        container.appendChild(brideWrapper);            // Bride එක යටටම
+        
+    } 
+    // 4. Side එක Bride නම් (හෝ Default): Bride උඩට සහ Groom යටට මාරු කිරීම
+    else if (side === 'bride' && container && brideWrapper && groomWrapper && andSign) {
+        
+        // පැහැදිලි පිළිවෙල: Bride -> & -> Groom
+        container.insertBefore(brideWrapper, andSign); // Bride එක & එකට උඩින් තබයි
+        container.appendChild(andSign);                // & එක මැදට
+        container.appendChild(groomWrapper);            // Groom එක යටටම
+        
+    }
+
+});
