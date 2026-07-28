@@ -272,57 +272,48 @@
         </div>
     </section>
 
-  <!-- RSVP Section -->
-<section class="rsvp-section" style="margin: 40px auto; padding: 0 15px; max-width: 480px;">
-    <!-- Rose Gold Border Container -->
-    <div class="rsvp-card" style="border: 2px solid #b76e79; border-radius: 18px; padding: 30px 20px; background: #ffffff; box-shadow: 0 6px 20px rgba(183, 110, 121, 0.15); text-align: center;">
+  <!-- RSVP SECTION -->
+<section class="rsvp-section" id="rsvpSection" style="margin: 30px auto; max-width: 500px; padding: 20px;">
+    <div class="rsvp-card" style="background: #ffffff; border: 1.5px solid #d4af37; border-radius: 15px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center;">
         
-        <h2 data-en="RSVP" data-si="ආරාධනා පිළිගැනීම" style="font-family: 'Cinzel Decorative', cursive !important; color: #b76e79; font-size: 24px; margin-bottom: 20px; font-weight: bold;">RSVP</h2>
+        <h2 style="color: #b76e79; font-family: 'Playfair Display', serif; margin-bottom: 20px;">RSVP Confirmation</h2>
         
-        <form id="rsvpForm" style="display: flex; flex-direction: column; gap: 18px;">
-            
-            <!-- Guest Name Input -->
-            <div class="form-group" style="text-align: left;">
-                <label data-en="Your Name" data-si="ඔබගේ නම" style="font-size: 14px; font-weight: 600; color: #555; display: block; margin-bottom: 5px;">Your Name</label>
-                <input type="text" id="guestName" required placeholder="Enter your full name" style="width: 100%; padding: 12px; border: 1.5px solid #d8a7b1; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box;">
-            </div>
-
-            <!-- Attendance Choice (Radio Buttons) -->
-            <div class="form-group" style="text-align: left;">
-                <label data-en="Will you attend?" data-si="ඔබ සහභාගී වන්නේද?" style="font-size: 14px; font-weight: 600; color: #555; display: block; margin-bottom: 8px;">Will you attend?</label>
-                <div style="display: flex; gap: 12px;">
-                    <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 5px; border: 1.5px solid #d8a7b1; border-radius: 8px; cursor: pointer; background: #fff5f6;">
-                        <input type="radio" name="attendance" value="Attending" id="willAttend" checked onchange="toggleGuestCount(true)" style="accent-color: #b76e79;">
-                        <span data-en="We Will Attend" data-si="සහභාගී වේ" style="font-size: 13px; font-weight: 600; color: #2e7d32;">We Will Attend</span>
-                    </label>
-                    <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 5px; border: 1.5px solid #d8a7b1; border-radius: 8px; cursor: pointer; background: #fff5f6;">
-                        <input type="radio" name="attendance" value="Not Attending" id="cannotAttend" onchange="toggleGuestCount(false)" style="accent-color: #b76e79;">
-                        <span data-en="Cannot Attend" data-si="සහභාගී විය නොහැක" style="font-size: 13px; font-weight: 600; color: #c62828;">Cannot Attend</span>
-                    </label>
+        <form id="rsvpForm">
+            <!-- Attendance Selection -->
+            <div style="margin-bottom: 20px; text-align: left;">
+                <label style="font-weight: bold; display: block; margin-bottom: 8px;">Will you attend?</label>
+                <div style="display: flex; gap: 15px;">
+                    <label><input type="radio" name="attendance" value="Attending" checked onclick="toggleGuestInput(true)"> We Will Attend</label>
+                    <label><input type="radio" name="attendance" value="Not Attending" onclick="toggleGuestInput(false)"> Sorry, Cannot Attend</label>
                 </div>
             </div>
 
             <!-- Number of Guests Input -->
-            <div class="form-group" id="guestCountBox" style="text-align: left;">
-                <label data-en="Number of Guests Attending" data-si="සහභාගී වන පුද්ගලයින් ගණන" style="font-size: 14px; font-weight: 600; color: #555; display: block; margin-bottom: 5px;">Number of Guests Attending</label>
-                <input type="number" id="guestCount" min="1" max="10" value="1" style="width: 100%; padding: 12px; border: 1.5px solid #d8a7b1; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box;">
+            <div id="guestCountBox" style="margin-bottom: 20px; text-align: left;">
+                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Number of Guests Attending:</label>
+                <input type="number" id="guestCount" min="1" max="10" value="1" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
             </div>
 
-            <!-- Contact Information Display (Bridal / Groom Side numbers) -->
-            <div class="contact-numbers-container" style="margin-top: 10px; font-size: 13px; color: #666;">
-                <div class="groom-contact" style="display: block;">
-                    <p>📞 Groom RSVP: <strong>+94 77 123 4567</strong></p>
-                    <p>📞 Groom's Father RSVP: <strong>+94 77 987 6543</strong></p>
+            <!-- 📞 DYNAMIC CONTACT DETAILS (Sender අනුව මාරු වේ) -->
+            <div class="contact-details-box" style="background: #faf6f0; border: 1px dashed #d4af37; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: left;">
+                
+                <!-- Groom Side Contacts -->
+                <div id="groomContacts" style="display: none;">
+                    <p style="margin: 5px 0; font-size: 15px;">📞 <strong>Groom (Ashen):</strong> <a href="tel:0752540988" style="color: #25D366; text-decoration: none; font-weight: bold;">0752540988</a></p>
+                    <p style="margin: 5px 0; font-size: 15px;">📞 <strong>Groom's Father (Mr. Santha):</strong> <a href="tel:0717648030" style="color: #25D366; text-decoration: none; font-weight: bold;">0717648030</a></p>
                 </div>
-                <div class="bride-contact" style="display: none;">
-                    <p>📞 Bride RSVP: <strong>+94 77 234 5678</strong></p>
-                    <p>📞 Bride's Mother RSVP: <strong>+94 77 876 5432</strong></p>
+
+                <!-- Bride Side Contacts -->
+                <div id="brideContacts" style="display: none;">
+                    <p style="margin: 5px 0; font-size: 15px;">📞 <strong>Bride (Sanchala):</strong> <a href="tel:0713372644" style="color: #25D366; text-decoration: none; font-weight: bold;">0713372644</a></p>
+                    <p style="margin: 5px 0; font-size: 15px;">📞 <strong>Bride's Mother (Mrs. Dhammika):</strong> <a href="tel:0753380738" style="color: #25D366; text-decoration: none; font-weight: bold;">0753380738</a></p>
                 </div>
+
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" style="background: linear-gradient(135deg, #b76e79, #d8a7b1); color: #ffffff; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 10px rgba(183, 110, 121, 0.3);">
-                <span data-en="Send RSVP via WhatsApp" data-si="WhatsApp හරහා යොමු කරන්න">Send RSVP via WhatsApp</span>
+            <button type="submit" style="background-color: #25D366; color: white; border: none; padding: 12px 25px; border-radius: 25px; font-weight: bold; cursor: pointer; width: 100%; font-size: 16px;">
+                Send RSVP via WhatsApp 💬
             </button>
         </form>
 
