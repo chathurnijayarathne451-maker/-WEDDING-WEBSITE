@@ -334,3 +334,96 @@
 <script src="script.js"></script>
 </body>
 </html>
+<!-- MAIN BANNER & PERSONALIZED GREETING -->
+<section class="hero-section" style="text-align: center; padding: 40px 20px;">
+    <h1 style="font-family: 'Cinzel Decorative', serif; color: #b76e79; font-size: 28px; margin-bottom: 10px;">
+        WE ARE GETTING MARRIED
+    </h1>
+    
+    <!-- Personalized Guest Greeting Target -->
+    <h3 id="personalizedGuestName" style="font-family: 'Playfair Display', serif; color: #d4af37; font-size: 22px; margin-bottom: 15px;">
+        Dear Guest
+    </h3>
+    
+    <p style="font-size: 15px; color: #555; line-height: 1.6;">
+        We warmly invite you to celebrate our special day.
+    </p>
+</section>
+
+<!-- DYNAMIC WEDDING DETAILS SECTION -->
+<div class="event-details-container">
+    <!-- Wedding Day Block -->
+    <div id="weddingDetailsBlock" class="wedding-block" style="margin: 20px 0; text-align: center;">
+        <h2 style="color: #b76e79;">Wedding Ceremony</h2>
+        <p><strong>Date:</strong> <span id="weddingDate">12th October 2026</span></p>
+        <!-- Wedding Countdown -->
+        <div id="weddingCountdownBlock" style="margin: 10px 0; font-weight: bold; color: #d4af37;">
+            <p>Wedding Countdown: <span id="weddingTimer">--d --h --m --s</span></p>
+        </div>
+    </div>
+
+    <!-- Homecoming Block -->
+    <div id="homecomingDetailsBlock" class="homecoming-block" style="margin: 20px 0; text-align: center;">
+        <h2 style="color: #b76e79;">Homecoming Reception</h2>
+        <p><strong>Date:</strong> <span id="homecomingDate">16th October 2026</span></p>
+        <!-- Homecoming Countdown -->
+        <div id="homecomingCountdownBlock" style="margin: 10px 0; font-weight: bold; color: #d4af37;">
+            <p>Homecoming Countdown: <span id="homecomingTimer">--d --h --m --s</span></p>
+        </div>
+    </div>
+</div>
+
+<!-- UPGRADED RSVP SECTION -->
+<section class="rsvp-section" style="margin: 40px auto; padding: 0 15px; max-width: 480px;">
+    <div class="rsvp-card" style="border: 2px solid #b76e79; border-radius: 18px; padding: 30px 20px; background: #ffffff; box-shadow: 0 6px 20px rgba(183, 110, 121, 0.15); text-align: center;">
+        
+        <h2 style="font-family: 'Cinzel Decorative', cursive !important; color: #b76e79; font-size: 24px; margin-bottom: 20px; font-weight: bold;">RSVP</h2>
+        
+        <form id="rsvpForm" style="display: flex; flex-direction: column; gap: 18px;">
+            
+            <!-- Attendance Choice -->
+            <div class="form-group" style="text-align: left;">
+                <label style="font-size: 14px; font-weight: 600; color: #555; display: block; margin-bottom: 8px;">Will you attend?</label>
+                <div style="display: flex; gap: 12px;">
+                    <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 5px; border: 1.5px solid #d8a7b1; border-radius: 8px; cursor: pointer; background: #fff5f6;">
+                        <input type="radio" name="attendance" value="Attending" id="willAttend" checked onchange="toggleGuestCount(true)" style="accent-color: #b76e79;">
+                        <span style="font-size: 13px; font-weight: 600; color: #2e7d32;">We Will Attend</span>
+                    </label>
+                    <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 5px; border: 1.5px solid #d8a7b1; border-radius: 8px; cursor: pointer; background: #fff5f6;">
+                        <input type="radio" name="attendance" value="Not Attending" id="cannotAttend" onchange="toggleGuestCount(false)" style="accent-color: #b76e79;">
+                        <span style="font-size: 13px; font-weight: 600; color: #c62828;">Cannot Attend</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Number of Guests Input -->
+            <div class="form-group" id="guestCountBox" style="text-align: left;">
+                <label style="font-size: 14px; font-weight: 600; color: #555; display: block; margin-bottom: 5px;">Number of Guests Attending</label>
+                <input type="number" id="guestCount" min="1" max="10" value="1" style="width: 100%; padding: 12px; border: 1.5px solid #d8a7b1; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box;">
+            </div>
+
+            <!-- Side-Specific Dynamic Contact Details -->
+            <div class="contact-numbers-container" style="margin-top: 10px; font-size: 14px; color: #444; line-height: 1.8; text-align: left; background: #fff8f9; padding: 12px; border-radius: 8px; border: 1px dashed #d8a7b1;">
+                
+                <!-- Groom Contact Info -->
+                <div id="groomContacts" style="display: none;">
+                    <p>📞 <strong>Groom (Ashen):</strong> <a href="tel:0752540988" style="color: #b76e79; text-decoration: none;">0752540988</a></p>
+                    <p>📞 <strong>Groom's Father (Mr.Santha):</strong> <a href="tel:0717648030" style="color: #b76e79; text-decoration: none;">0717648030</a></p>
+                </div>
+
+                <!-- Bride Contact Info -->
+                <div id="brideContacts" style="display: none;">
+                    <p>📞 <strong>Bride (Sanchala):</strong> <a href="tel:0713372644" style="color: #b76e79; text-decoration: none;">0713372644</a></p>
+                    <p>📞 <strong>Bride's Mother (Mrs.Dhammika):</strong> <a href="tel:0753380738" style="color: #b76e79; text-decoration: none;">0753380738</a></p>
+                </div>
+
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" style="background: linear-gradient(135deg, #b76e79, #d8a7b1); color: #ffffff; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 10px rgba(183, 110, 121, 0.3);">
+                Send RSVP via WhatsApp
+            </button>
+        </form>
+
+    </div>
+</section>
