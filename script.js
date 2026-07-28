@@ -113,50 +113,60 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bgMusic");
     const musicBtn = document.getElementById("musicBtn");
-    
-    let isMusicPlaying = false;
 
     if (bgMusic) {
-        bgMusic.volume = 0.5; // අවශ්‍ය නම් Sound අඩුවෙන් පටන් ගැනීමට
+        bgMusic.volume = 0.6; // Volume 60%
 
-        // Function: Force Play Music
-        const forcePlayMusic = () => {
-            if (!isMusicPlaying) {
-                bgMusic.play().then(() => {
-                    isMusicPlaying = true;
-                    if (musicBtn) {
-                        // සිංහල/English භාෂාවට ගැලපෙන ලෙස
-                        const isSinhala = document.body.classList.contains('si-active');
-                        musicBtn.textContent = isSinhala ? "🎵 මියුසික් නවත්වන්න" : "🎵 Pause Music";
-                    }
-                }).catch(err => console.log("Autoplay Prevented by Browser:", err));
+        // Audio Context initialization to bypass strict autoplay policy
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx;
+
+        const unlockAndPlay = () => {
+            if (!audioCtx) {
+                audioCtx = new AudioContext();
             }
+
+            // Resume audio context if suspended
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            // Play the music
+            bgMusic.play().then(() => {
+                if (musicBtn) {
+                    musicBtn.textContent = "🎵 Pause Music";
+                }
+                // Once played successfully, remove all Global listeners
+                removeAllListeners();
+            }).catch(e => {
+                console.log("Play failed, waiting for valid gesture:", e);
+            });
         };
 
-        // 1. User ඕනෑම තැනක Touch, Click, Scroll හෝ Move කල වහාම Play වේ.
-        const interactionEvents = ["click", "touchstart", "scroll", "mousemove"];
-        
-        interactionEvents.forEach(event => {
-            document.addEventListener(event, () => {
-                forcePlayMusic();
-            }, { once: true }); // එක පාරක් පමණක් ක්‍රියාත්මක වීමට
-        });
+        const removeAllListeners = () => {
+            window.removeEventListener("touchstart", unlockAndPlay);
+            window.removeEventListener("touchend", unlockAndPlay);
+            window.removeEventListener("click", unlockAndPlay);
+            window.removeEventListener("scroll", unlockAndPlay);
+        };
 
-        // 2. Play/Pause Button Control
+        // Screen එකේ කොහේ touch/click/scroll කළත් play වීමට:
+        window.addEventListener("touchstart", unlockAndPlay, { passive: true });
+        window.addEventListener("touchend", unlockAndPlay, { passive: true });
+        window.addEventListener("click", unlockAndPlay);
+        window.addEventListener("scroll", unlockAndPlay, { passive: true });
+
+        // Button Click Event (Play / Pause toggle)
         if (musicBtn) {
             musicBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // Screen Click එක අවහිර නොකිරීමට
+                e.stopPropagation(); // Global tap handler එකත් එක්ක ගැටීම වැළැක්වීමට
                 
-                const isSinhala = document.body.classList.contains('si-active');
-
                 if (bgMusic.paused) {
                     bgMusic.play();
-                    isMusicPlaying = true;
-                    musicBtn.textContent = isSinhala ? "🎵 මියුසික් නවත්වන්න" : "🎵 Pause Music";
+                    musicBtn.textContent = "🎵 Pause Music";
                 } else {
                     bgMusic.pause();
-                    isMusicPlaying = false;
-                    musicBtn.textContent = isSinhala ? "🎵 මියුසික් දාන්න" : "🎵 Play Music";
+                    musicBtn.textContent = "🎵 Play Music";
                 }
             });
         }
