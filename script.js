@@ -203,37 +203,49 @@ document.addEventListener("DOMContentLoaded", () => {
         setInterval(createPetal, 150);
     }
 });
-// Countdown Timer Function
-function startCountdown(targetDateString, elementId) {
-    const timerElement = document.getElementById(elementId);
-    if (!timerElement) return;
+// Dynamic Multi-Box Countdown Function
+function setupCountdown(weddingDateStr, homecomingDateStr) {
+    const weddingTarget = new Date(weddingDateStr).getTime();
+    const homecomingTarget = new Date(homecomingDateStr).getTime();
 
-    const targetDate = new Date(targetDateString).getTime();
-
-    function updateTimer() {
+    function update() {
         const now = new Date().getTime();
-        const difference = targetDate - now;
 
-        if (difference < 0) {
-            timerElement.textContent = "The Special Day Has Arrived!";
-            return;
+        // 1. Wedding Countdown Calculation
+        const weddingDiff = weddingTarget - now;
+        if (weddingDiff > 0) {
+            document.getElementById("days-wedding").innerText = String(Math.floor(weddingDiff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById("hours-wedding").innerText = String(Math.floor((weddingDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            document.getElementById("minutes-wedding").innerText = String(Math.floor((weddingDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            document.getElementById("seconds-wedding").innerText = String(Math.floor((weddingDiff % (1000 * 60)) / 1000)).padStart(2, '0');
+        } else {
+            document.getElementById("days-wedding").innerText = "00";
+            document.getElementById("hours-wedding").innerText = "00";
+            document.getElementById("minutes-wedding").innerText = "00";
+            document.getElementById("seconds-wedding").innerText = "00";
         }
 
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        timerElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        // 2. Homecoming Countdown Calculation
+        const homecomingDiff = homecomingTarget - now;
+        if (homecomingDiff > 0) {
+            document.getElementById("days-homecoming").innerText = String(Math.floor(homecomingDiff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById("hours-homecoming").innerText = String(Math.floor((homecomingDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            document.getElementById("minutes-homecoming").innerText = String(Math.floor((homecomingDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            document.getElementById("seconds-homecoming").innerText = String(Math.floor((homecomingDiff % (1000 * 60)) / 1000)).padStart(2, '0');
+        } else {
+            document.getElementById("days-homecoming").innerText = "00";
+            document.getElementById("hours-homecoming").innerText = "00";
+            document.getElementById("minutes-homecoming").innerText = "00";
+            document.getElementById("seconds-homecoming").innerText = "00";
+        }
     }
 
-    updateTimer(); // ප්‍රථමයෙන් එක පාරක් Run කිරීමට
-    setInterval(updateTimer, 1000); // තත්පරයෙන් තත්පරය Update කිරීමට
+    update(); // Run immediately
+    setInterval(update, 1000); // Update every second
 }
 
-// Page එක Load වූ පසු Countdown Start කිරීම
+// Start Countdown when page loads
 document.addEventListener("DOMContentLoaded", () => {
-    // දිනය සහ වේලාව සකසන්න: "YYYY-MM-DDTHH:MM:SS"
-    startCountdown("2026-10-12T08:30:00", "weddingTimer");
-    startCountdown("2026-10-16T10:00:00", "homecomingTimer");
+    // කරුණාකර ඔබේ නිවැරදි Wedding & Homecoming දිනය සහ වේලාව යොදන්න (YYYY-MM-DDTHH:MM:SS)
+    setupCountdown("2026-10-12T08:30:00", "2026-10-16T10:00:00");
 });
