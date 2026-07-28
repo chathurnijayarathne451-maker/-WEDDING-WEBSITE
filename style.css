@@ -865,3 +865,33 @@ h2::after,
     line-height: 1.5 !important;
     margin-bottom: 15px !important;
 }
+/* ==========================================
+   GWENDOLYN FONT INTEGRATION FOR COUPLE NAMES
+   ========================================== */
+
+/* Google Fonts Import - Gwendolyn Font */
+@import url('https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&family=Playfair+Display:ital,wght@1,500&display=swap');
+
+/* Chathurni Sanchala & Ashen Anuradha Font Styling */
+.couple-name {
+    font-family: 'Gwendolyn', cursive !important;
+    font-size: 50px !important; /* Gwendolyn Font එක පැහැදිලිව පෙනීමට Size එක 50px කර ඇත */
+    font-weight: 700 !important;
+    color: #8b6b23 !important; /* Gold Tone */
+    letter-spacing: 0px !important;
+    line-height: 1.2 !important;
+    margin-top: 5px !important;
+    margin-bottom: 12px !important;
+    text-transform: none !important;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+/* '&' Symbol Styling */
+.and {
+    font-family: 'Gwendolyn', cursive !important;
+    font-size: 38px !important;
+    font-weight: 700 !important;
+    color: #d4af37 !important;
+    margin: 6px 0 !important;
+    display: block !important;
+}
