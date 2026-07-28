@@ -193,3 +193,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+// Function to toggle guest count field visibility
+function toggleGuestCount(willAttend) {
+    const guestCountBox = document.getElementById('guestCountBox');
+    if (guestCountBox) {
+        guestCountBox.style.display = willAttend ? 'block' : 'none';
+    }
+}
