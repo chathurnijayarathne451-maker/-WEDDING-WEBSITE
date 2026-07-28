@@ -26,7 +26,7 @@ setTimeout(() => {
 
 
 // ==========================================
-// 2. DYNAMIC INVITATION & RSVP LOGIC
+// DYNAMIC INVITATION & RSVP LOGIC
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -37,22 +37,50 @@ document.addEventListener("DOMContentLoaded", () => {
     const guestNameParam = urlParams.get('guest'); // Guest Name (e.g., "Mr. Jayarathne & Family")
 
     // DOM Element References
-    const guestGreeting = document.getElementById("personalizedGuestName");
+    // (HTML එකේ ඇති id="guest-greeting" සහ id="personalizedGuestName" දෙකටම support කරයි)
+    const guestGreeting = document.getElementById("guest-greeting") || document.getElementById("personalizedGuestName");
+    
     const weddingBlock = document.getElementById("weddingDetailsBlock");
     const homecomingBlock = document.getElementById("homecomingDetailsBlock");
+    
     const groomContacts = document.getElementById("groomContacts");
     const brideContacts = document.getElementById("brideContacts");
 
+    // Couple & Parents Order Containers
+    const container = document.getElementById("couple-details-container");
+    const brideWrapper = document.getElementById("bride-wrapper");
+    const groomWrapper = document.getElementById("groom-wrapper");
+    const andSign = document.getElementById("and-sign");
+
+    // ------------------------------------------
     // 2. Personalized Guest Greeting
+    // ------------------------------------------
     if (guestGreeting) {
         if (guestNameParam) {
             guestGreeting.textContent = `Dear ${decodeURIComponent(guestNameParam)}`;
         } else {
-            guestGreeting.textContent = "Dear Valued Guest";
+            guestGreeting.textContent = "Dear Guest";
         }
     }
 
-    // 3. Dynamic Event Display (Hide / Show Wedding vs Homecoming)
+    // ------------------------------------------
+    // 3. Parents Order Swap Logic (Groom Side vs Bride Side)
+    // ------------------------------------------
+    if (side === 'groom' && container && brideWrapper && groomWrapper && andSign) {
+        // Groom Side -> Groom Details උඩටත්, Bride Details යටටත් මාරු කරයි
+        container.insertBefore(groomWrapper, andSign);
+        container.appendChild(andSign);
+        container.appendChild(brideWrapper);
+    } else if (side === 'bride' && container && brideWrapper && groomWrapper && andSign) {
+        // Bride Side -> Bride Details උඩටත්, Groom Details යටටත් මාරu කරයි
+        container.insertBefore(brideWrapper, andSign);
+        container.appendChild(andSign);
+        container.appendChild(groomWrapper);
+    }
+
+    // ------------------------------------------
+    // 4. Dynamic Event Display (Hide / Show Wedding vs Homecoming)
+    // ------------------------------------------
     if (eventType === 'wedding') {
         if (weddingBlock) weddingBlock.style.display = "block";
         if (homecomingBlock) homecomingBlock.style.display = "none";
@@ -60,22 +88,26 @@ document.addEventListener("DOMContentLoaded", () => {
         if (weddingBlock) weddingBlock.style.display = "none";
         if (homecomingBlock) homecomingBlock.style.display = "block";
     } else {
-        // Show Both Events (Default)
+        // Show Both Events (Default / Both)
         if (weddingBlock) weddingBlock.style.display = "block";
         if (homecomingBlock) homecomingBlock.style.display = "block";
     }
 
-    // 4. Dynamic RSVP Contacts Display (Groom vs Bride)
+    // ------------------------------------------
+    // 5. Dynamic RSVP Contacts Display (Groom vs Bride)
+    // ------------------------------------------
     if (side === 'bride') {
         if (brideContacts) brideContacts.style.display = "block";
         if (groomContacts) groomContacts.style.display = "none";
     } else {
-        // Default to Groom
+        // Default to Groom Side
         if (groomContacts) groomContacts.style.display = "block";
         if (brideContacts) brideContacts.style.display = "none";
     }
 
-    // 5. RSVP Form Submission via WhatsApp
+    // ------------------------------------------
+    // 6. RSVP Form Submission via WhatsApp
+    // ------------------------------------------
     const rsvpForm = document.getElementById("rsvpForm");
     if (rsvpForm) {
         rsvpForm.addEventListener("submit", (e) => {
@@ -84,16 +116,20 @@ document.addEventListener("DOMContentLoaded", () => {
             const attendanceRadio = document.querySelector('input[name="attendance"]:checked');
             const attendance = attendanceRadio ? attendanceRadio.value : 'Attending';
             const guestCount = document.getElementById("guestCount") ? document.getElementById("guestCount").value : '1';
-            const currentGuestName = guestNameParam ? decodeURIComponent(guestNameParam) : "Guest";
+            const currentGuestName = guestNameParam ? decodeURIComponent(guestNameParam) : "Valued Guest";
 
             // Target WhatsApp Number based on side
+            // Bride -> 0713372644 (94713372644) | Groom -> 0752540988 (94752540988)
             const targetPhone = (side === 'bride') ? "94713372644" : "94752540988";
 
             let message = `Hello! RSVP Confirmation from *${currentGuestName}*:\n\n`;
             if (attendance === 'Attending') {
-                message += `Status: ✅ We Will Attend\nNumber of Guests: ${guestCount}`;
+                message += `Status: ✅ We Will Attend\n`;
+                message += `Number of Guests: ${guestCount}\n\n`;
+                message += `Looking forward to celebrating with you! ✨`;
             } else {
-                message += `Status: ❌ Cannot Attend`;
+                message += `Status: ❌ Sorry, Cannot Attend\n\n`;
+                message += `Sending our warmest wishes and blessings! 🌹`;
             }
 
             const waUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
