@@ -203,3 +203,37 @@ document.addEventListener("DOMContentLoaded", () => {
         setInterval(createPetal, 150);
     }
 });
+// Countdown Timer Function
+function startCountdown(targetDateString, elementId) {
+    const timerElement = document.getElementById(elementId);
+    if (!timerElement) return;
+
+    const targetDate = new Date(targetDateString).getTime();
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference < 0) {
+            timerElement.textContent = "The Special Day Has Arrived!";
+            return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        timerElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateTimer(); // ප්‍රථමයෙන් එක පාරක් Run කිරීමට
+    setInterval(updateTimer, 1000); // තත්පරයෙන් තත්පරය Update කිරීමට
+}
+
+// Page එක Load වූ පසු Countdown Start කිරීම
+document.addEventListener("DOMContentLoaded", () => {
+    // දිනය සහ වේලාව සකසන්න: "YYYY-MM-DDTHH:MM:SS"
+    startCountdown("2026-10-12T08:30:00", "weddingTimer");
+    startCountdown("2026-10-16T10:00:00", "homecomingTimer");
+});
