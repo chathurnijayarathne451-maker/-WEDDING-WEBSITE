@@ -81,16 +81,47 @@ document.addEventListener("DOMContentLoaded", () => {
     // ------------------------------------------
     // 4. Dynamic Event Display (Hide / Show Wedding vs Homecoming)
     // ------------------------------------------
+    
+    // 1. Primary Container Elements target කිරීම
+    const weddingBlock = document.getElementById("weddingDetailsBlock");
+    const homecomingBlock = document.getElementById("homecomingDetailsBlock");
+
+    // 2. Class/Card Elements target කිරීම
+    const weddingElements = document.querySelectorAll('.wedding-card, .wedding-section, .wedding-venue, .wedding-ceremony');
+    const homecomingElements = document.querySelectorAll('.homecoming-card, .homecoming-section, .homecoming-venue, .homecoming-ceremony');
+
     if (eventType === 'wedding') {
+        
+        // 💍 WEDDING ONLY
         if (weddingBlock) weddingBlock.style.display = "block";
         if (homecomingBlock) homecomingBlock.style.display = "none";
+
+        weddingElements.forEach(el => el.style.display = "block");
+        homecomingElements.forEach(el => el.style.display = "none");
+
+        // UI එකේ ඇති Homecoming Cards/Sections සොයාගෙන Hide කිරීම
+        hideElementsByText(['homecoming', 'දෙවෙනි ගමන']);
+
     } else if (eventType === 'homecoming') {
+        
+        // 🥂 HOMECOMING ONLY
         if (weddingBlock) weddingBlock.style.display = "none";
         if (homecomingBlock) homecomingBlock.style.display = "block";
+
+        weddingElements.forEach(el => el.style.display = "none");
+        homecomingElements.forEach(el => el.style.display = "block");
+
+        // UI එකේ ඇති Wedding Cards/Sections සොයාගෙන Hide කිරීම
+        hideElementsByText(['wedding', 'මංගල']);
+
     } else {
-        // Show Both Events (Default / Both)
+        
+        // 🎉 BOTH EVENTS (Show All)
         if (weddingBlock) weddingBlock.style.display = "block";
         if (homecomingBlock) homecomingBlock.style.display = "block";
+
+        weddingElements.forEach(el => el.style.display = "block");
+        homecomingElements.forEach(el => el.style.display = "block");
     }
 
     // ------------------------------------------
@@ -390,3 +421,20 @@ document.addEventListener("DOMContentLoaded", () => {
         
     }
 });
+// Keyword පදනම් කරගෙන Events Hide කිරීම සඳහා Helper Function එක
+function hideElementsByText(keywords) {
+    // Event එකට අදාළ Card සහ Content Containers
+    const allCards = document.querySelectorAll('.event-card, .countdown-card, .location-card, .ceremony-card, .details-card, section');
+    
+    allCards.forEach(card => {
+        const cardText = card.innerText ? card.innerText.toLowerCase() : '';
+        const hasKeyword = keywords.some(key => cardText.includes(key.toLowerCase()));
+        
+        // Parents Details, Couple Names, Calendar වැනි දේවල් Hide නොවීමට ආරක්ෂා කරයි
+        const isEssential = card.querySelector('.couple-name') || card.querySelector('.parents-names') || card.querySelector('.calendar-container') || card.id === 'couple-details-container';
+
+        if (hasKeyword && !isEssential) {
+            card.style.display = 'none';
+        }
+    });
+}
