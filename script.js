@@ -109,3 +109,65 @@ function toggleGuestCount(willAttend) {
         guestCountBox.style.display = willAttend ? 'block' : 'none';
     }
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const bgMusic = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+
+    if (bgMusic) {
+        bgMusic.volume = 0.6; // Volume 60%
+
+        // Audio Context initialization to bypass strict autoplay policy
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx;
+
+        const unlockAndPlay = () => {
+            if (!audioCtx) {
+                audioCtx = new AudioContext();
+            }
+
+            // Resume audio context if suspended
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            // Play the music
+            bgMusic.play().then(() => {
+                if (musicBtn) {
+                    musicBtn.textContent = "🎵 Pause Music";
+                }
+                // Once played successfully, remove all Global listeners
+                removeAllListeners();
+            }).catch(e => {
+                console.log("Play failed, waiting for valid gesture:", e);
+            });
+        };
+
+        const removeAllListeners = () => {
+            window.removeEventListener("touchstart", unlockAndPlay);
+            window.removeEventListener("touchend", unlockAndPlay);
+            window.removeEventListener("click", unlockAndPlay);
+            window.removeEventListener("scroll", unlockAndPlay);
+        };
+
+        // Screen එකේ කොහේ touch/click/scroll කළත් play වීමට:
+        window.addEventListener("touchstart", unlockAndPlay, { passive: true });
+        window.addEventListener("touchend", unlockAndPlay, { passive: true });
+        window.addEventListener("click", unlockAndPlay);
+        window.addEventListener("scroll", unlockAndPlay, { passive: true });
+
+        // Button Click Event (Play / Pause toggle)
+        if (musicBtn) {
+            musicBtn.addEventListener("click", (e) => {
+                e.stopPropagation(); // Global tap handler එකත් එක්ක ගැටීම වැළැක්වීමට
+                
+                if (bgMusic.paused) {
+                    bgMusic.play();
+                    musicBtn.textContent = "🎵 Pause Music";
+                } else {
+                    bgMusic.pause();
+                    musicBtn.textContent = "🎵 Play Music";
+                }
+            });
+        }
+    }
+});
