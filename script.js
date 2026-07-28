@@ -150,3 +150,26 @@ document.addEventListener("DOMContentLoaded", () => {
     // Countdown Setup
     setupCountdown("2026-08-26T00:00:00", "2026-08-30T00:00:00");
 });
+// Background Hero Slideshow Function
+function initHeroSlideshow() {
+    const slides = document.querySelectorAll(".hero-slide");
+    if (slides.length === 0) return;
+
+    let currentSlide = 0;
+
+    setInterval(() => {
+        // වත්මන් Photo එක Hide කිරීම
+        slides[currentSlide].classList.remove("active");
+
+        // ඊළඟ Photo එකට යාම (අවසන් Photo එකෙන් පසු නැවත පළමු Photo එකට)
+        currentSlide = (currentSlide + 1) % slides.length;
+
+        // ඊළඟ Photo එක Display කිරීම
+        slides[currentSlide].classList.add("active");
+    }, 4000); // තත්පර 4කට වරක් Photo එක මාරු වේ
+}
+
+// Page එක Load වූ පසු Slideshow එක Start කිරීම
+document.addEventListener("DOMContentLoaded", () => {
+    initHeroSlideshow();
+});
