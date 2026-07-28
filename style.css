@@ -179,7 +179,7 @@ body {
 }
 /* Photo Space Height */
 .photo-spacer {
-    height: calc(60vh + 192px) !important; /* මුල් උසට තවත් අඟල් 2ක (~192px) පරතරයක් එකතු කර ඇත */
+    height: calc(60vh + 100px) !important; /* මුල් උසට තවත් අඟල් 2ක (~100px) පරතරයක් එකතු කර ඇත */
     width: 100%;
     position: relative;
     z-index: 2;
