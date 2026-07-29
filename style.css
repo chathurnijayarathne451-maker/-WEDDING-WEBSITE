@@ -13,7 +13,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Preloader - START */
+/* Preloader */
 #preloader {
     position: fixed;
     top: 0;
@@ -33,8 +33,8 @@ body {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    display: none !important;
 }
-/* Preloader - END */
 
 .loader-monogram {
     font-family: 'Cinzel', serif;
@@ -77,7 +77,7 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Hero Main Container */
+/* Hero Section */
 .hero {
     position: relative;
     width: 100%;
@@ -87,11 +87,10 @@ body {
     background: #fbf9f4;
 }
 
-/* Background Photo Slider */
 .hero-bg-slider {
     position: relative;
     width: 100%;
-    height: 520px !important; /* Photo Slider එකේ උස */
+    height: 500px !important;
     overflow: hidden;
 }
 
@@ -111,10 +110,9 @@ body {
     opacity: 1;
 }
 
-/* Photo එක මැද පෙනෙන Monogram එක */
 .monogram-container {
     position: absolute;
-    top: 260px; /* Slider එකේ හරියටම මැදට ගෙන ඇත */
+    top: 250px;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
@@ -124,12 +122,12 @@ body {
 
 .monogram {
     font-size: 58px;
+    font-family: 'Gwendolyn', cursive !important;
     color: #ffffff;
     font-weight: bold;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.85);
 }
 
-/* Photo එකෙන් පහළ Wording Section එක */
 .hero-content-below {
     position: relative;
     z-index: 5;
@@ -140,7 +138,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background: #fbf9f4; /* Photo එකෙන් පහළ කොටසට සුදු/ක්‍රීම් පැහැති background එකක් */
+    background: #fbf9f4;
 }
 
 #couple-details-container {
@@ -175,7 +173,7 @@ body {
 }
 
 .couple-name {
-    font-family: 'Gwendolyn', 'Great Vibes', cursive !important;
+    font-family: 'Gwendolyn', cursive !important;
     font-size: 48px !important;
     color: #1a1a1a;
     font-weight: 700;
@@ -207,7 +205,6 @@ body {
     margin-bottom: 15px;
 }
 
-/* Dear Guest Box Design */
 .guest-box {
     background: rgba(255, 255, 255, 0.7) !important;
     border: 2px solid #d4af37 !important;
@@ -252,314 +249,22 @@ body {
     box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
 }
 
-.countdown {
+/* Wedding Date Badge Section */
+.wedding-date-badge-section {
+    margin: 30px 0 10px 0;
+    text-align: center;
+}
+
+.date-badge-container {
     display: flex;
+    align-items: center;
     justify-content: center;
     gap: 10px;
 }
 
-.time-box {
-    width: 80px;
-    background: white;
-    border: 2px solid #d4af37;
-    border-radius: 12px;
-    padding: 10px;
-}
-
-.time-box span {
-    font-size: 24px;
-    font-weight: bold;
-    color: #d4af37;
-    display: block;
-}
-
-.time-box small { font-size: 10px; text-transform: uppercase; color: #666; }
-
-/* Cards & Sections */
-
-.event-card, .venue-card, .rsvp-card {
-    max-width: 600px;
-    margin: 0 auto 20px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    border: 1px solid #f0d98a;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-}
-
-.event-date { font-size: 18px; color: #d4af37; font-weight: 600; margin-bottom: 10px; }
-
-/* Calendar */
-
-.calendar-header, .calendar-grid {
-    
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    max-width: 400px;
-    margin: 0 auto;
-    gap: 5px;
-}
-
-.calendar-header div { font-weight: bold; color: #a69a80; font-size: 13px; }
-
-.calendar-grid .day {
-    height: 45px;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    font-size: 12px;
-    border: 1px solid #eee;
-}
-
-.calendar-grid .empty { background: transparent; border: none; }
-.calendar-grid .wedding { background: #d4af37; color: white; border: none; }
-.calendar-grid .homecoming { background: #0b2c6b; color: white; border: none; }
-
-/* Buttons & Map */
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #d4af37;
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    margin: 5px;
-    font-size: 13px;
-}
-
-.homecoming-btn { background: #0b2c6b; }
-.secondary { background: #888; }
-.map-container { border-radius: 10px; overflow: hidden; margin: 15px 0; }
-
-.rsvp-group { margin-bottom: 15px; }
-
-/* Footer */
-footer { background: #111; color: white; padding: 30px 20px; }
-footer h2 { color: #d4af37; font-family: 'Cinzel', serif; }
-.developer-credit { font-size: 11px; margin-top: 15px; color: #a69a80; }
-
-.custom-shape-divider-bottom {
-    position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg);
-}
-.custom-shape-divider-bottom svg { width: calc(150% + 1.3px); height: 50px; }
-
-.wedding-date-badge-section { padding-top: 40px; }
-.date-badge-container { display: flex; align-items: center; justify-content: center; gap: 10px; }
-.date-line-text { font-family: 'Cinzel', serif; font-size: 16px; color: #a69a80; border-top: 1px solid #d4af37; border-bottom: 1px solid #d4af37; }
-.date-number-highlight { font-family: 'Cinzel', serif; font-size: 40px; color: #d4af37; font-weight: bold; }
-
-/* All Middle Alignment Fix */
-.wedding-date-badge-section,
-.countdown-section,
-.event-section,
-.event-card,
-.calendar-section,
-.venue-section,
-.venue-card,
-.rsvp-section,
-.footer {
-    text-align: center !important;
-}
-
-/* Center elements inside cards and sections */
-.time-box,
-.calendar-header,
-.calendar-grid,
-.map-container {
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-/* Align buttons nicely in center */
-.btn, .scroll-btn, .ctrl-btn {
-    display: inline-block;
-    text-align: center;
-}
-
-/* ==========================================
-   ELEGANT SECTION STYLING (BOTTOM SECTION)
-   ========================================== */
-
-/* Clean Section Headings */
-h2 {
-    font-family: 'Cinzel', 'Playfair Display', serif;
-    font-size: 26px;
-    letter-spacing: 2px;
-    color: #4a3b32;
-    text-transform: uppercase;
-    margin-top: 35px;
-    margin-bottom: 20px;
-    position: relative;
-    display: inline-block;
-}
-
-h2::after {
-    content: '';
-    display: block;
-    width: 50%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #d4af37, transparent);
-    margin: 8px auto 0 auto;
-}
-
-/* Elegant Cards / Container Styling */
-.countdown-container, 
-.event-card, 
-.calendar-card, 
-.venue-card, 
-.rsvp-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle Gold Border */
-    border-radius: 16px;
-    padding: 25px 20px;
-    margin: 20px auto;
-    max-width: 500px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.event-card:hover, .venue-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
-}
-
-/* Countdown Timer Grid */
-.countdown-grid {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.countdown-box {
-    background: #faf7f2;
-    border: 1px solid #e8e0d5;
-    padding: 12px 15px;
-    border-radius: 12px;
-    min-width: 70px;
-}
-
-.countdown-value {
-    font-size: 24px;
-    font-weight: 700;
-    color: #8b6b47;
-    font-family: 'Cinzel', serif;
-}
-
-.countdown-label {
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #777;
-    margin-top: 4px;
-}
-
-/* Calendar Table Polish */
-.calendar-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.calendar-table th, .calendar-table td {
-    padding: 10px 5px;
-    text-align: center;
-    font-size: 14px;
-}
-
-.calendar-table td.highlight {
-    background: #d4af37;
-    color: #ffffff;
-    border-radius: 50%;
-    font-weight: bold;
-}
-
-/* Elegant Buttons (Maps, RSVP, PDF) */
-.btn-elegant, .rsvp-btn, .pdf-btn {
-    background: linear-gradient(135deg, #d4af37 0%, #aa820a 100%);
-    color: #ffffff !important;
-    padding: 12px 28px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    letter-spacing: 1px;
-    font-size: 14px;
-    display: inline-block;
-    border: none;
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-}
-
-.btn-elegant:hover, .rsvp-btn:hover, .pdf-btn:hover {
-    background: linear-gradient(135deg, #aa820a 0%, #8b6b47 100%);
-    box-shadow: 0 8px 20px rgba(170, 130, 10, 0.4);
-    transform: translateY(-2px);
-}
-
-/* Contact Numbers Styling */
-.contact-item {
-    font-size: 15px;
-    color: #4a3b32;
-    margin: 8px 0;
-}
-
-.contact-item strong {
-    color: #8b6b47;
-}
-
-/* Footer Center Alignment & Elegant Typography */
-footer {
-    text-align: center !important;
-    background: #111111;
-    color: #e5e5e5;
-    padding: 40px 20px;
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-footer h2 {
-    font-family: 'Parisienne', 'Alex Brush', cursive !important;
-    font-size: 38px !important;
-    color: #d4af37 !important;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-}
-
-footer p {
-    font-family: 'Cinzel', 'Playfair Display', serif;
-    font-size: 15px;
-    color: #cccccc;
-    margin: 6px 0;
-    text-align: center !important;
-}
-
-.developer-credit {
-    font-size: 13px;
-    color: #888888;
-    margin-top: 15px;
-    text-align: center !important;
-}
-
-/* Wedding Date Badge Size Increase */
-.wedding-date-badge-section {
-    margin: 25px 0;
-}
-
 .date-line-text {
     font-family: 'Cinzel', serif;
-    font-size: 22px !important; /* AUGUST සහ 2026 font size එක වැඩි කර ඇත */
+    font-size: 22px !important;
     letter-spacing: 3px;
     color: #8b6b47 !important;
     border-top: 1px solid #d4af37;
@@ -569,51 +274,45 @@ footer p {
 
 .date-number-highlight {
     font-family: 'Cinzel', serif;
-    font-size: 58px !important; /* '26' අංකයේ font size එක ලොකු කර ඇත */
+    font-size: 58px !important;
     color: #d4af37 !important;
     font-weight: bold;
     line-height: 1;
 }
 
-/* ==========================================
-   COUNTDOWN TIMER CUSTOMIZATION (UPDATED)
-   ========================================== */
-
-/* Heading Font Change */
-.countdown-section h2, 
-#countdown-title {
-    font-family: 'Cinzel', 'Playfair Display', serif !important;
-    letter-spacing: 2px !important;
+/* Countdown Section */
+.countdown-section {
+    text-align: center;
+    margin: 20px 0;
 }
 
-/* Container & Gap Fix */
-.countdown-container,
-.countdown-grid, 
-.countdown {
+.countdown-section h2 {
+    font-family: 'Cinzel', 'Playfair Display', serif !important;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #4a3b32;
+    margin-bottom: 15px;
+}
+
+.countdown-container {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 6px !important; /* Box අතර දුර ගොඩක් ලං කර ඇත */
-    margin-top: 15px !important;
+    gap: 10px !important;
 }
 
-/* Time Box Design & Size Fix */
-.countdown-box, 
 .time-box {
     background: #ffffff !important;
     border: 1px solid #d4af37 !important;
     border-radius: 12px !important;
-    padding: 8px 4px !important;
-    min-width: 58px !important; /* Box එක තවත් සංකීර්ණ ලෙස ලං වේ */
-    width: 60px !important;
+    padding: 10px 5px !important;
+    width: 65px !important;
     box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15) !important;
     text-align: center !important;
 }
 
-/* Number Font Styling */
-.countdown-value, 
 .time-box span {
-    font-family: 'Cinzel', serif !important; /* Numbers සඳහා Elegant Serif Font */
+    font-family: 'Cinzel', serif !important;
     font-size: 24px !important;
     font-weight: 700 !important;
     color: #8b6b23 !important;
@@ -621,8 +320,6 @@ footer p {
     display: block !important;
 }
 
-/* Label Font Styling (DAYS, HOURS, etc.) */
-.countdown-label, 
 .time-box small {
     font-family: 'Poppins', sans-serif !important;
     font-size: 9px !important;
@@ -632,7 +329,31 @@ footer p {
     margin-top: 3px !important;
     display: block !important;
 }
-/* Preloader Freeze Fix */
-#preloader.hide {
-    display: none !important;
+
+/* Footer */
+footer {
+    text-align: center !important;
+    background: #111111;
+    color: #e5e5e5;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+footer h2 {
+    font-family: 'Gwendolyn', cursive !important;
+    font-size: 38px !important;
+    color: #d4af37 !important;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: #cccccc;
+}
+
+.developer-credit {
+    font-size: 12px;
+    color: #888888;
+    margin-top: 15px;
 }
