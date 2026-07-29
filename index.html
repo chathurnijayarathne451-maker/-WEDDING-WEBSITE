@@ -3,270 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation | Chathurni & Ashen</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Parisienne&family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Wedding Invitation</title>
     
-<!-- Gwendolyn Google Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&display=swap" rel="stylesheet">
-
-<!-- Gabriela Google Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gabriela&display=swap" rel="stylesheet">
-
-<!-- Cinzel Decorative Google Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
-
-<!-- Italianno Google Font (Designed by Robert Leuschke) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
-<style>
-    @font-face {
-        font-family: 'BJCree';
-        src: url('assets/fonts/BJCree.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
-</style>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Gabriela&family=Gwendolyn:wght@700&family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Preloader -->
-<div id="preloader">
-    <div class="loader-monogram" style="font-family: 'Gwendolyn', cursive !important;">A ❤️ S</div>
-    <div class="loader-line"></div>
-    <p class="loader-text" data-en="Loading Invitation..." data-si="ආරාධනා පත්‍රය ලෝඩ් වෙමින් පවතී...">Loading Invitation...</p>
-</div>
-
-<div class="petals-container"></div>
-
-<!-- Top Fixed Controls -->
-<div class="top-controls">
-    <button id="langToggleBtn" class="ctrl-btn">🌐 සිංහල</button>
-    <button id="musicBtn" class="ctrl-btn">🎵 Pause Music</button>
-</div>
-
-<audio id="bgMusic" autoplay loop preload="auto">
-    <source src="assets/music/WeddingSong.mp3" type="audio/mpeg">
-</audio>
-
-<div id="invitationContent">
-
-<!-- Hero Section -->
-<div class="hero">
-    <!-- Photo Slider (උස 520px ලෙස සකසා ඇත) -->
-    <div class="hero-bg-slider">
-        <div class="hero-slide bg-slide active" style="background-image: url('assets/photo1.jpg');"></div>
-        <div class="hero-slide bg-slide" style="background-image: url('assets/photo3.jpg');"></div>
-        <div class="hero-slide bg-slide" style="background-image: url('assets/photo4.jpg');"></div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-monogram">A & S</div>
+        <div class="loader-line"></div>
+        <div class="loader-text">LOADING INVITATION...</div>
     </div>
 
-    <!-- Photo එක මැදින් Monogram Text එක -->
-    <div class="monogram-container">
-        <div class="monogram" style="font-family: 'Gwendolyn', cursive !important;">Ashen & Sanchala</div>
+    <!-- Top Controls -->
+    <div class="top-controls">
+        <button id="musicBtn" class="ctrl-btn">🎵 Play Music</button>
     </div>
 
-    <!-- Photo එකට පහළින් පටන් ගන්නා Wording Section එක -->
-    <div class="hero-content-below">
-        
-        <!-- ජෝඩුවගේ සහ දෙමාපියන්ගේ විස්තර -->
-        <div id="couple-details-container">
-            <!-- Bride Section -->
-            <div id="bride-wrapper" class="couple-section">
-                <p class="parents-title">DAUGHTER OF</p>
-                <p class="parents-names">MR. H.D.W. JAYARATHNE & MRS. G.D.D. PRIYADARSHANI</p>
-                <h1 class="couple-name">Chathurni Sanchala</h1>
-            </div>
+    <audio id="bgMusic" loop>
+        <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
 
-            <!-- '&' Sign -->
-            <p class="and" id="and-sign">&</p>
+    <div class="petals-container"></div>
 
-            <!-- Groom Section -->
-            <div id="groom-wrapper" class="couple-section">
-                <p class="parents-title">SON OF</p>
-                <p class="parents-names">MR. S.D.S.S. WIJETHILAKA & MRS. S.D.R. RANDENIYA</p>
-                <h1 class="couple-name">Ashen Anuradha</h1>
-            </div>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-bg-slider">
+            <div class="hero-slide bg-slide active" style="background-image: url('assets/photo1.jpg');"></div>
+            <div class="hero-slide bg-slide" style="background-image: url('assets/photo3.jpg');"></div>
+            <div class="hero-slide bg-slide" style="background-image: url('assets/photo4.jpg');"></div>
         </div>
 
-        <!-- පහළ Wording කොටස -->
-        <div class="bottom-wording-container">
-            <!-- WE ARE GETTING MARRIED -->
-            <p class="heading-getting-married">WE ARE GETTING MARRIED</p>
-
-            <!-- Dear Guest Box -->
-            <div class="guest-box">
-                <h3 class="guest-name-text" id="guestGreeting">Dear Guest</h3>
-            </div>
-
-            <!-- We Warmly Invite You... -->
-            <p class="invitation-text">We warmly invite you to celebrate our special day.</p>
-            
-            <!-- View Invitation Button -->
-            <div class="scroll-btn-container">
-                <a href="#eventSection" class="scroll-btn">View Invitation ↓</a>
-            </div>
+        <div class="monogram-container">
+            <div class="monogram">Ashen & Sanchala</div>
         </div>
 
-    </div>
-</div>
-</section>
+        <!-- Photo එකෙන් පහළ Wording Section එක -->
+        <div class="hero-content-below">
+            <div id="couple-details-container">
+                <!-- Bride Section -->
+                <div id="bride-wrapper" class="couple-section">
+                    <p class="parents-title">DAUGHTER OF</p>
+                    <p class="parents-names">MR. H.D.W. JAYARATHNE & MRS. G.D.D. PRIYADARSHANI</p>
+                    <h1 class="couple-name">Chathurni Sanchala</h1>
+                </div>
 
-    <!-- Date Badge Section -->
-    <section class="wedding-date-badge-section">
+                <!-- '&' Sign -->
+                <p class="and" id="and-sign">&</p>
+
+                <!-- Groom Section -->
+                <div id="groom-wrapper" class="couple-section">
+                    <p class="parents-title">SON OF</p>
+                    <p class="parents-names">MR. S.D.S.S. WIJETHILAKA & MRS. S.D.R. RANDENIYA</p>
+                    <h1 class="couple-name">Ashen Anuradha</h1>
+                </div>
+            </div>
+
+            <div class="bottom-wording-container">
+                <p class="heading-getting-married">WE ARE GETTING MARRIED</p>
+
+                <div class="guest-box">
+                    <h3 class="guest-name-text" id="guestGreeting">Dear Guest</h3>
+                </div>
+
+                <p class="invitation-text">We warmly invite you to celebrate our special day.</p>
+                
+                <div class="scroll-btn-container">
+                    <a href="#countdown-title" class="scroll-btn">View Invitation ↓</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wedding Date Badge Section -->
+    <div class="wedding-date-badge-section">
         <div class="date-badge-container">
-            <span class="date-line-text" data-en="AUGUST" data-si="අගෝස්තු">AUGUST</span>
+            <span class="date-line-text">AUGUST</span>
             <span class="date-number-highlight">26</span>
             <span class="date-line-text">2026</span>
         </div>
-    </section>
+    </div>
 
     <!-- Countdown Section -->
-    <section class="countdown-section">
-       <h2 data-en="Countdown To Our Big Day" data-si="අපගේ මංගල දිනයට තව" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important;">Countdown To Our Big Day</h2>
-        <div class="countdown">
-            <div class="time-box"><span id="days">00</span><small data-en="Days" data-si="දින">Days</small></div>
-            <div class="time-box"><span id="hours">00</span><small data-en="Hours" data-si="පැය">Hours</small></div>
-            <div class="time-box"><span id="minutes">00</span><small data-en="Minutes" data-si="මිනිත්තු">Minutes</small></div>
-            <div class="time-box"><span id="seconds">00</span><small data-en="Seconds" data-si="තත්පර">Seconds</small></div>
-        </div>
-    </section>
-
-    <!-- Dynamic Event Section -->
-    <section id="eventSection" class="event-section">
-        <!-- Wedding Card -->
-        <div id="weddingCard" class="event-card">
-            <h2 class="card-title" data-en="Wedding Ceremony" data-si="මංගල උත්සවය" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 28px !important;">Wedding Ceremony</h2>
-            <p class="event-date">26 August 2026</p>
-            <p style="margin-bottom: 12px;"><strong>Poruwa Ceremony:</strong> 10:13 AM</p>
-            <p style="margin-top: 12px;"><strong>Venue:</strong> Sevonlak Hotel, Maradagahamula</p>
-        </div>
-
-        <!-- Homecoming Card -->
-        <div id="homecomingCard" class="event-card">
-            <h2 class="card-title" data-en="Homecoming Ceremony" data-si="දෙවෙනි ගමන" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 28px !important;">Homecoming Ceremony</h2>
-            <p class="event-date">30 August 2026</p>
-            <p><strong>Venue:</strong> Samara Banquet Hall, Yakkala</p>
-        </div>
-    </section>
-
-   <!-- Calendar Section -->
-<section class="calendar-section">
-    <div class="calendar-card" style="border: 2px solid #d4af37; border-radius: 18px; padding: 25px 20px; max-width: 445px; margin: 0 auto; background: #ffffff; box-shadow: 0 4px 18px rgba(212, 175, 55, 0.15); text-align: center;">
-        <h3 style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 26px !important; margin-bottom: 20px !important; color: #d4af37;">August 2026</h3>
-        
-        <div class="calendar-header" style="display: grid; grid-template-columns: repeat(7, 1fr); font-weight: bold; margin-bottom: 15px; font-size: 16px; color: #444;">
-            <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
-        </div>
-
-        <div class="calendar-grid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; font-size: 16px;">
-            <div class="day empty"></div><div class="day empty"></div><div class="day empty"></div><div class="day empty"></div><div class="day empty"></div><div class="day empty"></div>
-            <div class="day" style="padding: 6px 0;">1</div>
-            <div class="day" style="padding: 6px 0;">2</div>
-            <div class="day" style="padding: 6px 0;">3</div>
-            <div class="day" style="padding: 6px 0;">4</div>
-            <div class="day" style="padding: 6px 0;">5</div>
-            <div class="day" style="padding: 6px 0;">6</div>
-            <div class="day" style="padding: 6px 0;">7</div>
-            <div class="day" style="padding: 6px 0;">8</div>
-            <div class="day" style="padding: 6px 0;">9</div>
-            <div class="day" style="padding: 6px 0;">10</div>
-            <div class="day" style="padding: 6px 0;">11</div>
-            <div class="day" style="padding: 6px 0;">12</div>
-            <div class="day" style="padding: 6px 0;">13</div>
-            <div class="day" style="padding: 6px 0;">14</div>
-            <div class="day" style="padding: 6px 0;">15</div>
-            <div class="day" style="padding: 6px 0;">16</div>
-            <div class="day" style="padding: 6px 0;">17</div>
-            <div class="day" style="padding: 6px 0;">18</div>
-            <div class="day" style="padding: 6px 0;">19</div>
-            <div class="day" style="padding: 6px 0;">20</div>
-            <div class="day" style="padding: 6px 0;">21</div>
-            <div class="day" style="padding: 6px 0;">22</div>
-            <div class="day" style="padding: 6px 0;">23</div>
-            <div class="day" style="padding: 6px 0;">24</div>
-            <div class="day" style="padding: 6px 0;">25</div>
-            
-            <!-- Wedding Date -->
-            <div class="day wedding" style="padding: 4px 0; background: #fff0f5; border-radius: 8px; border: 1.5px solid #d4af37; font-weight: bold;">
-                26<br><span class="emoji" style="font-size: 14px;">💍</span>
-            </div>
-            
-            <div class="day" style="padding: 6px 0;">27</div>
-            <div class="day" style="padding: 6px 0;">28</div>
-            <div class="day" style="padding: 6px 0;">29</div>
-            
-            <!-- Homecoming Date -->
-            <div class="day homecoming" style="padding: 4px 0; background: #f0f8ff; border-radius: 8px; border: 1.5px solid #d4af37; font-weight: bold;">
-                30<br><span class="emoji" style="font-size: 14px;">🏡</span>
-            </div>
-            
-            <div class="day" style="padding: 6px 0;">31</div>
+    <div class="countdown-section">
+        <h2 id="countdown-title">COUNTDOWN TO THE BIG DAY</h2>
+        <div class="countdown-container">
+            <div class="time-box"><span id="days">00</span><small>Days</small></div>
+            <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
+            <div class="time-box"><span id="minutes">00</span><small>Mins</small></div>
+            <div class="time-box"><span id="seconds">00</span><small>Secs</small></div>
         </div>
     </div>
-</section>
-    
-    <!-- Venue Location Section -->
-    <section class="venue-section">
-        <h2 class="section-title" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 28px !important;">Venue Location</h2>
-        
-        <div id="weddingVenueSection" class="venue-card">
-            <h3 data-en="Wedding Venue" data-si="මංගල ශාලාව" style="margin-bottom: 15px;">Wedding Venue</h3>
-            <p style="margin-top: 15px; margin-bottom: 15px;">Sevonlak Hotel, Maradagahamula</p>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.8227653733075!2d79.99268397587841!3d7.14643351631557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2e40ece722871%3A0x18bc043031e6f712!2sSevonlak%20Hotel!5e0!3m2!1sen!2slk!4v1714000000000!5m2!1sen!2slk" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <a href="https://maps.app.goo.gl/cSh3kg7k4joREvfmM" target="_blank" class="btn" data-en="Open Wedding Map" data-si="මැප් එක බලන්න">Open Wedding Map</a>
-        </div>
 
-        <div id="homecomingVenueSection" class="venue-card">
-            <h3 data-en="Homecoming Venue" data-si="දෙවෙනි ගමන ශාලාව" style="margin-bottom: 15px;">Homecoming Venue</h3>
-            <p style="margin-top: 15px; margin-bottom: 15px;">Samara Banquet Hall, Yakkala</p>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15837.226308753625!2d80.00926364702428!3d7.0904163480910825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fc128d237b73%3A0x712fefd2e7559fef!2sSamara%20Banquet%20Hall!5e0!3m2!1sen!2slk!4v1780498221789!5m2!1sen!2slk" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <a href="https://maps.app.goo.gl/cSh3kg7k4joREvfmM" target="_blank" class="btn homecoming-btn" data-en="Open Homecoming Map" data-si="මැප් එක බලන්න">Open Homecoming Map</a>
-        </div>
-    </section>
+    <footer>
+        <h2>Ashen & Sanchala</h2>
+        <p>Thank you for being a part of our special journey!</p>
+        <div class="developer-credit">Designed with ❤</div>
+    </footer>
 
-  <!-- RSVP Section -->
-<section class="rsvp-section">
-    <h2 class="section-title" data-en="RSVP" data-si="සම්බන්ධ කර ගැනීමට" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important;">RSVP</h2>
-    <div class="rsvp-card">
-        <div id="brideRsvp" class="rsvp-group">
-            <p style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important; margin: 8px 0;"><strong>Bride (Sanchala):</strong> <a href="tel:0713372644" style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important;">0713372644</a></p>
-            <p style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important; margin: 8px 0;"><strong>Bride's Mother (Mrs.Dhammika):</strong> <a href="tel:0753380738" style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important;">0753380738</a></p>
-        </div>
-        <div id="groomRsvp" class="rsvp-group">
-            <p style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important; margin: 8px 0;"><strong>Groom (Ashen):</strong> <a href="tel:0752540988" style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important;">0752540988</a></p>
-            <p style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important; margin: 8px 0;"><strong>Groom's Father (Mr.Santha):</strong> <a href="tel:0717648030" style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important;">0717648030</a></p>
-        </div>
-
-        <div style="margin-top: 20px;">
-            <button class="btn" id="attendBtn" data-en="We Will Attend" data-si="පැමිණෙමු">We Will Attend</button>
-            <button class="btn secondary" id="rejectBtn" data-en="Cannot Attend" data-si="පැමිණීමට නොහැක">Cannot Attend</button>
-        </div>
-        <p id="rsvpStatusMsg" style="margin-top: 15px; font-weight: 500; color: #27ae60;"></p>
-    </div>
-</section>
-
-</div> 
-
-<footer>
-    <h2 style="font-family: 'Gwendolyn', cursive !important; font-size: 48px !important; font-weight: 700 !important; margin-bottom: 5px;">A ❤️ S</h2>
-    <p>26 August 2026</p>
-    <p style="margin-bottom: 15px;" data-en="Thank You For Celebrating With Us" data-si="අප හා එක්වීම ගැන ස්තූතියි">Thank You For Celebrating With Us</p>
-    <div class="developer-credit">
-        Designed by ❤️ Sanchala Jayarathne
-    </div>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
