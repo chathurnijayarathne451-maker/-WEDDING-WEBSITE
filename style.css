@@ -77,65 +77,180 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-<!-- Hero Section -->
-<div class="hero">
-    <!-- Photo Slider (උස 520px ලෙස සකසා ඇත) -->
-    <div class="hero-bg-slider">
-        <div class="hero-slide bg-slide active" style="background-image: url('assets/photo1.jpg');"></div>
-        <div class="hero-slide bg-slide" style="background-image: url('assets/photo3.jpg');"></div>
-        <div class="hero-slide bg-slide" style="background-image: url('assets/photo4.jpg');"></div>
-    </div>
+/* Hero Main Container */
+.hero {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fbf9f4;
+}
 
-    <!-- Photo එක මැදින් Monogram Text එක -->
-    <div class="monogram-container">
-        <div class="monogram" style="font-family: 'Gwendolyn', cursive !important;">Ashen & Sanchala</div>
-    </div>
+/* Background Photo Slider */
+.hero-bg-slider {
+    position: relative;
+    width: 100%;
+    height: 520px !important; /* Photo Slider එකේ උස */
+    overflow: hidden;
+}
 
-    <!-- Photo එකට පහළින් පටන් ගන්නා Wording Section එක -->
-    <div class="hero-content-below">
-        
-        <!-- ජෝඩුවගේ සහ දෙමාපියන්ගේ විස්තර -->
-        <div id="couple-details-container">
-            <!-- Bride Section -->
-            <div id="bride-wrapper" class="couple-section">
-                <p class="parents-title">DAUGHTER OF</p>
-                <p class="parents-names">MR. H.D.W. JAYARATHNE & MRS. G.D.D. PRIYADARSHANI</p>
-                <h1 class="couple-name">Chathurni Sanchala</h1>
-            </div>
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
 
-            <!-- '&' Sign -->
-            <p class="and" id="and-sign">&</p>
+.hero-slide.active {
+    opacity: 1;
+}
 
-            <!-- Groom Section -->
-            <div id="groom-wrapper" class="couple-section">
-                <p class="parents-title">SON OF</p>
-                <p class="parents-names">MR. S.D.S.S. WIJETHILAKA & MRS. S.D.R. RANDENIYA</p>
-                <h1 class="couple-name">Ashen Anuradha</h1>
-            </div>
-        </div>
+/* Photo එක මැද පෙනෙන Monogram එක */
+.monogram-container {
+    position: absolute;
+    top: 260px; /* Slider එකේ හරියටම මැදට ගෙන ඇත */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+}
 
-        <!-- පහළ Wording කොටස -->
-        <div class="bottom-wording-container">
-            <!-- WE ARE GETTING MARRIED -->
-            <p class="heading-getting-married">WE ARE GETTING MARRIED</p>
+.monogram {
+    font-size: 58px;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.85);
+}
 
-            <!-- Dear Guest Box -->
-            <div class="guest-box">
-                <h3 class="guest-name-text" id="guestGreeting">Dear Guest</h3>
-            </div>
+/* Photo එකෙන් පහළ Wording Section එක */
+.hero-content-below {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 800px;
+    padding: 30px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #fbf9f4; /* Photo එකෙන් පහළ කොටසට සුදු/ක්‍රීම් පැහැති background එකක් */
+}
 
-            <!-- We Warmly Invite You... -->
-            <p class="invitation-text">We warmly invite you to celebrate our special day.</p>
-            
-            <!-- View Invitation Button -->
-            <div class="scroll-btn-container">
-                <a href="#eventSection" class="scroll-btn">View Invitation ↓</a>
-            </div>
-        </div>
+#couple-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 
-    </div>
-</div>
-/* --- Hero Section - END --- */
+.couple-section {
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.parents-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #888888;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.parents-names {
+    font-size: 15px;
+    color: #2c2c2c;
+    font-family: 'Cinzel', 'Playfair Display', serif;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 4px 0;
+}
+
+.couple-name {
+    font-family: 'Gwendolyn', 'Great Vibes', cursive !important;
+    font-size: 48px !important;
+    color: #1a1a1a;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+.and {
+    font-size: 32px;
+    color: #d4af37;
+    font-family: 'Gwendolyn', cursive !important;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.bottom-wording-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.heading-getting-married {
+    font-family: 'Gabriela', 'Cinzel', serif;
+    letter-spacing: 2px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #8b6b23;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+/* Dear Guest Box Design */
+.guest-box {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 2px solid #d4af37 !important;
+    backdrop-filter: blur(8px) !important;
+    border-radius: 15px !important;
+    padding: 12px 30px !important;
+    margin: 10px auto !important;
+    width: fit-content !important;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2) !important;
+}
+
+.guest-name-text {
+    font-size: 22px !important;
+    color: #b76e79 !important;
+    font-family: 'Playfair Display', serif !important;
+    font-weight: bold !important;
+    margin: 0 !important;
+}
+
+.invitation-text {
+    color: #555555;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    margin-top: 15px;
+}
+
+.scroll-btn-container {
+    margin-top: 20px;
+}
+
+.scroll-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #d4af37;
+    color: #ffffff !important;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Cinzel', serif;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
 
 .countdown {
     display: flex;
