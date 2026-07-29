@@ -77,165 +77,64 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Hero Section */
-/* --- Hero Section - START --- */
-.hero {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #faf8f5;
-}
+<!-- Hero Section -->
+<div class="hero">
+    <!-- Photo Slider (උස 520px ලෙස සකසා ඇත) -->
+    <div class="hero-bg-slider">
+        <div class="hero-slide bg-slide active" style="background-image: url('assets/photo1.jpg');"></div>
+        <div class="hero-slide bg-slide" style="background-image: url('assets/photo3.jpg');"></div>
+        <div class="hero-slide bg-slide" style="background-image: url('assets/photo4.jpg');"></div>
+    </div>
 
-/* Background Photo Slider */
-.hero-bg-slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 620px !important;
-    z-index: 1;
-    overflow: hidden;
-}
+    <!-- Photo එක මැදින් Monogram Text එක -->
+    <div class="monogram-container">
+        <div class="monogram" style="font-family: 'Gwendolyn', cursive !important;">Ashen & Sanchala</div>
+    </div>
 
-.hero-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-}
+    <!-- Photo එකට පහළින් පටන් ගන්නා Wording Section එක -->
+    <div class="hero-content-below">
+        
+        <!-- ජෝඩුවගේ සහ දෙමාපියන්ගේ විස්තර -->
+        <div id="couple-details-container">
+            <!-- Bride Section -->
+            <div id="bride-wrapper" class="couple-section">
+                <p class="parents-title">DAUGHTER OF</p>
+                <p class="parents-names">MR. H.D.W. JAYARATHNE & MRS. G.D.D. PRIYADARSHANI</p>
+                <h1 class="couple-name">Chathurni Sanchala</h1>
+            </div>
 
-.hero-slide.active {
-    opacity: 1;
-}
+            <!-- '&' Sign -->
+            <p class="and" id="and-sign">&</p>
 
-/* Photo එක මැදින් Ashen & Sanchala (තවත් උඩට ගෙන ඇත) */
-.monogram-container {
-    position: absolute;
-    top: 22%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    width: 100%;
-    text-align: center;
-}
+            <!-- Groom Section -->
+            <div id="groom-wrapper" class="couple-section">
+                <p class="parents-title">SON OF</p>
+                <p class="parents-names">MR. S.D.S.S. WIJETHILAKA & MRS. S.D.R. RANDENIYA</p>
+                <h1 class="couple-name">Ashen Anuradha</h1>
+            </div>
+        </div>
 
-.monogram {
-    font-size: 62px;
-    font-family: 'Alex Brush', 'Parisienne', cursive;
-    color: #ffffff;
-    font-weight: 400;
-    letter-spacing: 1px;
-    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85);
-}
-/* Photo Space Height */
-.photo-spacer {
-    height: 180px !important;
-    width: 100%;
-    position: relative;
-    z-index: 2;
-}
+        <!-- පහළ Wording කොටස -->
+        <div class="bottom-wording-container">
+            <!-- WE ARE GETTING MARRIED -->
+            <p class="heading-getting-married">WE ARE GETTING MARRIED</p>
 
-/* Photo එකෙන් පහළ Wording - Box සහ Border ඉවත් කර ඇත */
-.hero-content-below {
-    position: relative;
-    z-index: 5;
-    width: 100%;
-    max-width: 800px;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 20px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-}
+            <!-- Dear Guest Box -->
+            <div class="guest-box">
+                <h3 class="guest-name-text" id="guestGreeting">Dear Guest</h3>
+            </div>
 
-/* "Dear Guest" Text Style */
-.guest-name-text {
-    font-size: 22px;
-    color: #b8860b;
-    font-family: 'Cinzel', 'Playfair Display', serif;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
+            <!-- We Warmly Invite You... -->
+            <p class="invitation-text">We warmly invite you to celebrate our special day.</p>
+            
+            <!-- View Invitation Button -->
+            <div class="scroll-btn-container">
+                <a href="#eventSection" class="scroll-btn">View Invitation ↓</a>
+            </div>
+        </div>
 
-/* "DAUGHTER OF" & "SON OF" */
-.parents-title {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #888888;
-    font-family: 'Cinzel', serif;
-    font-weight: 600;
-    margin-top: 5px;
-}
-
-/* දෙමාපියන්ගේ නම් (Classic Elegant Font) */
-.parents-names {
-    font-size: 20px;
-    color: #2c2c2c;
-    font-family: 'Cinzel', 'Playfair Display', serif;
-    font-weight: 600;
-    line-height: 1.4;
-}
-
-/* මනාලිය සහ මනාලයාගේ නම් (Classic Script / Serif Font) */
-.couple-name {
-    font-family: 'Great Vibes', 'Playfair Display', serif;
-    font-size: 38px;
-    color: #1a1a1a;
-    font-weight: 500;
-    margin: 2px 0;
-}
-
-/* '&' සලකුණ */
-.and {
-    font-size: 26px;
-    color: #d4af37;
-    font-family: 'Cinzel', serif;
-    font-weight: bold;
-}
-
-/* "We Are Getting Married" */
-.heading-getting-married {
-    font-family: 'Cinzel', serif;
-    letter-spacing: 2px;
-    font-size: 20px;
-    color: #8b6b23;
-    margin-top: 15px;
-}
-
-.invitation-text {
-    color: #666;
-    font-size: 15px;
-    font-family: 'Cinzel', serif;
-}
-
-/* Scroll Button */
-.scroll-btn-container {
-    margin-top: 15px;
-}
-
-.scroll-btn {
-    display: inline-block;
-    padding: 10px 25px;
-    background: #d4af37;
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: 'Cinzel', serif;
-    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
-}
+    </div>
+</div>
 /* --- Hero Section - END --- */
 
 .countdown {
