@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
     const guestParam = urlParams.get('guest');
     const eventType = urlParams.get('event'); // 'wedding' or 'homecoming'
+    const side = urlParams.get('side'); // 'groom' or 'bride'
 
     // Guest Name Logic
     const guestGreetingElement = document.getElementById('guestGreeting');
@@ -32,6 +33,23 @@ document.addEventListener("DOMContentLoaded", () => {
         if (brideRsvp) brideRsvp.style.display = 'none';
     }
 
+    // --- Dynamic Name Order (Groom vs Bride Side Swap Logic) ---
+    const brideWrapper = document.getElementById("bride-wrapper");
+    const groomWrapper = document.getElementById("groom-wrapper");
+    const andSign = document.getElementById("and-sign");
+
+    if (brideWrapper && groomWrapper && andSign && andSign.parentNode) {
+        if (side === 'groom') {
+            // Groom පැත්ත නම්: Groom > & > Bride
+            andSign.parentNode.insertBefore(groomWrapper, andSign);
+            andSign.parentNode.insertBefore(brideWrapper, andSign.nextSibling);
+        } else {
+            // Bride පැත්ත නම්: Bride > & > Groom
+            andSign.parentNode.insertBefore(brideWrapper, andSign);
+            andSign.parentNode.insertBefore(groomWrapper, andSign.nextSibling);
+        }
+    }
+
     // 2. Preloader Hide Logic
     const preloader = document.getElementById('preloader');
     if (preloader) {
@@ -41,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 3. Hero Background Image Auto Slider Logic
-    // .hero-slide සහ .bg-slide යන දෙකටම support කරන පරිදි සකසා ඇත
     const heroSlides = document.querySelectorAll('.hero-slide, .bg-slide');
     let currentHeroSlide = 0;
 
@@ -81,6 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateCountdown, 1000);
     updateCountdown();
 });
+
+// Petals Falling Animation Logic
 document.addEventListener("DOMContentLoaded", () => {
     const petalsContainer = document.querySelector('.petals-container');
 
@@ -95,7 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             petal.style.left = `${Math.random() * 100}vw`;
 
-            // වැටෙන වේගය අඩු කිරීමට duration එක තත්පර 8 - 14 අතරට වැඩි කර ඇත
             const duration = Math.random() * 6 + 8;
             petal.style.animationDuration = `${duration}s`;
 
@@ -106,18 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }, duration * 1000);
         }
 
-        // පෙති වැටෙන පරතරය තත්පර 0.25 (250ms) ලෙස තබා ඇත
         setInterval(createPetal, 250);
     }
 });
+
+// Background Music Control Logic
 document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bgMusic");
     const musicBtn = document.getElementById("musicBtn");
 
     if (bgMusic) {
-        bgMusic.volume = 0.5; // Sound volume එක 50% ලෙස සැකසීම
+        bgMusic.volume = 0.5;
 
-        // 1. User Screen එක Click හෝ Touch කළ සැනින් Music Auto-play කිරීම
         const startAudioOnInteraction = () => {
             bgMusic.play().then(() => {
                 if (musicBtn) musicBtn.textContent = "🎵 Pause Music";
@@ -125,21 +143,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log("Autoplay blocked, waiting for click:", error);
             });
 
-            // එක පාරක් play වූ පසු event listeners අයින් කිරීම
             document.removeEventListener("click", startAudioOnInteraction);
             document.removeEventListener("touchstart", startAudioOnInteraction);
             document.removeEventListener("scroll", startAudioOnInteraction);
         };
 
-        // Window interaction events
         document.addEventListener("click", startAudioOnInteraction);
         document.addEventListener("touchstart", startAudioOnInteraction);
         document.addEventListener("scroll", startAudioOnInteraction);
 
-        // 2. Music Button (Play/Pause Toggle) Control එක
         if (musicBtn) {
             musicBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // Screen interaction event එකත් එක්ක clash වීම වැළැක්වීමට
+                e.stopPropagation();
                 if (bgMusic.paused) {
                     bgMusic.play();
                     musicBtn.textContent = "🎵 Pause Music";
