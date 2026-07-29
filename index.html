@@ -59,55 +59,63 @@
 <div id="invitationContent">
 
 <!-- Hero Section -->
-<section class="hero">
-   <!-- Background Photos -->
-        <div class="hero-bg-slider">
-            <div class="hero-slide bg-slide active" style="background-image: url('assets/photo1.jpg');"></div>
-            <div class="hero-slide bg-slide" style="background-image: url('assets/photo3.jpg');"></div>
-            <div class="hero-slide bg-slide" style="background-image: url('assets/photo4.jpg');"></div>
-        </div>
+<div class="hero">
+    <!-- Photo Slider (උස 520px ලෙස සකසා ඇත) -->
+    <div class="hero-bg-slider">
+        <div class="hero-slide bg-slide active" style="background-image: url('assets/photo1.jpg');"></div>
+        <div class="hero-slide bg-slide" style="background-image: url('assets/photo3.jpg');"></div>
+        <div class="hero-slide bg-slide" style="background-image: url('assets/photo4.jpg');"></div>
+    </div>
 
-    <!-- Photo එක මැදින් Ashen & Sanchala -->
+    <!-- Photo එක මැදින් Monogram Text එක -->
     <div class="monogram-container">
         <div class="monogram" style="font-family: 'Gwendolyn', cursive !important;">Ashen & Sanchala</div>
     </div>
 
-    <!-- Space Holder -->
-    <div class="photo-spacer"></div>
+    <!-- Photo එකට පහළින් පටන් ගන්නා Wording Section එක -->
+    <div class="hero-content-below">
+        
+        <!-- ජෝඩුවගේ සහ දෙමාපියන්ගේ විස්තර -->
+        <div id="couple-details-container">
+            <!-- Bride Section -->
+            <div id="bride-wrapper" class="couple-section">
+                <p class="parents-title">DAUGHTER OF</p>
+                <p class="parents-names">MR. H.D.W. JAYARATHNE & MRS. G.D.D. PRIYADARSHANI</p>
+                <h1 class="couple-name">Chathurni Sanchala</h1>
+            </div>
 
-    <!-- Photo එකෙන් පහළ සියලු විස්තර -->
-<div class="hero-content-below">
-            <!-- 1. Daughter / Bride Section -->
-            <p class="parents-title">DAUGHTER OF</p>
-            <p class="parents-names">MR. H.D.W. JAYARATHNE & MRS. G.D.D. PRIYADARSHANI</p>
-            <h1 class="couple-name" style="font-family: 'Gwendolyn', cursive !important; font-size: 52px !important; font-weight: 700 !important;">Chathurni Sanchala</h1>
+            <!-- '&' Sign -->
+            <p class="and" id="and-sign">&</p>
 
-            <p class="and" style="font-family: 'Gwendolyn', cursive !important; font-size: 38px !important; font-weight: 700 !important;">&</p>
-
-            <!-- 2. Son / Groom Section -->
-            <p class="parents-title">SON OF</p>
-            <p class="parents-names">MR. S.D.S.S. WIJETHILAKA & MRS. S.D.R. RANDENIYA</p>
-            <h1 class="couple-name" style="font-family: 'Gwendolyn', cursive !important; font-size: 52px !important; font-weight: 700 !important;">Ashen Anuradha</h1>
-
-          <!-- 3. Invitation Message Section Below -->
-            <div style="margin-top: 45px; margin-bottom: 30px; text-align: center;">
-                
-                <!-- WE ARE GETTING MARRIED -->
-                <p class="getting-married-title" style="font-family: 'Gabriela', serif !important; font-size: 20px !important; font-weight: 600 !important; margin-bottom: 20px; letter-spacing: 2px;">WE ARE GETTING MARRIED</p>
-                
-                <!-- Dear Guest -->
-                <h3 class="guest-name-text" id="guest-greeting" style="margin-top: 0; margin-bottom: 15px; font-size: 22px;">Dear Guest</h3>
-                
-                <!-- We warmly invite you... -->
-                <p class="invite-subtext" style="font-family: 'Poppins', sans-serif; font-size: 15px; color: #555555; font-style: italic; margin-top: 0; line-height: 1.6;">We warmly invite you to celebrate our special day.</p>
-                
+            <!-- Groom Section -->
+            <div id="groom-wrapper" class="couple-section">
+                <p class="parents-title">SON OF</p>
+                <p class="parents-names">MR. S.D.S.S. WIJETHILAKA & MRS. S.D.R. RANDENIYA</p>
+                <h1 class="couple-name">Ashen Anuradha</h1>
             </div>
         </div>
 
-        <div class="scroll-btn-container">
-            <a href="#eventSection" class="scroll-btn" data-en="View Invitation ↓" data-si="ආරාධනාව බලන්න ↓">View Invitation ↓</a>
+        <!-- පහළ Wording කොටස -->
+        <div class="bottom-wording-container">
+            <!-- WE ARE GETTING MARRIED -->
+            <p class="heading-getting-married">WE ARE GETTING MARRIED</p>
+
+            <!-- Dear Guest Box -->
+            <div class="guest-box">
+                <h3 class="guest-name-text" id="guestGreeting">Dear Guest</h3>
+            </div>
+
+            <!-- We Warmly Invite You... -->
+            <p class="invitation-text">We warmly invite you to celebrate our special day.</p>
+            
+            <!-- View Invitation Button -->
+            <div class="scroll-btn-container">
+                <a href="#eventSection" class="scroll-btn">View Invitation ↓</a>
+            </div>
         </div>
+
     </div>
+</div>
 </section>
 
     <!-- Date Badge Section -->
