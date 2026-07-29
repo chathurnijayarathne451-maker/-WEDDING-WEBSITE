@@ -44,17 +44,15 @@
     <p class="loader-text" data-en="Loading Invitation..." data-si="ආරාධනා පත්‍රය ලෝඩ් වෙමින් පවතී...">Loading Invitation...</p>
 </div>
 
-    
-
 <div class="petals-container"></div>
 
 <!-- Top Fixed Controls -->
 <div class="top-controls">
-    <button id="langToggleBtn" class="ctrl-btn">🌐</button>
-    <button id="musicBtn" class="ctrl-btn">🎵 </button>
+    <button id="langToggleBtn" class="ctrl-btn">🌐 සිංහල</button>
+    <button id="musicBtn" class="ctrl-btn">🎵 Pause Music</button>
 </div>
 
-<audio id="bgMusic" loop preload="auto">
+<audio id="bgMusic" autoplay loop preload="auto">
     <source src="assets/music/WeddingSong.mp3" type="audio/mpeg">
 </audio>
 
@@ -78,30 +76,23 @@
     <!-- Space Holder -->
     <div class="photo-spacer"></div>
 
-
-    
     <!-- Photo එකෙන් පහළ සියලු විස්තර -->
-<div class="hero-content-below" id="couple-details-container">
+<div class="hero-content-below">
+            <!-- 1. Daughter / Bride Section -->
+            <p class="parents-title">DAUGHTER OF</p>
+            <p class="parents-names">MR. H.D.W. JAYARATHNE & MRS. G.D.D. PRIYADARSHANI</p>
+            <h1 class="couple-name" style="font-family: 'Gwendolyn', cursive !important; font-size: 52px !important; font-weight: 700 !important;">Chathurni Sanchala</h1>
 
-    <!-- 1. Bride Section -->
-    <div id="bride-wrapper" class="couple-section">
-        <p class="parents-title">DAUGHTER OF</p>
-        <p class="parents-names">MR. H.D.W. JAYARATHNE & MRS. G.D.D. PRIYADARSHANI</p>
-        <h1 class="couple-name" style="font-family: 'Gwendolyn', cursive !important; font-size: 52px !important; font-weight: 700 !important;">Chathurni Sanchala</h1>
-    </div>
+            <p class="and" style="font-family: 'Gwendolyn', cursive !important; font-size: 38px !important; font-weight: 700 !important;">&</p>
 
-    <!-- Center '&' Sign -->
-    <p class="and" id="and-sign" style="font-family: 'Gwendolyn', cursive !important; font-size: 38px !important; font-weight: 700 !important; margin: 10px 0;">&</p>
+            <!-- 2. Son / Groom Section -->
+            <p class="parents-title">SON OF</p>
+            <p class="parents-names">MR. S.D.S.S. WIJETHILAKA & MRS. S.D.R. RANDENIYA</p>
+            <h1 class="couple-name" style="font-family: 'Gwendolyn', cursive !important; font-size: 52px !important; font-weight: 700 !important;">Ashen Anuradha</h1>
 
-    <!-- 2. Groom Section -->
-    <div id="groom-wrapper" class="couple-section">
-        <p class="parents-title">SON OF</p>
-        <p class="parents-names">MR. S.D.S.S. WIJETHILAKA & MRS. S.D.R. RANDENIYA</p>
-        <h1 class="couple-name" style="font-family: 'Gwendolyn', cursive !important; font-size: 52px !important; font-weight: 700 !important;">Ashen Anuradha</h1>
-    </div>
-
-</div>
-         
+          <!-- 3. Invitation Message Section Below -->
+            <div style="margin-top: 45px; margin-bottom: 30px; text-align: center;">
+                
                 <!-- WE ARE GETTING MARRIED -->
                 <p class="getting-married-title" style="font-family: 'Gabriela', serif !important; font-size: 20px !important; font-weight: 600 !important; margin-bottom: 20px; letter-spacing: 2px;">WE ARE GETTING MARRIED</p>
                 
@@ -109,7 +100,7 @@
                 <h3 class="guest-name-text" id="guest-greeting" style="margin-top: 0; margin-bottom: 15px; font-size: 22px;">Dear Guest</h3>
                 
                 <!-- We warmly invite you... -->
-                <p class="invite-subtext" style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #555555; font-style: italic; margin-top: 0; line-height: 1.6;">We warmly invite you to celebrate our special day.</p>
+                <p class="invite-subtext" style="font-family: 'Poppins', sans-serif; font-size: 15px; color: #555555; font-style: italic; margin-top: 0; line-height: 1.6;">We warmly invite you to celebrate our special day.</p>
                 
             </div>
         </div>
@@ -120,59 +111,25 @@
     </div>
 </section>
 
-    <!-- Event Dates Section -->
-<section class="wedding-date-badge-section" style="display: flex; flex-direction: column; gap: 30px; align-items: center; margin: 30px 0;">
-
-    <!-- 1. WEDDING DATE BADGE -->
-    <div style="text-align: center; width: 100%;">
-        <h3 data-en="WEDDING DATE" data-si="මංගල දිනය" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 18px !important; color: #d4af37; margin-bottom: 10px; letter-spacing: 2px;">WEDDING DATE</h3>
-        
+    <!-- Date Badge Section -->
+    <section class="wedding-date-badge-section">
         <div class="date-badge-container">
             <span class="date-line-text" data-en="AUGUST" data-si="අගෝස්තු">AUGUST</span>
             <span class="date-number-highlight">26</span>
             <span class="date-line-text">2026</span>
         </div>
-    </div>
-
-    <!-- 2. HOMECOMING DATE BADGE -->
-    <div style="text-align: center; width: 100%;">
-        <h3 data-en="HOMECOMING DATE" data-si="දෙවෙනි ගමන" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 18px !important; color: #e74c3c !important; margin-bottom: 10px; letter-spacing: 2px;">HOMECOMING DATE</h3>
-        
-        <div class="date-badge-container" style="border-color: #e74c3c;">
-            <span class="date-line-text" data-en="AUGUST" data-si="අගෝස්තු" style="color: #e74c3c;">AUGUST</span>
-            <span class="date-number-highlight" style="color: #e74c3c;">30</span>
-            <span class="date-line-text">2026</span>
-        </div>
-    </div>
-
-</section>
+    </section>
 
     <!-- Countdown Section -->
-<section class="countdown-section" style="display: flex; flex-direction: column; gap: 30px; align-items: center; margin: 30px 0;">
-    
-    <!-- Wedding Countdown Card -->
-    <div class="countdown-card" style="border: 2px solid #d4af37; border-radius: 15px; padding: 20px; width: 90%; max-width: 440px; background: #ffffff; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15); text-align: center;">
-        <h2 data-en="Countdown To Our Wedding" data-si="මංගල දිනයට තව" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 20px !important; color: #d4af37; margin-bottom: 15px;">Countdown To Our Wedding</h2>
-        <div class="countdown" style="display: flex; justify-content: space-around;">
-            <div class="time-box"><span id="days-wedding">00</span><br><small data-en="Days" data-si="දින">Days</small></div>
-            <div class="time-box"><span id="hours-wedding">00</span><br><small data-en="Hours" data-si="පැය">Hours</small></div>
-            <div class="time-box"><span id="minutes-wedding">00</span><br><small data-en="Minutes" data-si="මිනිත්තු">Minutes</small></div>
-            <div class="time-box"><span id="seconds-wedding">00</span><br><small data-en="Seconds" data-si="තත්පර">Seconds</small></div>
+    <section class="countdown-section">
+       <h2 data-en="Countdown To Our Big Day" data-si="අපගේ මංගල දිනයට තව" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important;">Countdown To Our Big Day</h2>
+        <div class="countdown">
+            <div class="time-box"><span id="days">00</span><small data-en="Days" data-si="දින">Days</small></div>
+            <div class="time-box"><span id="hours">00</span><small data-en="Hours" data-si="පැය">Hours</small></div>
+            <div class="time-box"><span id="minutes">00</span><small data-en="Minutes" data-si="මිනිත්තු">Minutes</small></div>
+            <div class="time-box"><span id="seconds">00</span><small data-en="Seconds" data-si="තත්පර">Seconds</small></div>
         </div>
-    </div>
-
-    <!-- Homecoming Countdown Card (Red Color Theme) -->
-    <div class="countdown-card" style="border: 2px solid #e74c3c; border-radius: 15px; padding: 20px; width: 90%; max-width: 440px; background: #ffffff; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.15); text-align: center;">
-        <h2 data-en="Countdown To Our Homecoming" data-si="දෙවෙනි ගමනට තව" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 20px !important; color: #e74c3c !important; margin-bottom: 15px;">Countdown To Our Homecoming</h2>
-        <div class="countdown" style="display: flex; justify-content: space-around; color: #e74c3c;">
-            <div class="time-box"><span id="days-homecoming" style="color: #e74c3c !important; font-weight: bold;">00</span><br><small data-en="Days" data-si="දින" style="color: #e74c3c;">Days</small></div>
-            <div class="time-box"><span id="hours-homecoming" style="color: #e74c3c !important; font-weight: bold;">00</span><br><small data-en="Hours" data-si="පැය" style="color: #e74c3c;">Hours</small></div>
-            <div class="time-box"><span id="minutes-homecoming" style="color: #e74c3c !important; font-weight: bold;">00</span><br><small data-en="Minutes" data-si="මිනිත්තු" style="color: #e74c3c;">Minutes</small></div>
-            <div class="time-box"><span id="seconds-homecoming" style="color: #e74c3c !important; font-weight: bold;">00</span><br><small data-en="Seconds" data-si="තත්පර" style="color: #e74c3c;">Seconds</small></div>
-        </div>
-    </div>
-
-</section>
+    </section>
 
     <!-- Dynamic Event Section -->
     <section id="eventSection" class="event-section">
@@ -194,14 +151,14 @@
 
    <!-- Calendar Section -->
 <section class="calendar-section">
-    <div class="calendar-card" style="border: 2px solid #d4af37; border-radius: 18px; padding: 25px 20px; max-width: 440px; margin: 0 auto; background: #ffffff; box-shadow: 0 4px 18px rgba(212, 175, 55, 0.15); text-align: center;">
+    <div class="calendar-card" style="border: 2px solid #d4af37; border-radius: 18px; padding: 25px 20px; max-width: 445px; margin: 0 auto; background: #ffffff; box-shadow: 0 4px 18px rgba(212, 175, 55, 0.15); text-align: center;">
         <h3 style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 26px !important; margin-bottom: 20px !important; color: #d4af37;">August 2026</h3>
         
         <div class="calendar-header" style="display: grid; grid-template-columns: repeat(7, 1fr); font-weight: bold; margin-bottom: 15px; font-size: 16px; color: #444;">
             <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
         </div>
 
-        <div class="calendar-grid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; font-size: 16px; color: #333333;">
+        <div class="calendar-grid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; font-size: 16px;">
             <div class="day empty"></div><div class="day empty"></div><div class="day empty"></div><div class="day empty"></div><div class="day empty"></div><div class="day empty"></div>
             <div class="day" style="padding: 6px 0;">1</div>
             <div class="day" style="padding: 6px 0;">2</div>
@@ -229,8 +186,8 @@
             <div class="day" style="padding: 6px 0;">24</div>
             <div class="day" style="padding: 6px 0;">25</div>
             
-            <!-- Wedding Date (26 - Gold Font) -->
-            <div class="day wedding" style="padding: 4px 0; background: #fff0f5; border-radius: 8px; border: 1.5px solid #d4af37; font-weight: bold; color: #d4af37 !important;">
+            <!-- Wedding Date -->
+            <div class="day wedding" style="padding: 4px 0; background: #fff0f5; border-radius: 8px; border: 1.5px solid #d4af37; font-weight: bold;">
                 26<br><span class="emoji" style="font-size: 14px;">💍</span>
             </div>
             
@@ -238,8 +195,8 @@
             <div class="day" style="padding: 6px 0;">28</div>
             <div class="day" style="padding: 6px 0;">29</div>
             
-            <!-- Homecoming Date (30 - Red Font) -->
-            <div class="day homecoming" style="padding: 4px 0; background: #f0f8ff; border-radius: 8px; border: 1.5px solid #d4af37; font-weight: bold; color: #e74c3c !important;">
+            <!-- Homecoming Date -->
+            <div class="day homecoming" style="padding: 4px 0; background: #f0f8ff; border-radius: 8px; border: 1.5px solid #d4af37; font-weight: bold;">
                 30<br><span class="emoji" style="font-size: 14px;">🏡</span>
             </div>
             
@@ -253,7 +210,7 @@
         <h2 class="section-title" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important; font-size: 28px !important;">Venue Location</h2>
         
         <div id="weddingVenueSection" class="venue-card">
-            <h3 data-en="Wedding Venue" data-si="මංගල ශාලාව" style="margin-bottom: 20px;">Wedding Venue</h3>
+            <h3 data-en="Wedding Venue" data-si="මංගල ශාලාව" style="margin-bottom: 15px;">Wedding Venue</h3>
             <p style="margin-top: 15px; margin-bottom: 15px;">Sevonlak Hotel, Maradagahamula</p>
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.8227653733075!2d79.99268397587841!3d7.14643351631557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2e40ece722871%3A0x18bc043031e6f712!2sSevonlak%20Hotel!5e0!3m2!1sen!2slk!4v1714000000000!5m2!1sen!2slk" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -262,7 +219,7 @@
         </div>
 
         <div id="homecomingVenueSection" class="venue-card">
-            <h3 data-en="Homecoming Venue" data-si="දෙවෙනි ගමන ශාලාව" style="margin-bottom: 20px;">Homecoming Venue</h3>
+            <h3 data-en="Homecoming Venue" data-si="දෙවෙනි ගමන ශාලාව" style="margin-bottom: 15px;">Homecoming Venue</h3>
             <p style="margin-top: 15px; margin-bottom: 15px;">Samara Banquet Hall, Yakkala</p>
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15837.226308753625!2d80.00926364702428!3d7.0904163480910825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fc128d237b73%3A0x712fefd2e7559fef!2sSamara%20Banquet%20Hall!5e0!3m2!1sen!2slk!4v1780498221789!5m2!1sen!2slk" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -272,61 +229,26 @@
     </section>
 
   <!-- RSVP Section -->
-<section class="rsvp-section" style="margin: 40px auto; padding: 0 15px; max-width: 480px;">
-    <!-- Rose Gold Border Container -->
-    <div class="rsvp-card" style="border: 2px solid #b76e79; border-radius: 18px; padding: 30px 20px; background: #ffffff; box-shadow: 0 6px 20px rgba(183, 110, 121, 0.15); text-align: center;">
-        
-        <h2 data-en="RSVP" data-si="ආරාධනා පිළිගැනීම" style="font-family: 'Cinzel Decorative', cursive !important; color: #b76e79; font-size: 24px; margin-bottom: 20px; font-weight: bold;">RSVP</h2>
-        
-        <form id="rsvpForm" style="display: flex; flex-direction: column; gap: 18px;">
-            
-            <!-- Guest Name Input -->
-            <div class="form-group" style="text-align: left;">
-                <label data-en="Your Name" data-si="ඔබගේ නම" style="font-size: 14px; font-weight: 600; color: #555; display: block; margin-bottom: 5px;">Your Name</label>
-                <input type="text" id="guestName" required placeholder="Enter your full name" style="width: 100%; padding: 12px; border: 1.5px solid #d8a7b1; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box;">
-            </div>
+<section class="rsvp-section">
+    <h2 class="section-title" data-en="RSVP" data-si="සම්බන්ධ කර ගැනීමට" style="font-family: 'Cinzel Decorative', cursive !important; font-weight: 700 !important;">RSVP</h2>
+    <div class="rsvp-card">
+        <div id="brideRsvp" class="rsvp-group">
+            <p style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important; margin: 8px 0;"><strong>Bride (Sanchala):</strong> <a href="tel:0713372644" style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important;">0713372644</a></p>
+            <p style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important; margin: 8px 0;"><strong>Bride's Mother (Mrs.Dhammika):</strong> <a href="tel:0753380738" style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important;">0753380738</a></p>
+        </div>
+        <div id="groomRsvp" class="rsvp-group">
+            <p style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important; margin: 8px 0;"><strong>Groom (Ashen):</strong> <a href="tel:0752540988" style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important;">0752540988</a></p>
+            <p style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important; margin: 8px 0;"><strong>Groom's Father (Mr.Santha):</strong> <a href="tel:0717648030" style="font-family: 'BJCree', sans-serif !important; font-size: 18px !important;">0717648030</a></p>
+        </div>
 
-            <!-- Attendance Choice (Radio Buttons) -->
-            <div class="form-group" style="text-align: left;">
-                <label data-en="Will you attend?" data-si="ඔබ සහභාගී වන්නේද?" style="font-size: 14px; font-weight: 600; color: #555; display: block; margin-bottom: 8px;">Will you attend?</label>
-                <div style="display: flex; gap: 12px;">
-                    <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 5px; border: 1.5px solid #d8a7b1; border-radius: 8px; cursor: pointer; background: #fff5f6;">
-                        <input type="radio" name="attendance" value="Attending" id="willAttend" checked onchange="toggleGuestCount(true)" style="accent-color: #b76e79;">
-                        <span data-en="We Will Attend" data-si="සහභාගී වේ" style="font-size: 13px; font-weight: 600; color: #2e7d32;">We Will Attend</span>
-                    </label>
-                    <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 5px; border: 1.5px solid #d8a7b1; border-radius: 8px; cursor: pointer; background: #fff5f6;">
-                        <input type="radio" name="attendance" value="Not Attending" id="cannotAttend" onchange="toggleGuestCount(false)" style="accent-color: #b76e79;">
-                        <span data-en="Cannot Attend" data-si="සහභාගී විය නොහැක" style="font-size: 13px; font-weight: 600; color: #c62828;">Cannot Attend</span>
-                    </label>
-                </div>
-            </div>
-
-            <!-- Number of Guests Input -->
-            <div class="form-group" id="guestCountBox" style="text-align: left;">
-                <label data-en="Number of Guests Attending" data-si="සහභාගී වන පුද්ගලයින් ගණන" style="font-size: 14px; font-weight: 600; color: #555; display: block; margin-bottom: 5px;">Number of Guests Attending</label>
-                <input type="number" id="guestCount" min="1" max="10" value="1" style="width: 100%; padding: 12px; border: 1.5px solid #d8a7b1; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box;">
-            </div>
-
-            <!-- Contact Information Display (Bridal / Groom Side numbers) -->
-            <div class="contact-numbers-container" style="margin-top: 10px; font-size: 13px; color: #666;">
-                <div class="groom-contact" style="display: block;">
-                    <p>📞 Groom RSVP: <strong>+94 77 123 4567</strong></p>
-                    <p>📞 Groom's Father RSVP: <strong>+94 77 987 6543</strong></p>
-                </div>
-                <div class="bride-contact" style="display: none;">
-                    <p>📞 Bride RSVP: <strong>+94 77 234 5678</strong></p>
-                    <p>📞 Bride's Mother RSVP: <strong>+94 77 876 5432</strong></p>
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <button type="submit" style="background: linear-gradient(135deg, #b76e79, #d8a7b1); color: #ffffff; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 10px rgba(183, 110, 121, 0.3);">
-                <span data-en="Send RSVP via WhatsApp" data-si="WhatsApp හරහා යොමු කරන්න">Send RSVP via WhatsApp</span>
-            </button>
-        </form>
-
+        <div style="margin-top: 20px;">
+            <button class="btn" id="attendBtn" data-en="We Will Attend" data-si="පැමිණෙමු">We Will Attend</button>
+            <button class="btn secondary" id="rejectBtn" data-en="Cannot Attend" data-si="පැමිණීමට නොහැක">Cannot Attend</button>
+        </div>
+        <p id="rsvpStatusMsg" style="margin-top: 15px; font-weight: 500; color: #27ae60;"></p>
     </div>
 </section>
+
 </div> 
 
 <footer>
