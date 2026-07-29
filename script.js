@@ -1,165 +1,145 @@
-// ==========================================
-// 1. PRELOADER / LOADING SCREEN HIDING LOGIC
-// ==========================================
-
-// Function to safely hide the preloader
-function hidePreloader() {
-    const preloader = document.getElementById("preloader") || document.getElementById("loading-screen");
-    if (preloader && preloader.style.display !== "none") {
-        preloader.style.transition = "opacity 0.5s ease";
-        preloader.style.opacity = "0";
-        setTimeout(() => {
-            preloader.style.display = "none";
-        }, 500);
-    }
-}
-
-// Window load event (when all images, styles, and assets are fully loaded)
-window.addEventListener("load", () => {
-    hidePreloader();
-});
-
-// Fallback: Forcefully hide preloader after 3 seconds if load event didn't fire
-setTimeout(() => {
-    hidePreloader();
-}, 3000);
-
-
-// ==========================================
-// 2. DYNAMIC INVITATION & RSVP LOGIC
-// ==========================================
-
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Get URL Parameters
+    // 1. URL Query Parameters Reading Logic
     const urlParams = new URLSearchParams(window.location.search);
-    const side = urlParams.get('side');           // 'groom' or 'bride'
-    const eventType = urlParams.get('event');      // 'wedding', 'homecoming', or 'both'
-    const guestNameParam = urlParams.get('guest'); // Guest Name (e.g., "Mr. Jayarathne & Family")
+    const guestParam = urlParams.get('guest');
+    const eventType = urlParams.get('event'); // 'wedding' or 'homecoming'
 
-    // DOM Element References
-    const guestGreeting = document.getElementById("personalizedGuestName");
-    const weddingBlock = document.getElementById("weddingDetailsBlock");
-    const homecomingBlock = document.getElementById("homecomingDetailsBlock");
-    const groomContacts = document.getElementById("groomContacts");
-    const brideContacts = document.getElementById("brideContacts");
-
-    // 2. Personalized Guest Greeting
-    if (guestGreeting) {
-        if (guestNameParam) {
-            guestGreeting.textContent = `Dear ${decodeURIComponent(guestNameParam)}`;
+    // Guest Name Logic
+    const guestGreetingElement = document.getElementById('guestGreeting');
+    if (guestGreetingElement) {
+        if (guestParam) {
+            guestGreetingElement.innerText = "Dear " + decodeURIComponent(guestParam);
         } else {
-            guestGreeting.textContent = "Dear Valued Guest";
+            guestGreetingElement.innerText = "Dear Guest";
         }
     }
 
-    // 3. Dynamic Event Display (Hide / Show Wedding vs Homecoming)
+    // Event Type Display Logic
+    const weddingCard = document.getElementById('weddingCard');
+    const homecomingCard = document.getElementById('homecomingCard');
+    const weddingVenue = document.getElementById('weddingVenueSection');
+    const homecomingVenue = document.getElementById('homecomingVenueSection');
+    const brideRsvp = document.getElementById('brideRsvp');
+    const groomRsvp = document.getElementById('groomRsvp');
+
     if (eventType === 'wedding') {
-        if (weddingBlock) weddingBlock.style.display = "block";
-        if (homecomingBlock) homecomingBlock.style.display = "none";
+        if (homecomingCard) homecomingCard.style.display = 'none';
+        if (homecomingVenue) homecomingVenue.style.display = 'none';
+        if (groomRsvp) groomRsvp.style.display = 'none';
     } else if (eventType === 'homecoming') {
-        if (weddingBlock) weddingBlock.style.display = "none";
-        if (homecomingBlock) homecomingBlock.style.display = "block";
-    } else {
-        // Show Both Events (Default)
-        if (weddingBlock) weddingBlock.style.display = "block";
-        if (homecomingBlock) homecomingBlock.style.display = "block";
+        if (weddingCard) weddingCard.style.display = 'none';
+        if (weddingVenue) weddingVenue.style.display = 'none';
+        if (brideRsvp) brideRsvp.style.display = 'none';
     }
 
-    // 4. Dynamic RSVP Contacts Display (Groom vs Bride)
-    if (side === 'bride') {
-        if (brideContacts) brideContacts.style.display = "block";
-        if (groomContacts) groomContacts.style.display = "none";
-    } else {
-        // Default to Groom
-        if (groomContacts) groomContacts.style.display = "block";
-        if (brideContacts) brideContacts.style.display = "none";
+    // 2. Preloader Hide Logic
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hide');
+        }, 800);
     }
 
-    // 5. RSVP Form Submission via WhatsApp
-    const rsvpForm = document.getElementById("rsvpForm");
-    if (rsvpForm) {
-        rsvpForm.addEventListener("submit", (e) => {
-            e.preventDefault();
+    // 3. Hero Background Image Auto Slider Logic
+    // .hero-slide සහ .bg-slide යන දෙකටම support කරන පරිදි සකසා ඇත
+    const heroSlides = document.querySelectorAll('.hero-slide, .bg-slide');
+    let currentHeroSlide = 0;
 
-            const attendanceRadio = document.querySelector('input[name="attendance"]:checked');
-            const attendance = attendanceRadio ? attendanceRadio.value : 'Attending';
-            const guestCount = document.getElementById("guestCount") ? document.getElementById("guestCount").value : '1';
-            const currentGuestName = guestNameParam ? decodeURIComponent(guestNameParam) : "Guest";
+    if (heroSlides.length > 0) {
+        setInterval(() => {
+            heroSlides[currentHeroSlide].classList.remove('active');
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+            heroSlides[currentHeroSlide].classList.add('active');
+        }, 3500);
+    }
 
-            // Target WhatsApp Number based on side
-            const targetPhone = (side === 'bride') ? "94713372644" : "94752540988";
+    // 4. Countdown Timer Logic
+    const targetDate = new Date('August 26, 2026 10:13:00').getTime();
 
-            let message = `Hello! RSVP Confirmation from *${currentGuestName}*:\n\n`;
-            if (attendance === 'Attending') {
-                message += `Status: ✅ We Will Attend\nNumber of Guests: ${guestCount}`;
-            } else {
-                message += `Status: ❌ Cannot Attend`;
-            }
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
 
-            const waUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
-            window.open(waUrl, "_blank");
-        });
+        if (difference > 0) {
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+
+            if (daysEl) daysEl.innerText = days < 10 ? '0' + days : days;
+            if (hoursEl) hoursEl.innerText = hours < 10 ? '0' + hours : hours;
+            if (minutesEl) minutesEl.innerText = minutes < 10 ? '0' + minutes : minutes;
+            if (secondsEl) secondsEl.innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const petalsContainer = document.querySelector('.petals-container');
+
+    if (petalsContainer) {
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+
+            const size = Math.random() * 12 + 10; 
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size * 1.3}px`;
+
+            petal.style.left = `${Math.random() * 100}vw`;
+
+            // වැටෙන වේගය අඩු කිරීමට duration එක තත්පර 8 - 14 අතරට වැඩි කර ඇත
+            const duration = Math.random() * 6 + 8;
+            petal.style.animationDuration = `${duration}s`;
+
+            petalsContainer.appendChild(petal);
+
+            setTimeout(() => {
+                petal.remove();
+            }, duration * 1000);
+        }
+
+        // පෙති වැටෙන පරතරය තත්පර 0.25 (250ms) ලෙස තබා ඇත
+        setInterval(createPetal, 250);
     }
 });
-
-// Toggle Guest Count Field Visibility
-function toggleGuestCount(willAttend) {
-    const guestCountBox = document.getElementById('guestCountBox');
-    if (guestCountBox) {
-        guestCountBox.style.display = willAttend ? 'block' : 'none';
-    }
-}
 document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bgMusic");
     const musicBtn = document.getElementById("musicBtn");
 
     if (bgMusic) {
-        bgMusic.volume = 0.6; // Volume 60%
+        bgMusic.volume = 0.5; // Sound volume එක 50% ලෙස සැකසීම
 
-        // Audio Context initialization to bypass strict autoplay policy
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        let audioCtx;
-
-        const unlockAndPlay = () => {
-            if (!audioCtx) {
-                audioCtx = new AudioContext();
-            }
-
-            // Resume audio context if suspended
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-
-            // Play the music
+        // 1. User Screen එක Click හෝ Touch කළ සැනින් Music Auto-play කිරීම
+        const startAudioOnInteraction = () => {
             bgMusic.play().then(() => {
-                if (musicBtn) {
-                    musicBtn.textContent = "🎵 Pause Music";
-                }
-                // Once played successfully, remove all Global listeners
-                removeAllListeners();
-            }).catch(e => {
-                console.log("Play failed, waiting for valid gesture:", e);
+                if (musicBtn) musicBtn.textContent = "🎵 Pause Music";
+            }).catch(error => {
+                console.log("Autoplay blocked, waiting for click:", error);
             });
+
+            // එක පාරක් play වූ පසු event listeners අයින් කිරීම
+            document.removeEventListener("click", startAudioOnInteraction);
+            document.removeEventListener("touchstart", startAudioOnInteraction);
+            document.removeEventListener("scroll", startAudioOnInteraction);
         };
 
-        const removeAllListeners = () => {
-            window.removeEventListener("touchstart", unlockAndPlay);
-            window.removeEventListener("touchend", unlockAndPlay);
-            window.removeEventListener("click", unlockAndPlay);
-            window.removeEventListener("scroll", unlockAndPlay);
-        };
+        // Window interaction events
+        document.addEventListener("click", startAudioOnInteraction);
+        document.addEventListener("touchstart", startAudioOnInteraction);
+        document.addEventListener("scroll", startAudioOnInteraction);
 
-        // Screen එකේ කොහේ touch/click/scroll කළත් play වීමට:
-        window.addEventListener("touchstart", unlockAndPlay, { passive: true });
-        window.addEventListener("touchend", unlockAndPlay, { passive: true });
-        window.addEventListener("click", unlockAndPlay);
-        window.addEventListener("scroll", unlockAndPlay, { passive: true });
-
-        // Button Click Event (Play / Pause toggle)
+        // 2. Music Button (Play/Pause Toggle) Control එක
         if (musicBtn) {
             musicBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // Global tap handler එකත් එක්ක ගැටීම වැළැක්වීමට
-                
+                e.stopPropagation(); // Screen interaction event එකත් එක්ක clash වීම වැළැක්වීමට
                 if (bgMusic.paused) {
                     bgMusic.play();
                     musicBtn.textContent = "🎵 Pause Music";
@@ -171,160 +151,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
-document.addEventListener("DOMContentLoaded", () => {
-    const petalsContainer = document.querySelector('.petals-container');
-
-    if (petalsContainer) {
-        function createPetal() {
-            const petal = document.createElement('div');
-            petal.classList.add('petal');
-
-            // පෙති වල ප්‍රමාණය නොසමාන ලෙස (10px - 22px)
-            const size = Math.random() * 12 + 10; 
-            petal.style.width = `${size}px`;
-            petal.style.height = `${size * 1.3}px`; // මල් පෙත්තක ස්වාභාවික හැඩය
-
-            // තිරයේ ඕනෑම තැනකින් ආරම්භ වීමට (0% - 100% width)
-            petal.style.left = `${Math.random() * 100}vw`;
-
-            // වැටෙන වේගය (තත්පර 4 - 8 අතර dynamic ලෙස වෙනස් වේ)
-            const duration = Math.random() * 4 + 4;
-            petal.style.animationDuration = `${duration}s`;
-
-            petalsContainer.appendChild(petal);
-
-            // Animation එක අවසන් වූ පසු පෙත්ත ඉවත් කිරීම
-            setTimeout(() => {
-                petal.remove();
-            }, duration * 1000);
-        }
-
-        // මල් පෙති ගොඩක් වැටීමට කාල පරතරය තත්පර 0.15 (150ms) දක්වා අඩු කර ඇත
-        setInterval(createPetal, 150);
-    }
-});
-// Dynamic Multi-Box Countdown Function
-function setupCountdown(weddingDateStr, homecomingDateStr) {
-    const weddingTarget = new Date(weddingDateStr).getTime();
-    const homecomingTarget = new Date(homecomingDateStr).getTime();
-
-    function update() {
-        const now = new Date().getTime();
-
-        // 1. Wedding Countdown Calculation
-        const weddingDiff = weddingTarget - now;
-        if (weddingDiff > 0) {
-            document.getElementById("days-wedding").innerText = String(Math.floor(weddingDiff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-            document.getElementById("hours-wedding").innerText = String(Math.floor((weddingDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-            document.getElementById("minutes-wedding").innerText = String(Math.floor((weddingDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            document.getElementById("seconds-wedding").innerText = String(Math.floor((weddingDiff % (1000 * 60)) / 1000)).padStart(2, '0');
-        } else {
-            document.getElementById("days-wedding").innerText = "00";
-            document.getElementById("hours-wedding").innerText = "00";
-            document.getElementById("minutes-wedding").innerText = "00";
-            document.getElementById("seconds-wedding").innerText = "00";
-        }
-
-        // 2. Homecoming Countdown Calculation
-        const homecomingDiff = homecomingTarget - now;
-        if (homecomingDiff > 0) {
-            document.getElementById("days-homecoming").innerText = String(Math.floor(homecomingDiff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-            document.getElementById("hours-homecoming").innerText = String(Math.floor((homecomingDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-            document.getElementById("minutes-homecoming").innerText = String(Math.floor((homecomingDiff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            document.getElementById("seconds-homecoming").innerText = String(Math.floor((homecomingDiff % (1000 * 60)) / 1000)).padStart(2, '0');
-        } else {
-            document.getElementById("days-homecoming").innerText = "00";
-            document.getElementById("hours-homecoming").innerText = "00";
-            document.getElementById("minutes-homecoming").innerText = "00";
-            document.getElementById("seconds-homecoming").innerText = "00";
-        }
-    }
-
-    update(); // Run immediately
-    setInterval(update, 1000); // Update every second
-}
-
-// Start Countdown when page loads
-document.addEventListener("DOMContentLoaded", () => {
-    // කරුණාකර ඔබේ නිවැරදි Wedding & Homecoming දිනය සහ වේලාව යොදන්න (YYYY-MM-DDTHH:MM:SS)
-    setupCountdown("2026-08-26T00:00:00", "2026-08-30T00:00:00");
-});
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // URL එකෙන් parameters ලබා ගැනීම
-    const urlParams = new URLSearchParams(window.location.search);
-    const guestNameParam = urlParams.get('guest'); // Admin Panel එකෙන් එන Salutation + Guest Name
-
-    // HTML එකේ id="guest-greeting" ඇති element එක target කිරීම
-    const guestGreeting = document.getElementById("guest-greeting");
-
-    if (guestGreeting) {
-        if (guestNameParam) {
-            // URL එකෙහි guest parameter එක තිබේ නම් 'Dear [Name]' ලෙස පෙන්වයි
-            guestGreeting.textContent = `Dear ${decodeURIComponent(guestNameParam)}`;
-        } else {
-            // URL එකෙහි නමක් නැත්නම් Default ලෙස පෙන්වයි
-            guestGreeting.textContent = "Dear Guest";
-        }
-    }
-
-});
-<!-- Photo එක සහ Wording එක තිබෙන Hero Section කොටස -->
-<div class="hero-bg-slider" style="height: 580px !important;">
-    <div class="hero-slide bg-slide active" style="background-image: url('assets/photo1.jpg');"></div>
-    <div class="hero-slide bg-slide" style="background-image: url('assets/photo2.jpg');"></div>
-    <div class="hero-slide bg-slide" style="background-image: url('assets/photo3.jpg');"></div>
-    <div class="hero-slide bg-slide" style="background-image: url('assets/photo4.jpg');"></div>
-</div>
-
-<!-- Photo එක මැදින් Ashen & Sanchala -->
-<div class="monogram-container">
-    <div class="monogram" style="font-family: 'Gwendolyn', cursive !important;">Ashen & Sanchala</div>
-</div>
-
-<!-- Space Holder for Bigger Photo -->
-<div class="photo-spacer" style="height: 140px !important;"></div>
-
-<!-- Photo එකෙන් පහළ සියලු විස්තර -->
-<div class="hero-content-below" style="display: flex !important; flex-direction: column !important; align-items: center !important; width: 100% !important; margin-top: 15px !important;">
-    
-    <!-- A. ජෝඩුවගේ නම් සහ දෙමාපියන්ගේ විස්තර -->
-    <div id="couple-details-container" style="display: flex !important; flex-direction: column !important; align-items: center !important; width: 100% !important;">
-        <!-- Bride Section -->
-        <div id="bride-wrapper" class="couple-section" style="width: 100% !important; text-align: center !important;">
-            <p class="parents-title">DAUGHTER OF</p>
-            <p class="parents-names">MR. H.D.W. JAYARATHNE & MRS. G.D.D. PRIYADARSHANI</p>
-            <h1 class="couple-name" style="font-family: 'Gwendolyn', cursive !important; font-size: 52px !important; font-weight: 700 !important;">Chathurni Sanchala</h1>
-        </div>
-
-        <!-- Center '&' Sign -->
-        <p class="and" id="and-sign" style="font-family: 'Gwendolyn', cursive !important; font-size: 38px !important; font-weight: 700 !important; margin: 10px 0;">&</p>
-
-        <!-- Groom Section -->
-        <div id="groom-wrapper" class="couple-section" style="width: 100% !important; text-align: center !important;">
-            <p class="parents-title">SON OF</p>
-            <p class="parents-names">MR. S.D.S.S. WIJETHILAKA & MRS. S.D.R. RANDENIYA</p>
-            <h1 class="couple-name" style="font-family: 'Gwendolyn', cursive !important; font-size: 52px !important; font-weight: 700 !important;">Ashen Anuradha</h1>
-        </div>
-    </div>
-
-    <!-- B. නම් දෙකට පහළින් පිළිවෙළට එන කොටස -->
-    <div class="bottom-wording-container" style="display: flex !important; flex-direction: column !important; align-items: center !important; width: 100% !important;">
-        <!-- 1. WE ARE GETTING MARRIED -->
-        <p class="getting-married-title" style="font-family: 'Gabriela', serif !important; font-size: 20px !important; font-weight: 600 !important; margin-top: 30px; margin-bottom: 20px; letter-spacing: 2px;">WE ARE GETTING MARRIED</p>
-
-        <!-- 2. GUEST NAME BOX -->
-        <div style="background: rgba(255, 255, 255, 0.65) !important; border: 2px solid #d4af37 !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; border-radius: 15px !important; padding: 18px 30px !important; margin: 20px auto !important; max-width: 90% !important; width: fit-content !important; box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25) !important; text-align: center !important;">
-            <h3 class="guest-name-text" id="guest-greeting" style="margin: 0 !important; font-size: 24px !important; font-weight: bold !important; color: #b76e79 !important; font-family: 'Playfair Display', serif !important; letter-spacing: 1px !important;">Dear Guest</h3>
-        </div>
-
-        <!-- 3. WE WARMLY INVITE YOU... -->
-        <p class="invite-subtext" style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #555555; font-style: italic; margin-top: 20px; line-height: 1.6;">We warmly invite you to celebrate our special day.</p>
-        
-        <!-- 4. VIEW INVITATION BUTTON -->
-        <div class="scroll-btn-container" style="margin-top: 25px;">
-            <a href="#eventSection" class="scroll-btn" style="color: #ffffff !important;" data-en="View Invitation ↓" data-si="ආරාධනාව බලන්න ↓">View Invitation ↓</a>
-        </div>
-    </div>
-
-</div>
