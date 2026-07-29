@@ -40,11 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (brideWrapper && groomWrapper && andSign && andSign.parentNode) {
         if (side === 'groom') {
-            // Groom පැත්ත නම්: Groom > & > Bride
             andSign.parentNode.insertBefore(groomWrapper, andSign);
             andSign.parentNode.insertBefore(brideWrapper, andSign.nextSibling);
         } else {
-            // Bride පැත්ත නම්: Bride > & > Groom
             andSign.parentNode.insertBefore(brideWrapper, andSign);
             andSign.parentNode.insertBefore(groomWrapper, andSign.nextSibling);
         }
@@ -128,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Background Music Control Logic
+// Background Music Control Logic (Auto Scroll Fix Included)
 document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bgMusic");
     const musicBtn = document.getElementById("musicBtn");
@@ -145,12 +143,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             document.removeEventListener("click", startAudioOnInteraction);
             document.removeEventListener("touchstart", startAudioOnInteraction);
-            document.removeEventListener("scroll", startAudioOnInteraction);
         };
 
+        // Scroll event අයින් කර ඇත (Auto scroll වීම වැළැක්වීමට)
         document.addEventListener("click", startAudioOnInteraction);
         document.addEventListener("touchstart", startAudioOnInteraction);
-        document.addEventListener("scroll", startAudioOnInteraction);
 
         if (musicBtn) {
             musicBtn.addEventListener("click", (e) => {
