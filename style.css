@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -13,49 +12,7 @@ body {
     color: #333;
     overflow-x: hidden;
 }
-/* Petals Container */
-.petals-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none; /* Site එක click කිරීමට බාධාවක් නොවීමට */
-    z-index: 999;
-    overflow: hidden;
-}
 
-/* Red / Soft Pink Rose Petal Design */
-.petal {
-    position: absolute;
-    top: -30px;
-    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 50%, #e84393 100%);
-    border-radius: 15px 0 15px 0;
-    opacity: 0.85;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-    animation: fallAndSway linear infinite;
-}
-
-/* Falling & Swinging Animation */
-@keyframes fallAndSway {
-    0% {
-        opacity: 0;
-        transform: translateY(0) rotate(0deg) translateX(0);
-    }
-    10% {
-        opacity: 0.9;
-    }
-    50% {
-        transform: translateY(50vh) rotate(180deg) translateX(80px);
-    }
-    75% {
-        transform: translateY(75vh) rotate(270deg) translateX(-40px);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(105vh) rotate(360deg) translateX(100px);
-    }
-}
 /* Preloader - START */
 #preloader {
     position: fixed;
@@ -120,11 +77,15 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Hero Base Section */
+/* Hero Section */
+/* --- Hero Section - START --- */
 .hero {
     position: relative;
     width: 100%;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #faf8f5;
 }
 
 /* Background Photo Slider */
@@ -133,7 +94,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 40vh; /* Photo එකේ උස */
+    height: 70vh;
     z-index: 1;
     overflow: hidden;
 }
@@ -146,7 +107,6 @@ body {
     height: 100%;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
 }
@@ -155,28 +115,43 @@ body {
     opacity: 1;
 }
 
-/* Photo එකේ උසට සමාන Space Holder එක */
+/* Photo එක මැදින් Ashen & Sanchala (තවත් උඩට ගෙන ඇත) */
+.monogram-container {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+}
+
+.monogram {
+    font-size: 62px;
+    font-family: 'Alex Brush', 'Parisienne', cursive;
+    color: #ffffff;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85);
+}
+/* Photo Space Height */
 .photo-spacer {
-    height: 40vh;
+    height: 60vh;
     width: 100%;
     position: relative;
     z-index: 2;
-    pointer-events: none;
 }
 
-/* Photo එකෙන් පහළ Wording - අඟල් 2ක (200px) පරතරය */
+/* Photo එකෙන් පහළ Wording - Box සහ Border ඉවත් කර ඇත */
 .hero-content-below {
     position: relative;
     z-index: 5;
     width: 100%;
     max-width: 800px;
-    margin-top: 190px !important; /* Photo එක සහ Wording එක අතර අඟල් 2ක Space එක */
-    margin-left: auto;
-    margin-right: auto;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 10px 20px 40px 20px;
+    padding: 20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -587,500 +562,59 @@ footer p {
 }
 
 /* ==========================================
-   COUNTDOWN TIMER PERFECT FIX
+   COUNTDOWN TIMER CUSTOMIZATION (UPDATED)
    ========================================== */
 
-/* 1. Countdown Box Flex & Gap Fix */
-.countdown-section .countdown,
-div.countdown {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 12px !important;
-    margin: 20px auto !important;
-}
-
-/* 2. Box Width & Height Fix */
-.countdown .time-box,
-div.time-box {
-    background: #ffffff !important;
-    border: 1.5px solid #d4af37 !important;
-    border-radius: 12px !important;
-    padding: 12px 8px !important;
-    width: 75px !important;
-    min-width: 75px !important;
-    height: 80px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.18) !important;
-    margin: 0 !important;
-}
-
-/* 3. Number Font & Size Fix */
-.countdown .time-box span,
-div.time-box span {
-    font-family: 'Cinzel', serif !important;
-    font-size: 26px !important;
-    font-weight: 700 !important;
-    color: #8b6b23 !important;
-    line-height: 1 !important;
-    margin-bottom: 4px !important;
-}
-
-/* 4. Label Font & Size Fix */
-.countdown .time-box small,
-div.time-box small {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 10px !important;
-    letter-spacing: 0.8px !important;
-    text-transform: uppercase !important;
-    color: #666666 !important;
-    line-height: 1 !important;
-}
-/* ==========================================
-   SECTION HEADINGS FONT & STYLE CUSTOMIZATION
-   ========================================== */
-
-/* Main Headings (Wedding Ceremony, Homecoming, Venue, RSVP, Contact, etc.) */
-h2, 
-.section-title, 
+/* Heading Font Change */
+.countdown-section h2, 
 #countdown-title {
     font-family: 'Cinzel', 'Playfair Display', serif !important;
-    font-size: 26px !important;
-    font-weight: 700 !important;
-    color: #8b6b23 !important; /* Gold / Bronze Color */
     letter-spacing: 2px !important;
-    text-transform: uppercase !important;
-    text-align: center !important;
-    margin-top: 30px !important;
-    margin-bottom: 20px !important;
 }
 
-/* Gold Underline Divider for Headings */
-h2::after, 
-.section-title::after {
-    content: '' !important;
-    display: block !important;
-    width: 60px !important;
-    height: 2px !important;
-    background: #d4af37 !important;
-    margin: 8px auto 0 auto !important;
-    border-radius: 2px !important;
-}
-
-/* Contact Details & Card Headings */
-.venue-card h3, 
-.event-card h3, 
-.rsvp-card h3,
-.contact-section h3 {
-    font-family: 'Cinzel', serif !important;
-    font-size: 20px !important;
-    color: #4a3b32 !important;
-    letter-spacing: 1px !important;
-    text-align: center !important;
-}
-/* ==========================================
-   PREMIUM ROYAL & ELEGANT FONTS CUSTOMIZATION
-   ========================================== */
-
-/* Google Fonts Import (Cinzel Decorative & Great Vibes) */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
-
-/* Main Section Headings (Countdown, Wedding Ceremony, Homecoming, Venue, RSVP, Contact) */
-h2, 
-.section-title, 
-#countdown-title {
-    font-family: 'Cinzel Decorative', 'Playfair Display', serif !important;
-    font-size: 24px !important;
-    font-weight: 700 !important;
-    color: #8b6b23 !important;
-    letter-spacing: 2.5px !important;
-    text-transform: uppercase !important;
-    text-align: center !important;
-    margin-top: 35px !important;
-    margin-bottom: 22px !important;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-
-/* Gold Underline Divider for Headings */
-h2::after, 
-.section-title::after {
-    content: '' !important;
-    display: block !important;
-    width: 70px !important;
-    height: 2px !important;
-    background: linear-gradient(90deg, transparent, #d4af37, transparent) !important;
-    margin: 10px auto 0 auto !important;
-    border-radius: 2px !important;
-}
-
-/* Sub-titles & Card Headings (Wedding Venue, Contact Person Names) */
-.venue-card h3, 
-.event-card h3, 
-.rsvp-card h3,
-.contact-section h3 {
-    font-family: 'Playfair Display', serif !important;
-    font-size: 21px !important;
-    font-weight: 600 !important;
-    color: #4a3b32 !important;
-    letter-spacing: 1px !important;
-    text-align: center !important;
-}
-/* ==========================================
-   BERKSHIRE SWASH ELEGANT FONT INTEGRATION
-   ========================================== */
-
-/* Google Fonts Import - Berkshire Swash */
-@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
-
-/* Apply Berkshire Swash to Main Headings (Countdown, Wedding Ceremony, Homecoming, Venue, RSVP, Contact) */
-h2, 
-.section-title, 
-#countdown-title {
-    font-family: 'Berkshire Swash', cursive !important;
-    font-size: 28px !important;
-    font-weight: 400 !important;
-    color: #8b6b23 !important;
-    letter-spacing: 1px !important;
-    text-transform: none !important; /* Berkshire Swash font එක කැපී පෙනීමට Normal Case/Title Case තබා ඇත */
-    text-align: center !important;
-    margin-top: 35px !important;
-    margin-bottom: 20px !important;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-
-/* Gold Underline Divider for Headings */
-h2::after, 
-.section-title::after {
-    content: '' !important;
-    display: block !important;
-    width: 65px !important;
-    height: 2px !important;
-    background: linear-gradient(90deg, transparent, #d4af37, transparent) !important;
-    margin: 8px auto 0 auto !important;
-    border-radius: 2px !important;
-}
-
-/* Sub-titles & Card Headings (Wedding Venue, Contact Person Names) */
-.venue-card h3, 
-.event-card h3, 
-.rsvp-card h3,
-.contact-section h3 {
-    font-family: 'Berkshire Swash', cursive !important;
-    font-size: 22px !important;
-    font-weight: 400 !important;
-    color: #4a3b32 !important;
-    letter-spacing: 0.5px !important;
-    text-align: center !important;
-}
-/* ==========================================
-   HERO TEXT SPACING & PARENTS TITLE SIZE
-   ========================================== */
-
-/* Photo එකෙන් පස්සේ එන Text කොටස පහළට කිරීම (Margin/Spacing Increase) */
-.hero-content-below {
-    margin-top: 50px !important; /* Photo එකෙන් 1' ප්‍රමාණයකට පහළට කරයි */
-    padding-top: 10px !important;
-}
-
-/* DAUGHTER OF & SON OF Font Size Increase */
-.parents-title {
-    font-family: 'Cinzel', serif !important;
-    font-size: 18px !important; /* Font Size එක 18px දක්වා වැඩි කර ඇත */
-    font-weight: 700 !important;
-    color: #8b6b23 !important; /* Gold tone finish */
-    letter-spacing: 2px !important;
-    margin-top: 20px !important;
-    margin-bottom: 6px !important;
-}
-
-/* Parents Names Font Styling */
-.parents-names {
-    font-size: 13px !important;
-    letter-spacing: 1px !important;
-    color: #555555 !important;
-    margin-bottom: 12px !important;
-}
-/* ==========================================
-   PARENTS NAMES FONT SIZE INCREASE
-   ========================================== */
-
-.parents-names {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 16px !important; /* Font size එක 13px සිට 16px දක්වා ලොකු කර ඇත */
-    font-weight: 500 !important;
-    color: #4a3b32 !important;
-    letter-spacing: 1px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 15px !important;
-}
-/* ==========================================
-   COUPLE NAMES FONT CHANGE (HIGH CLARITY)
-   ========================================== */
-
-/* Import Pinyon Script & Playfair Display (Alternative Serif) Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@1,500&display=swap');
-
-/* Chathurni Sanchala & Ashen Anuradha Font Styling */
-.couple-name {
-    font-family: 'Pinyon Script', cursive !important;
-    font-size: 48px !important; /* අකුරු ඉතා පැහැදිලිව පෙනීමට Size එක වැඩි කර ඇත */
-    font-weight: 400 !important;
-    color: #8b6b23 !important; /* Premium Gold Tone */
-    letter-spacing: 0px !important; /* Script fonts වලට letter-spacing 0 තැබීම සුදුසුයි */
-    line-height: 1.1 !important;
-    margin-top: 5px !important;
-    margin-bottom: 10px !important;
-    text-transform: none !important;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.05); /* Soft shadow for better clarity */
-}
-
-/* '&' Symbol Styling */
-.and {
-    font-family: 'Playfair Display', serif !important;
-    font-style: italic !important;
-    font-size: 28px !important;
-    font-weight: 500 !important;
-    color: #d4af37 !important;
-    margin: 8px 0 !important;
-    display: block !important;
-}/* ==========================================
-   COUPLE NAMES FONT CHANGE (HIGH CLARITY)
-   ========================================== */
-
-/* Import Pinyon Script & Playfair Display (Alternative Serif) Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@1,500&display=swap');
-
-/* Chathurni Sanchala & Ashen Anuradha Font Styling */
-.couple-name {
-    font-family: 'Pinyon Script', cursive !important;
-    font-size: 48px !important; /* අකුරු ඉතා පැහැදිලිව පෙනීමට Size එක වැඩි කර ඇත */
-    font-weight: 400 !important;
-    color: #8b6b23 !important; /* Premium Gold Tone */
-    letter-spacing: 0px !important; /* Script fonts වලට letter-spacing 0 තැබීම සුදුසුයි */
-    line-height: 1.1 !important;
-    margin-top: 5px !important;
-    margin-bottom: 10px !important;
-    text-transform: none !important;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.05); /* Soft shadow for better clarity */
-}
-
-/* '&' Symbol Styling */
-.and {
-    font-family: 'Playfair Display', serif !important;
-    font-style: italic !important;
-    font-size: 28px !important;
-    font-weight: 500 !important;
-    color: #d4af37 !important;
-    margin: 8px 0 !important;
-    display: block !important;
-}
-/* ==========================================
-   PARENTS NAMES BOLD FONT STYLING
-   ========================================== */
-
-.parents-names {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 16px !important;
-    font-weight: 700 !important; /* Bold කිරීමට 700 ලෙස වෙනස් කර ඇත */
-    color: #333333 !important; /* වඩාත් පැහැදිලි තද පැහැයක් */
-    letter-spacing: 1px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 15px !important;
-}
-/* ==========================================
-   GWENDOLYN FONT INTEGRATION FOR COUPLE NAMES
-   ========================================== */
-
-/* Google Fonts Import - Gwendolyn Font */
-@import url('https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&family=Playfair+Display:ital,wght@1,500&display=swap');
-
-/* Chathurni Sanchala & Ashen Anuradha Font Styling */
-.couple-name {
-    font-family: 'Gwendolyn', cursive !important;
-    font-size: 50px !important; /* Gwendolyn Font එක පැහැදිලිව පෙනීමට Size එක 50px කර ඇත */
-    font-weight: 700 !important;
-    color: #8b6b23 !important; /* Gold Tone */
-    letter-spacing: 0px !important;
-    line-height: 1.2 !important;
-    margin-top: 5px !important;
-    margin-bottom: 12px !important;
-    text-transform: none !important;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.05);
-}
-
-/* '&' Symbol Styling */
-.and {
-    font-family: 'Gwendolyn', cursive !important;
-    font-size: 38px !important;
-    font-weight: 700 !important;
-    color: #d4af37 !important;
-    margin: 6px 0 !important;
-    display: block !important;
-}
-/* Gwendolyn Font for Couple Names */
-.couple-name {
-    font-family: 'Gwendolyn', cursive !important;
-    font-size: 52px !important;
-    font-weight: 700 !important;
-    color: #8b6b23 !important;
-    line-height: 1.2 !important;
-    text-transform: none !important;
-}
-
-.and {
-    font-family: 'Gwendolyn', cursive !important;
-    font-size: 38px !important;
-    font-weight: 700 !important;
-    color: #d4af37 !important;
-}
-/* Falling & Swinging Animation (Slower Wind Effect) */
-@keyframes fallAndSway {
-    0% {
-        opacity: 0;
-        transform: translateY(0) rotate(0deg) translateX(0);
-    }
-    10% {
-        opacity: 0.85;
-    }
-    50% {
-        transform: translateY(50vh) rotate(120deg) translateX(35px);
-    }
-    75% {
-        transform: translateY(75vh) rotate(220deg) translateX(-20px);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(105vh) rotate(320deg) translateX(45px);
-    }
-}
-/* PRELOADER STYLES */
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-}
-
-#preloader.hide {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.loader-monogram {
-    font-size: 42px;
-    color: #b76e79;
-    font-weight: bold;
-    margin-bottom: 15px;
-    animation: pulse 1.5s infinite ease-in-out;
-}
-
-.loader-line {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, #b76e79, #d8a7b1);
-    border-radius: 3px;
-    margin-bottom: 15px;
-    animation: expand 1.5s infinite alternate ease-in-out;
-}
-
-.loader-text {
-    font-size: 14px;
-    color: #777;
-    letter-spacing: 1px;
-}
-
-/* Animations */
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.1); opacity: 1; }
-}
-
-@keyframes expand {
-    0% { width: 30px; }
-    100% { width: 100px; }
-}
-/* Scroll Button Container එක මැදට Alignment කිරීම */
-.scroll-btn-container {
+/* Container & Gap Fix */
+.countdown-container,
+.countdown-grid, 
+.countdown {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    width: 100% !important;
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
+    gap: 6px !important; /* Box අතර දුර ගොඩක් ලං කර ඇත */
+    margin-top: 15px !important;
+}
+
+/* Time Box Design & Size Fix */
+.countdown-box, 
+.time-box {
+    background: #ffffff !important;
+    border: 1px solid #d4af37 !important;
+    border-radius: 12px !important;
+    padding: 8px 4px !important;
+    min-width: 58px !important; /* Box එක තවත් සංකීර්ණ ලෙස ලං වේ */
+    width: 60px !important;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15) !important;
     text-align: center !important;
 }
 
-.scroll-btn {
-    display: inline-block !important;
-    text-decoration: none !important;
-    color: #ffffff !important;
-    font-weight: bold !important;
-    font-size: 18px !important;
-}
-/* Guest Name Highlight Box Styles */
-.guest-highlight-card {
-    background: rgba(255, 255, 255, 0.45); /* Transparent White Background */
-    border: 1.5px solid rgba(212, 175, 55, 0.5); /* Soft Gold Border */
-    backdrop-filter: blur(8px); /* Modern Glass Effect */
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 12px;
-    padding: 16px 25px;
-    margin: 25px auto; /* උඩ සහ යට Space ලබාදීමට */
-    max-width: 90%;
-    width: fit-content;
-    box-shadow: 0 4px 15px rgba(183, 110, 121, 0.12); /* Soft Rose-Gold Shadow */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Guest Name Typography */
-.guest-name-text {
-    margin: 0 !important;
+/* Number Font Styling */
+.countdown-value, 
+.time-box span {
+    font-family: 'Cinzel', serif !important; /* Numbers සඳහා Elegant Serif Font */
     font-size: 24px !important;
     font-weight: 700 !important;
-    color: #d4af37 !important; /* Premium Gold Color */
-    font-family: 'Playfair Display', serif, cursive !important;
-    letter-spacing: 1px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-/* Hero section content alignment */
-.hero-content-below {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-    position: relative !important;
-    z-index: 2 !important;
+    color: #8b6b23 !important;
+    line-height: 1.1 !important;
+    display: block !important;
 }
 
-#couple-details-container {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-}
-
-.couple-section {
-    position: relative !important;
-    width: 100% !important;
-    text-align: center !important;
-}
-
-.getting-married-title,
-.invite-subtext,
-.scroll-btn-container {
-    position: relative !important;
-    text-align: center !important;
+/* Label Font Styling (DAYS, HOURS, etc.) */
+.countdown-label, 
+.time-box small {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 9px !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    color: #777777 !important;
+    margin-top: 3px !important;
+    display: block !important;
 }
