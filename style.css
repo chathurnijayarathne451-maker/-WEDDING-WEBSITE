@@ -974,3 +974,16 @@ h2::after,
         transform: translateY(105vh) rotate(320deg) translateX(45px);
     }
 }
+/* Scroll Button Center Alignment Fix */
+.scroll-btn-container {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 20px !important;
+}
+
+.scroll-btn {
+    display: inline-block !important;
+    text-align: center !important;
+}
