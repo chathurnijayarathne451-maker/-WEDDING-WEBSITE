@@ -1065,3 +1065,41 @@ h3.guest-name-text {
     font-family: 'Cinzel', serif !important;
     margin: 0 !important;
 }
+/* Fix Duplicate Box & Multiple Borders */
+.guest-box {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 2px solid #d4af37 !important;
+    border-radius: 20px !important;
+    padding: 12px 30px !important;
+    margin: 25px auto !important;
+    width: fit-content !important;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25) !important;
+    backdrop-filter: blur(8px) !important;
+    text-align: center !important;
+}
+
+/* Inner Text inside Box - Border completely removed */
+#guestGreeting, 
+.guest-name-text {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #8b6b23 !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    font-family: 'Cinzel', serif !important;
+}
+
+/* Single View Invitation Button Fix */
+.scroll-btn-container {
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 20px !important;
+}
+
+.scroll-btn {
+    display: inline-block !important;
+    margin: 0 auto !important;
+}
