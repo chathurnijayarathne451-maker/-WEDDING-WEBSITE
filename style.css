@@ -987,3 +987,28 @@ h2::after,
     display: inline-block !important;
     text-align: center !important;
 }
+/* Personalized Guest Name Box Styling */
+.guest-box {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid #d4af37 !important; /* Gold Border */
+    border-radius: 30px !important; /* Elegant Soft Rounded Corners */
+    padding: 10px 28px !important;
+    margin: 15px auto !important;
+    width: fit-content !important;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25), 
+                inset 0 0 10px rgba(212, 175, 55, 0.1) !important; /* Gold Glow */
+    backdrop-filter: blur(8px) !important;
+    position: relative !important;
+    transition: transform 0.3s ease !important;
+}
+
+/* Guest Name Typography */
+.guest-name-text {
+    font-size: 20px !important;
+    color: #8b6b23 !important; /* Deep Elegant Gold */
+    font-family: 'Cinzel', 'Playfair Display', serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    margin: 0 !important;
+    text-transform: capitalize !important;
+}
