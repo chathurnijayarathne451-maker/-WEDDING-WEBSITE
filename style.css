@@ -1012,3 +1012,34 @@ h2::after,
     margin: 0 !important;
     text-transform: capitalize !important;
 }
+/* Guest Box Overrides & Center Alignment */
+.hero-content-below .guest-box,
+#guestGreeting {
+    display: inline-block !important;
+    background: #ffffff !important;
+    border: 2px solid #d4af37 !important;
+    border-radius: 25px !important;
+    padding: 10px 25px !important;
+    margin: 15px auto !important;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35) !important;
+    text-align: center !important;
+}
+
+.hero-content-below .guest-name-text {
+    color: #8b6b23 !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    font-family: 'Cinzel', serif !important;
+    letter-spacing: 1px !important;
+}
+
+.scroll-btn-container {
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 15px !important;
+}
+
+.scroll-btn {
+    display: inline-block !important;
+    margin: 0 auto !important;
+}
