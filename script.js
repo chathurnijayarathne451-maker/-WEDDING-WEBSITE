@@ -242,4 +242,63 @@ document.addEventListener("DOMContentLoaded", () => {
             window.open(whatsappUrl, '_blank');
         });
     }
+    const message = `Hello, RSVP Confirmation for ${decodeURIComponent(guestName)}:\n` +
+                            `Status: ${attendance}\n` +
+                            `Guests: ${guestCount}`;
+
+            const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    }
+
+    // 4. Countdown Timer Logic (Wedding & Homecoming)
+    const weddingTarget = new Date('August 26, 2026 10:13:00').getTime();
+    const homecomingTarget = new Date('August 30, 2026 00:00:00').getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+
+        // Wedding Countdown
+        const diffWedding = weddingTarget - now;
+        if (diffWedding > 0) {
+            const days = Math.floor(diffWedding / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diffWedding % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diffWedding % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diffWedding % (1000 * 60)) / 1000);
+
+            const daysEl = document.getElementById('days-wedding');
+            const hoursEl = document.getElementById('hours-wedding');
+            const minsEl = document.getElementById('minutes-wedding');
+            const secsEl = document.getElementById('seconds-wedding');
+
+            if (daysEl) daysEl.innerText = days < 10 ? '0' + days : days;
+            if (hoursEl) hoursEl.innerText = hours < 10 ? '0' + hours : hours;
+            if (minsEl) minsEl.innerText = minutes < 10 ? '0' + minutes : minutes;
+            if (secsEl) secsEl.innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        // Homecoming Countdown
+        const diffHomecoming = homecomingTarget - now;
+        if (diffHomecoming > 0) {
+            const days = Math.floor(diffHomecoming / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diffHomecoming % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diffHomecoming % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diffHomecoming % (1000 * 60)) / 1000);
+
+            const daysElHC = document.getElementById('days-homecoming');
+            const hoursElHC = document.getElementById('hours-homecoming');
+            const minsElHC = document.getElementById('minutes-homecoming');
+            const secsElHC = document.getElementById('seconds-homecoming');
+
+            if (daysElHC) daysElHC.innerText = days < 10 ? '0' + days : days;
+            if (hoursElHC) hoursElHC.innerText = hours < 10 ? '0' + hours : hours;
+            if (minsElHC) minsElHC.innerText = minutes < 10 ? '0' + minutes : minutes;
+            if (secsElHC) secsElHC.innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+});
 });
