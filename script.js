@@ -4,6 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const guestParam = urlParams.get('guest');
     const eventType = urlParams.get('event'); // 'wedding' or 'homecoming'
     const side = urlParams.get('side'); // 'groom' or 'bride'
+    
+    // Dynamic RSVP Contact Numbers Update
+    const rsvpContactsDiv = document.getElementById('rsvpContacts') || document.querySelector('.rsvp-contacts');
+
+    if (rsvpContactsDiv) {
+        if (side === 'bride') {
+            rsvpContactsDiv.innerHTML = `
+                <p>📞 Bride (Sanchala): 0713372644</p>
+                <p>📞 Bride's Mother (Mrs. Dhammika): 0753380738</p>
+            `;
+        } else {
+            rsvpContactsDiv.innerHTML = `
+                <p>📞 Groom (Ashen): 0752540988</p>
+                <p>📞 Groom's Father (Mr. Santha): 0717648030</p>
+            `;
+        }
+    }
 
     // Guest Name Logic
     const guestGreetingElement = document.getElementById('guestGreeting');
