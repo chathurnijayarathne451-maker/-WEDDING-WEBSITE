@@ -164,12 +164,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (bgMusic) {
         bgMusic.volume = 0.5; // Sound Volume 50%
 
-        // 🎵 Audio එක Play කරන Main Function එක
+       // 🎵 Audio එක Play කරන Main Function එක
         const playMusic = () => {
             if (bgMusic.paused) {
                 bgMusic.play().then(() => {
                     if (musicBtn) musicBtn.textContent = "🎵 Pause Music";
-                    removeAllListeners(); // එක පාරක් Play වූ පසු Listeners අයින් කිරීම
+                    removeAllListeners();
                 }).catch(error => {
                     console.log("Autoplay waiting for user action:", error);
                 });
@@ -185,30 +185,27 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         };
 
-        // 1. "View Invitation ↓" බටන් එක ක්ලික් කළ විට Play වීම
+        // 1. "View Invitation ↓" බටන් එක හෝ Screen එක Touch/Click කළ විට Play වීම
         if (viewInvitationBtn) {
             viewInvitationBtn.addEventListener("click", playMusic);
         }
-
-        // 2. Web site එකේ ඕනෑම තැනක් Click හෝ Touch කළ විට Auto-play වීම
         document.addEventListener("click", playMusic);
         document.addEventListener("touchstart", playMusic);
 
-        // 3. Music Toggle Button (Play / Pause) Control
+        // 2. Music Toggle Button (Play / Pause) Control
         if (musicBtn) {
             musicBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // Screen Interaction එක්ක Clash වීම වැළැක්වීමට
+                e.stopPropagation();
                 if (bgMusic.paused) {
-                    bgMusic.play();
-                    musicBtn.textContent = "🎵 Pause Music";
+                    bgMusic.play().then(() => {
+                        musicBtn.textContent = "🎵 Pause Music";
+                    }).catch(err => console.log(err));
                 } else {
                     bgMusic.pause();
                     musicBtn.textContent = "🎵 Play Music";
                 }
             });
         }
-    }
-});
 /* Dynamic Side & RSVP Contact Switcher */
 document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
