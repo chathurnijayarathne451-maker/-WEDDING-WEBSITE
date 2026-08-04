@@ -60,12 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 2. Preloader Hide Logic
+   // 2. Preloader Hide Logic
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        setTimeout(() => {
-            preloader.classList.add('hide');
-        }, 800);
+        preloader.classList.add('hide');
     }
 
     // 3. Hero Background Image Auto Slider Logic
