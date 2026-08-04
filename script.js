@@ -126,14 +126,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Background Music Control Logic
 document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bgMusic");
     const musicBtn = document.getElementById("musicBtn");
 
     if (bgMusic) {
-        bgMusic.volume = 0.5;
+        bgMusic.volume = 0.5; // Sound volume එක 50% ලෙස සැකසීම
 
+        // 1. User Screen එක Click හෝ Touch කළ සැනින් Music Auto-play කිරීම
         const startAudioOnInteraction = () => {
             bgMusic.play().then(() => {
                 if (musicBtn) musicBtn.textContent = "🎵 Pause Music";
@@ -141,16 +141,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log("Autoplay blocked, waiting for click:", error);
             });
 
+            // එක පාරක් play වූ පසු event listeners අයින් කිරීම
             document.removeEventListener("click", startAudioOnInteraction);
             document.removeEventListener("touchstart", startAudioOnInteraction);
+            document.removeEventListener("scroll", startAudioOnInteraction);
         };
 
+        // Window interaction events
         document.addEventListener("click", startAudioOnInteraction);
         document.addEventListener("touchstart", startAudioOnInteraction);
+        document.addEventListener("scroll", startAudioOnInteraction);
 
+        // 2. Music Button (Play/Pause Toggle) Control එක
         if (musicBtn) {
             musicBtn.addEventListener("click", (e) => {
-                e.stopPropagation();
+                e.stopPropagation(); // Screen interaction event එකත් එක්ක clash වීම වැළැක්වීමට
                 if (bgMusic.paused) {
                     bgMusic.play();
                     musicBtn.textContent = "🎵 Pause Music";
