@@ -37,20 +37,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Determine Sender Display Name
         const senderDisplayName = (sender === 'groom') ? 'Ashen Anuradha' : 'Sanchala Jayarathne';
-
-        // Custom Message Output Template
-        const customMessage = `Dear ${fullGuestTitle} ✨💌\n\nWith hearts overflowing with love and gratitude, \nwe are delighted to invite you to witness the beginning of our forever 💍❤️\n\nPlease open our wedding invitation below 👇\n${generatedLink}\n\nYour presence and blessings mean the world to us 🌹\nCome celebrate love, laughter, and a lifetime of happiness with us 🥂✨\n\nCan’t wait to see you there,\nWith all our love,\n${senderDisplayName}`;
+// Custom Message Output Template (Without Direct Emojis to Avoid Encoding Issues)
+        const customMessage = "Dear " + fullGuestTitle + " \u2728\u2709\uFE0F\n\n" +
+            "With hearts overflowing with love and gratitude, \n" +
+            "we are delighted to invite you to witness the beginning of our forever \u1F48D\u2764\uFE0F\n\n" +
+            "Please open our wedding invitation below \u1F447\n" +
+            generatedLink + "\n\n" +
+            "Your presence and blessings mean the world to us \u1F339\n" +
+            "Come celebrate love, laughter, and a lifetime of happiness with us \u1F242\u2728\n\n" +
+            "Can\u2019t wait to see you there,\n" +
+            "With all our love,\n" +
+            senderDisplayName;
 
         // Set message
         messageOutput.value = customMessage;
         outputSection.style.display = "block";
 
-        // Setup WhatsApp URL
+        // Setup WhatsApp URL with Encoded Message
+        const encodedMsg = encodeURIComponent(customMessage);
         if (phone) {
-            finalWhatsAppUrl = `https://wa.me/${phone}?text=${encodeURIComponent(customMessage)}`;
+            finalWhatsAppUrl = `https://wa.me/${phone}?text=${encodedMsg}`;
             waSendBtn.style.display = "block";
         } else {
-            finalWhatsAppUrl = `https://wa.me/?text=${encodeURIComponent(customMessage)}`;
+            finalWhatsAppUrl = `https://api.whatsapp.com/send?text=${encodedMsg}`;
         }
     });
 
