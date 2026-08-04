@@ -15,11 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Event Type Display Logic
+   // Event Type Display Logic
     const weddingCard = document.getElementById('weddingCard');
     const homecomingCard = document.getElementById('homecomingCard');
-    const weddingVenue = document.getElementById('weddingVenueSection');
-    const homecomingVenue = document.getElementById('homecomingVenueSection');
     const brideRsvp = document.getElementById('brideRsvp');
     const groomRsvp = document.getElementById('groomRsvp');
 
@@ -27,19 +25,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const weddingDateCard = document.getElementById('weddingDateCard');
     const homecomingDateCard = document.getElementById('homecomingDateCard');
 
+    // Event & Venue Cards (index.html එකේ තියෙන IDs)
+    const weddingSections = document.querySelectorAll('#weddingVenueSection');
+    const homecomingSections = document.querySelectorAll('#homecomingVenueSection');
+
     if (eventType === 'wedding') {
         if (homecomingCard) homecomingCard.style.display = 'none';
-        if (homecomingVenue) homecomingVenue.style.display = 'none';
         if (groomRsvp) groomRsvp.style.display = 'none';
         if (homecomingDateCard) homecomingDateCard.style.display = 'none';
+        
+        // Homecoming Event Card & Map Card දෙකම Hide කිරීම
+        homecomingSections.forEach(el => el.style.display = 'none');
 
     } else if (eventType === 'homecoming') {
         if (weddingCard) weddingCard.style.display = 'none';
-        if (weddingVenue) weddingVenue.style.display = 'none';
         if (brideRsvp) brideRsvp.style.display = 'none';
         if (weddingDateCard) weddingDateCard.style.display = 'none';
+        
+        // Wedding Event Card & Map Card දෙකම Hide කිරීම
+        weddingSections.forEach(el => el.style.display = 'none');
     }
-
     // --- Dynamic Name Order (Groom vs Bride Side Swap Logic) ---
     const brideWrapper = document.getElementById("bride-wrapper");
     const groomWrapper = document.getElementById("groom-wrapper");
