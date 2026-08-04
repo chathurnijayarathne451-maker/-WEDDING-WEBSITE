@@ -162,3 +162,47 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+/* Dynamic Side & RSVP Contact Switcher */
+document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const side = urlParams.get('side'); // 'groom' or 'bride'
+    const guestName = urlParams.get('guest') || 'Guest';
+
+    const groomContacts = document.querySelectorAll('.groom-contact');
+    const brideContacts = document.querySelectorAll('.bride-contact');
+
+    // Display Contact Numbers based on Side (Bride vs Groom)
+    if (side === 'bride') {
+        groomContacts.forEach(el => el.style.display = 'none');
+        brideContacts.forEach(el => el.style.display = 'block');
+    } else {
+        // Default Groom Side
+        groomContacts.forEach(el => el.style.display = 'block');
+        brideContacts.forEach(el => el.style.display = 'none');
+    }
+
+    // WhatsApp RSVP Form Handling
+    const rsvpForm = document.getElementById('rsvpForm');
+    if (rsvpForm) {
+        rsvpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const attendanceInput = document.querySelector('input[name="attendance"]:checked');
+            const attendance = attendanceInput ? attendanceInput.value : 'Attending';
+            const guestCount = document.getElementById('guestCount') ? document.getElementById('guestCount').value : '1';
+            
+            // Select WhatsApp Target Phone Number based on Side
+            let targetPhone = "94752540988"; // Groom (Ashen)
+            if (side === 'bride') {
+                targetPhone = "94713372644"; // Bride (Sanchala)
+            }
+
+            const message = `Hello, RSVP Confirmation for ${decodeURIComponent(guestName)}:\n` +
+                            `Status: ${attendance}\n` +
+                            `Guests: ${guestCount}`;
+
+            const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    }
+});
