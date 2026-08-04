@@ -317,10 +317,11 @@ if (petalsContainer) {
 
         petalsContainer.appendChild(petal);
 
-        setTimeout(() => {
+       setTimeout(() => {
             petal.remove();
         }, duration * 1000);
     }
 
     setInterval(createPetal, 250);
 }
+});
