@@ -122,7 +122,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
+// 5. Music Play/Pause Toggle Logic
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    let isPlaying = false;
 
+    if (musicBtn && bgMusic) {
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicBtn.innerText = '🎵';
+                isPlaying = false;
+            } else {
+                bgMusic.play().then(() => {
+                    musicBtn.innerText = '⏸️';
+                    isPlaying = true;
+                }).catch(err => {
+                    console.log("Music playback error:", err);
+                });
+            }
+        });
+
+        // User Screen එක Click / Touch කළ සැනින් Auto Play ආරම්භ කිරීම
+        document.body.addEventListener('click', () => {
+            if (!isPlaying) {
+                bgMusic.play().then(() => {
+                    musicBtn.innerText = '⏸️';
+                    isPlaying = true;
+                }).catch(() => {});
+            }
+        }, { once: true });
+    }
     // 5. Petals Falling Animation Logic
     const petalsContainer = document.querySelector('.petals-container');
 
