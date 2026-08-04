@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Base URL
         const baseUrl = window.location.href.replace('admin.html', 'index.html').split('?')[0];
 
-        // Create Dynamic Invitation URL
-        const generatedLink = `${baseUrl}?side=${sender}&event=${eventType}&guest=${encodeURIComponent(fullGuestTitle)}`;
+       // Create Dynamic Invitation URL
+        const generatedLink = `https://bit.ly/ashen-sanchala-wedding?side=${sender}&event=${eventType}&guest=${encodeURIComponent(fullGuestTitle)}`;
 
         // Determine Sender Display Name
         const senderDisplayName = (sender === 'groom') ? 'Ashen Anuradha' : 'Sanchala Jayarathne';
