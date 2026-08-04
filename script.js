@@ -23,14 +23,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const brideRsvp = document.getElementById('brideRsvp');
     const groomRsvp = document.getElementById('groomRsvp');
 
+    // Date Banners (August 26 / August 30 Cards)
+    const weddingDateCard = document.getElementById('weddingDateCard');
+    const homecomingDateCard = document.getElementById('homecomingDateCard');
+
     if (eventType === 'wedding') {
         if (homecomingCard) homecomingCard.style.display = 'none';
         if (homecomingVenue) homecomingVenue.style.display = 'none';
         if (groomRsvp) groomRsvp.style.display = 'none';
+        if (homecomingDateCard) homecomingDateCard.style.display = 'none';
+
     } else if (eventType === 'homecoming') {
         if (weddingCard) weddingCard.style.display = 'none';
         if (weddingVenue) weddingVenue.style.display = 'none';
         if (brideRsvp) brideRsvp.style.display = 'none';
+        if (weddingDateCard) weddingDateCard.style.display = 'none';
     }
 
     // --- Dynamic Name Order (Groom vs Bride Side Swap Logic) ---
