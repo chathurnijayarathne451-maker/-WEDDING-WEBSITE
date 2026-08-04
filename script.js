@@ -129,33 +129,45 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bgMusic");
     const musicBtn = document.getElementById("musicBtn");
+    const viewInvitationBtn = document.querySelector(".scroll-btn"); // "View Invitation ↓" බටන් එක
 
     if (bgMusic) {
-        bgMusic.volume = 0.5; // Sound volume එක 50% ලෙස සැකසීම
+        bgMusic.volume = 0.5; // Sound Volume 50%
 
-        // 1. User Screen එක Click හෝ Touch කළ සැනින් Music Auto-play කිරීම
-        const startAudioOnInteraction = () => {
-            bgMusic.play().then(() => {
-                if (musicBtn) musicBtn.textContent = "🎵 Pause Music";
-            }).catch(error => {
-                console.log("Autoplay blocked, waiting for click:", error);
-            });
-
-            // එක පාරක් play වූ පසු event listeners අයින් කිරීම
-            document.removeEventListener("click", startAudioOnInteraction);
-            document.removeEventListener("touchstart", startAudioOnInteraction);
-            document.removeEventListener("scroll", startAudioOnInteraction);
+        // 🎵 Audio එක Play කරන Main Function එක
+        const playMusic = () => {
+            if (bgMusic.paused) {
+                bgMusic.play().then(() => {
+                    if (musicBtn) musicBtn.textContent = "🎵 Pause Music";
+                    removeAllListeners(); // එක පාරක් Play වූ පසු Listeners අයින් කිරීම
+                }).catch(error => {
+                    console.log("Autoplay waiting for user action:", error);
+                });
+            }
         };
 
-        // Window interaction events
-        document.addEventListener("click", startAudioOnInteraction);
-        document.addEventListener("touchstart", startAudioOnInteraction);
-        document.addEventListener("scroll", startAudioOnInteraction);
+        // Event Listeners අයින් කරන Function එක
+        const removeAllListeners = () => {
+            document.removeEventListener("click", playMusic);
+            document.removeEventListener("touchstart", playMusic);
+            if (viewInvitationBtn) {
+                viewInvitationBtn.removeEventListener("click", playMusic);
+            }
+        };
 
-        // 2. Music Button (Play/Pause Toggle) Control එක
+        // 1. "View Invitation ↓" බටන් එක ක්ලික් කළ විට Play වීම
+        if (viewInvitationBtn) {
+            viewInvitationBtn.addEventListener("click", playMusic);
+        }
+
+        // 2. Web site එකේ ඕනෑම තැනක් Click හෝ Touch කළ විට Auto-play වීම
+        document.addEventListener("click", playMusic);
+        document.addEventListener("touchstart", playMusic);
+
+        // 3. Music Toggle Button (Play / Pause) Control
         if (musicBtn) {
             musicBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // Screen interaction event එකත් එක්ක clash වීම වැළැක්වීමට
+                e.stopPropagation(); // Screen Interaction එක්ක Clash වීම වැළැක්වීමට
                 if (bgMusic.paused) {
                     bgMusic.play();
                     musicBtn.textContent = "🎵 Pause Music";
