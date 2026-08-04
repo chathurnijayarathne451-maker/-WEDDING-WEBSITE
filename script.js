@@ -242,14 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
             window.open(whatsappUrl, '_blank');
         });
     }
-    const message = `Hello, RSVP Confirmation for ${decodeURIComponent(guestName)}:\n` +
-                            `Status: ${attendance}\n` +
-                            `Guests: ${guestCount}`;
-
-            const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        });
-    }
 
     // 4. Countdown Timer Logic (Wedding & Homecoming)
     const weddingTarget = new Date('August 26, 2026 10:13:00').getTime();
