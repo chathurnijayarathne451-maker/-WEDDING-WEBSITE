@@ -296,7 +296,6 @@ document.addEventListener("DOMContentLoaded", () => {
 setInterval(updateCountdown, 1000);
     updateCountdown();
 
-});
 
 
 // 7. Petals Falling Animation Logic
