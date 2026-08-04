@@ -283,12 +283,6 @@
         <h2 data-en="RSVP" data-si="ආරාධනා පිළිගැනීම" style="font-family: 'Cinzel Decorative', cursive !important; color: #b76e79; font-size: 24px; margin-bottom: 20px; font-weight: bold;">RSVP</h2>
         
         <form id="rsvpForm" style="display: flex; flex-direction: column; gap: 18px;">
-            
-            <!-- Guest Name Input -->
-            <div class="form-group" style="text-align: left;">
-                <label data-en="Your Name" data-si="ඔබගේ නම" style="font-size: 14px; font-weight: 600; color: #555; display: block; margin-bottom: 5px;">Your Name</label>
-                <input type="text" id="guestName" required placeholder="Enter your full name" style="width: 100%; padding: 12px; border: 1.5px solid #d8a7b1; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box;">
-            </div>
 
             <!-- Attendance Choice (Radio Buttons) -->
             <div class="form-group" style="text-align: left;">
@@ -311,15 +305,17 @@
                 <input type="number" id="guestCount" min="1" max="10" value="1" style="width: 100%; padding: 12px; border: 1.5px solid #d8a7b1; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box;">
             </div>
 
-            <!-- Contact Information Display (Bridal / Groom Side numbers) -->
-            <div class="contact-numbers-container" style="margin-top: 10px; font-size: 13px; color: #666;">
+           <!-- Contact Information Display (Bridal / Groom Side Numbers) -->
+            <div class="contact-numbers-container" style="margin-top: 10px; font-size: 14px; color: #444; line-height: 1.8; text-align: left;">
+                <!-- Groom Side Contacts -->
                 <div class="groom-contact" style="display: block;">
-                    <p>📞 Groom RSVP: <strong>+94 77 123 4567</strong></p>
-                    <p>📞 Groom's Father RSVP: <strong>+94 77 987 6543</strong></p>
+                    <p>📞 Groom (Ashen): <a href="tel:0752540988" style="color: #b76e79; font-weight: bold; text-decoration: none;">0752540988</a></p>
+                    <p>📞 Groom's Father (Mr. Santha): <a href="tel:0717648030" style="color: #b76e79; font-weight: bold; text-decoration: none;">0717648030</a></p>
                 </div>
+                <!-- Bride Side Contacts -->
                 <div class="bride-contact" style="display: none;">
-                    <p>📞 Bride RSVP: <strong>+94 77 234 5678</strong></p>
-                    <p>📞 Bride's Mother RSVP: <strong>+94 77 876 5432</strong></p>
+                    <p>📞 Bride (Sanchala): <a href="tel:0713372644" style="color: #b76e79; font-weight: bold; text-decoration: none;">0713372644</a></p>
+                    <p>📞 Bride's Mother (Mrs. Dhammika): <a href="tel:0753380738" style="color: #b76e79; font-weight: bold; text-decoration: none;">0753380738</a></p>
                 </div>
             </div>
 
