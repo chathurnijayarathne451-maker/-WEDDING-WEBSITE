@@ -292,10 +292,36 @@ document.addEventListener("DOMContentLoaded", () => {
             if (minsElHC) minsElHC.innerText = minutes < 10 ? '0' + minutes : minutes;
             if (secsElHC) secsElHC.innerText = seconds < 10 ? '0' + seconds : seconds;
         }
-    }
-
-    setInterval(updateCountdown, 1000);
+    
+setInterval(updateCountdown, 1000);
     updateCountdown();
 
 });
-});
+
+
+// 7. Petals Falling Animation Logic
+const petalsContainer = document.querySelector('.petals-container');
+
+if (petalsContainer) {
+    function createPetal() {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+
+        const size = Math.random() * 12 + 10; 
+        petal.style.width = `${size}px`;
+        petal.style.height = `${size * 1.3}px`;
+
+        petal.style.left = `${Math.random() * 100}vw`;
+
+        const duration = Math.random() * 6 + 8;
+        petal.style.animationDuration = `${duration}s`;
+
+        petalsContainer.appendChild(petal);
+
+        setTimeout(() => {
+            petal.remove();
+        }, duration * 1000);
+    }
+
+    setInterval(createPetal, 250);
+}
