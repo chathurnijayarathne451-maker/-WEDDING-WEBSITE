@@ -35,13 +35,19 @@ document.addEventListener("DOMContentLoaded", () => {
       // Create Dynamic Invitation URL
         const generatedLink = `${baseUrl}?side=${sender}&event=${eventType}&guest=${encodeURIComponent(fullGuestTitle)}`;
 
-<div class="contact-numbers-container" style="margin-top: 10px; font-size: 14px; color: #444; line-height: 1.8; text-align: left;">
-
-        // Determine Sender Display Name
+// Determine Sender Display Name
         const senderDisplayName = (sender === 'groom') ? 'Ashen Anuradha' : 'Sanchala Jayarathne';
 
+        // Determine Event Display Text
+        let eventText = "our wedding ceremony 💍❤️";
+        if (eventType === 'homecoming') {
+            eventText = "our homecoming celebration 🏡✨";
+        } else if (eventType === 'both') {
+            eventText = "our wedding & homecoming celebrations 💍🏡✨";
+        }
+
         // Custom Message Output Template
-        const customMessage = `Dear ${fullGuestTitle} ✨💌\n\nWith hearts overflowing with love and gratitude, \nwe are delighted to invite you to witness the beginning of our forever 💍❤️\n\nPlease open our wedding invitation below 👇\n${generatedLink}\n\nYour presence and blessings mean the world to us 🌹\nCome celebrate love, laughter, and a lifetime of happiness with us 🥂✨\n\nCan’t wait to see you there,\nWith all our love,\n${senderDisplayName}`;
+        const customMessage = `Dear ${fullGuestTitle} ✨💌\n\nWith hearts overflowing with love and gratitude,\nwe are delighted to invite you to ${eventText}\n\nPlease open our wedding invitation below 👇\n${generatedLink}\n\nYour presence and blessings mean the world to us 🌹\nCome celebrate love, laughter, and a lifetime of happiness with us 🥂✨\n\nCan’t wait to see you there,\nWith all our love,\n${senderDisplayName}`;
 
         // Set message
         messageOutput.value = customMessage;
