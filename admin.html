@@ -87,7 +87,29 @@
         <button id="waSendBtn" class="btn" style="background: #128C7E;">💬 Send via WhatsApp</button>
     </div>
 </div>
-
+    
+<!-- GUEST INVITATION TRACKING DASHBOARD -->
+        <hr style="margin: 30px 0; border: 1px solid #ddd;">
+        
+        <h3 style="text-align: center; color: #d4af37; margin-bottom: 15px; text-transform: uppercase;">📊 Guest Invitation Tracking Dashboard</h3>
+        
+        <div style="overflow-x: auto; margin-top: 15px;">
+            <table id="trackingTable" style="width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-radius: 8px; overflow: hidden; font-size: 13px;">
+                <thead>
+                    <tr style="background-color: #d4af37; color: white; text-align: left;">
+                        <th style="padding: 10px;">Guest Name</th>
+                        <th style="padding: 10px;">Side</th>
+                        <th style="padding: 10px;">Event</th>
+                        <th style="padding: 10px;">Phone Number</th>
+                        <th style="padding: 10px;">Status</th>
+                        <th style="padding: 10px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="trackingTableBody">
+                    <!-- Dynamic Data Will Appear Here -->
+                </tbody>
+            </table>
+        </div>
 <script src="admin.js"></script>
 </body>
 </html>
