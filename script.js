@@ -21,6 +21,46 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         }
     }
+    // Dynamic RSVP WhatsApp Link Generator
+const rsvpForm = document.querySelector('.rsvp-section form') || document.querySelector('.rsvp-contacts').closest('form');
+const rsvpBtn = document.getElementById('rsvpSubmitBtn') || document.querySelector('.rsvp-section button');
+
+const handleRSVP = (e) => {
+    if (e) e.preventDefault(); // Page refresh වීම වළක්වයි
+
+    // URL එකෙන් Guest Name සහ Side ලබා ගැනීම
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('guest') ? decodeURIComponent(urlParams.get('guest')) : 'Guest';
+    const side = urlParams.get('side') || 'groom';
+
+    // Radio Button & Guest Count Inputs ලබා ගැනීම
+    const attendanceRadio = document.querySelector('input[name="attendance"]:checked');
+    const attendanceStatus = attendanceRadio ? attendanceRadio.value : 'We Will Attend';
+    const guestCountInput = document.querySelector('input[type="number"]') || document.getElementById('guestCount');
+    const guestCount = guestCountInput ? guestCountInput.value : '1';
+
+    // Side එක අනුව WhatsApp Number එක තෝරාගැනීම (Country code 94 සහිතව)
+    let phoneNumber = (side === 'bride') ? '94713372644' : '94752540988';
+
+    // WhatsApp Message එක සැකසීම
+    let message = `Hello! ${guestName} - ${attendanceStatus}`;
+    
+    // Attending නම් පමණක් Guest count එක එකතු කරයි
+    if (attendanceStatus.includes('Attend') && !attendanceStatus.includes('Cannot')) {
+        message += ` (${guestCount} Guests)`;
+    }
+
+    // WhatsApp open කිරීම
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+};
+
+if (rsvpForm) {
+    rsvpForm.addEventListener('submit', handleRSVP);
+}
+if (rsvpBtn) {
+    rsvpBtn.onclick = handleRSVP;
+}
 
     // Guest Name Logic
     const guestGreetingElement = document.getElementById('guestGreeting');
