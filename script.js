@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const eventType = urlParams.get('event'); // 'wedding' or 'homecoming'
     const side = urlParams.get('side'); // 'groom' or 'bride'
     
+    // Side එක අනුව Page Title එක වෙනස් කිරීම
+if (side === 'bride') {
+    document.title = "Wedding Invitation - Sanchala & Ashen";
+} else {
+    document.title = "Wedding Invitation - Ashen & Sanchala";
+}
     // Dynamic RSVP Contact Numbers Update
     const rsvpContactsDiv = document.getElementById('rsvpContacts') || document.querySelector('.rsvp-contacts');
 
